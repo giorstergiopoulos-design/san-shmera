@@ -1,0 +1,108 @@
+# End-to-end test of the Chronikologio plugin ("Σαν σήμερα") on a CLEAN GitHub-hosted Windows machine.
+# Private repository: this uses the free minutes of the account (one runner, one job), so it runs only on demand or when the installer/plugin changes.
+# Steps: build the plugin + installer; install the latest PUBLISHED Opsis; check its contract DLL has the new types; run our installer silently;
+# check the plugin landed in <Opsis>\plugins\Chronikologio; start the real Opsis host in its test mode (isolated AppData) and read plugins.log;
+# uninstall the plugin and check nothing is left; upload logs and screenshots. Not covered: UAC prompt, a real desktop with several monitors.
+name: plugin-e2e
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['installer/**', 'src/Chronikologio.OpsisPlugin/**', 'libs/**', '.github/workflows/plugin-e2e.yml']
+
+concurrency:
+  group: plugin-e2e-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    runs-on: windows-2022
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Inno Setup
+        shell: pwsh
+        run: |
+          $iscc = @("$env:LOCALAPPDATA\Programs", $env:ProgramFiles, ${env:ProgramFiles(x86)}) | Where-Object { $_ -and (Test-Path $_) } |
+            ForEach-Object { Get-ChildItem $_ -Directory -Filter 'Inno Setup*' -ErrorAction SilentlyContinue } | Sort-Object Name -Descending |
+            ForEach-Object { Join-Path $_.FullName 'ISCC.exe' } | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $iscc) { choco install innosetup -y --no-progress }
+          Write-Host "ISCC: $iscc"
+
+      - name: Build the plugin and the installer
+        shell: cmd
+        run: build-installer.bat skip-tests < nul
+
+      - name: Install the latest published Opsis (silent) and check its contract
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download -R giorstergiopoulos-design/Opsis -p 'OpsisSetup.exe' -D opsis-setup --clobber
+          $p = Start-Process opsis-setup\OpsisSetup.exe -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/LOG=opsis-install.log' -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "Opsis setup exit code $($p.ExitCode)" }
+          $k = Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall','HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall' -ErrorAction SilentlyContinue | ForEach-Object { Get-ItemProperty $_.PSPath } | Where-Object { $_.DisplayName -like 'Opsis - Desktop*' } | Select-Object -First 1
+          if (-not $k) { throw 'Opsis is not installed' }
+          $dir = $k.InstallLocation.TrimEnd('\'); "Opsis $($k.DisplayVersion) in $dir"
+          $dll = Join-Path $dir 'OpsisNewsCrawler.Plugin.Abstractions.dll'
+          $b = [IO.File]::ReadAllBytes($dll); "contract DLL: $($b.Length) bytes"
+          $txt = [Text.Encoding]::UTF8.GetString($b) + [Text.Encoding]::Unicode.GetString($b)
+          if (-not $txt.Contains('PluginFeeds')) { throw 'the installed Opsis has the OLD contract (no PluginFeeds)' }
+          "OPSIS_DIR=$dir" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+      - name: Install the plugin with its installer (silent)
+        shell: pwsh
+        run: |
+          if (-not (Test-Path Output\ChronikologioSetup.exe)) { throw 'ChronikologioSetup.exe was not built' }
+          $p = Start-Process Output\ChronikologioSetup.exe -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/LOG=plugin-install.log' -Wait -PassThru
+          "setup exit code: $($p.ExitCode)"
+          $dst = Join-Path $env:OPSIS_DIR 'plugins\Chronikologio'
+          if (-not (Test-Path (Join-Path $dst 'Chronikologio.OpsisPlugin.dll'))) { Get-Content plugin-install.log -Tail 40; throw "the plugin was not installed into $dst" }
+          Get-ChildItem $dst | Select-Object -First 20 | ForEach-Object { $_.Name }
+
+      - name: Start the real Opsis host (isolated AppData) and read plugins.log
+        shell: pwsh
+        run: |
+          $ap = Join-Path $env:RUNNER_TEMP 'opsis-appdata'; New-Item -ItemType Directory -Force $ap | Out-Null
+          $env:OPSIS_APPDATA = $ap; $env:OPSIS_E2E = '1'
+          New-Item -ItemType Directory -Force out | Out-Null
+          $exe = Join-Path $env:OPSIS_DIR 'Opsis.exe'
+          $pr = Start-Process $exe -ArgumentList '--test-plugin-widget', (Resolve-Path out).Path -PassThru
+          if (-not $pr.WaitForExit(120000)) { Stop-Process -Id $pr.Id -Force; "host did not finish in 2 minutes" }
+          "host exit code: $($pr.ExitCode)"
+          Get-ChildItem out | ForEach-Object { $_.Name }
+          $log = Get-ChildItem $ap -Recurse -Filter plugins.log -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($log) { Get-Content $log.FullName -Tail 40 } else { 'no plugins.log found in the isolated AppData' }
+          if ($log -and (Select-String -Path $log.FullName -Pattern 'Failed to load|ReflectionTypeLoadException|Could not load type' -Quiet)) { throw 'plugins.log shows a load error' }
+          if ($log -and -not (Select-String -Path $log.FullName -Pattern 'Chronikologio' -Quiet)) { throw 'plugins.log never mentions Chronikologio (the plugin was not even tried)' }
+
+      - name: Uninstall the plugin and check that nothing is left
+        shell: pwsh
+        run: |
+          $u = Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall','HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall' -ErrorAction SilentlyContinue | ForEach-Object { Get-ItemProperty $_.PSPath } | Where-Object { $_.PSChildName -like '*B7C4E2A1-5D3F-4E8A-9C61-2F0A8D7E4B93*' } | Select-Object -First 1
+          if (-not $u) { throw 'the plugin uninstall entry was not found' }
+          $cmd = $u.UninstallString.Trim('"'); $p = Start-Process $cmd -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART' -Wait -PassThru
+          "uninstall exit code: $($p.ExitCode)"
+          $dst = Join-Path $env:OPSIS_DIR 'plugins\Chronikologio'
+          if (Test-Path $dst) { throw "files are left in $dst" }
+          if (-not (Test-Path (Join-Path $env:OPSIS_DIR 'Opsis.exe'))) { throw 'the uninstall removed Opsis itself' }
+          'clean: the plugin is gone and Opsis is untouched'
+
+      - name: Upload logs and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: plugin-e2e
+          path: |
+            out/**
+            *.log
+          if-no-files-found: ignore
