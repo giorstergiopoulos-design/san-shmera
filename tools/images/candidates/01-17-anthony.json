@@ -1,0 +1,74 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "icons/01-17-anthony-1.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Anthony_the_Great_icon_%28lebanon%29.jpg/1920px-Anthony_the_Great_icon_%28lebanon%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Anthony the Great icon (lebanon)",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Anthony_the_Great_icon_(lebanon).jpg",
+        "kind":  "icon",
+        "description":  "An icon of saint anthony the great.",
+        "pixels":  "2538x3225"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-17-anthony-2.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/3/36/Cretan_Icon_Saint_Anthony_the_Great.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Cretan Icon Saint Anthony the Great",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Cretan_Icon_Saint_Anthony_the_Great.jpg",
+        "kind":  "icon",
+        "description":  "Cretan Greek Icon of Saint Anthony the Great",
+        "pixels":  "636x1600"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-17-anthony-3.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/5/5a/Saint_Anthony_the_Great_Athonite_Icon_2.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Saint Anthony the Great Athonite Icon 2",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_Anthony_the_Great_Athonite_Icon_2.jpg",
+        "kind":  "icon",
+        "description":  "Athonite Icon of Saint Anthony the Great",
+        "pixels":  "435x1200"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-17-anthony-4.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Saint-Paul-Thebes-Anthony-Great-Desert-Ascetic-Icon-Orthodox-Prayer-Crow-bread.jpg/1920px-Saint-Paul-Thebes-Anthony-Great-Desert-Ascetic-Icon-Orthodox-Prayer-Crow-bread.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint-Paul-Thebes-Anthony-Great-Desert-Ascetic-Icon-Orthodox-Prayer-Crow-bread",
+        "creator":  "Anonymous",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint-Paul-Thebes-Anthony-Great-Desert-Ascetic-Icon-Orthodox-Prayer-Crow-bread.jpg",
+        "kind":  "icon",
+        "description":  "Scene Icon of Saint Paul of Thebes and Saint Anthony the Great",
+        "pixels":  "2480x1320"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-17-anthony-5.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/St_Anthony_the_Great.jpg/1920px-St_Anthony_the_Great.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "St Anthony the Great",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:St_Anthony_the_Great.jpg",
+        "kind":  "icon",
+        "description":  "An icon depicting the Saint Anthony the Great, father of monasticism",
+        "pixels":  "3300x4488"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-17-anthony-6.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Anthony_the_Great.jpg/1920px-Anthony_the_Great.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Anthony the Great",
+        "creator":  "Wikivorker",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Anthony_the_Great.jpg",
+        "kind":  "icon",
+        "description":  "Orthodox icon.",
+        "pixels":  "2658x3544"
+    }
+]

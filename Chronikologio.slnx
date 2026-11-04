@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Chronikologio.Core/Chronikologio.Core.csproj" />
+    <Project Path="src/Chronikologio.UI/Chronikologio.UI.csproj" />
+    <Project Path="src/Chronikologio.Windows/Chronikologio.Windows.csproj" />
+    <Project Path="src/Chronikologio.OpsisPlugin/Chronikologio.OpsisPlugin.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Chronikologio.Core.Tests/Chronikologio.Core.Tests.csproj" />
+    <Project Path="tests/Chronikologio.Plugin.Tests/Chronikologio.Plugin.Tests.csproj" />
+  </Folder>
+</Solution>

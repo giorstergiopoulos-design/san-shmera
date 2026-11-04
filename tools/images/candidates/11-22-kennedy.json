@@ -1,0 +1,50 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "photos/11-22-kennedy-1.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/JFK_Motorcade_GettyImages-517330536.jpg/3840px-JFK_Motorcade_GettyImages-517330536.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "JFK Motorcade GettyImages-517330536",
+        "creator":  "Walt Cisco, Dallas Morning News",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:JFK_Motorcade_GettyImages-517330536.jpg",
+        "kind":  "photo",
+        "description":  "Picture of President Kennedy in the limousine in Dallas, Texas, on Main Street, minutes before the assassination. Also in the presidential limousine are Jackie Kennedy, Texas Governor John Connally, and his wife, Nellie.",
+        "pixels":  "5224x4066"
+    },
+    {
+        "approved":  false,
+        "file":  "photos/11-22-kennedy-2.png",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/5/5c/JFK_limousine.png?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "JFK limousine",
+        "creator":  "Walt Cisco, Dallas Morning News",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:JFK_limousine.png",
+        "kind":  "photo",
+        "description":  "Picture of President Kennedy in the limousine in Dallas, Texas, on Main Street, minutes before the assassination. Also in the presidential limousine are Jackie Kennedy, Texas Governor John Connally, and his wife, Nellie.",
+        "pixels":  "2048x1536"
+    },
+    {
+        "approved":  false,
+        "file":  "photos/11-22-kennedy-3.png",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/b/b4/John_F._Kennedy_motorcade%2C_Dallas_crop.png?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail_unscaled",
+        "caption":  "John F. Kennedy motorcade, Dallas crop",
+        "creator":  "Victor Hugo King",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:John_F._Kennedy_motorcade,_Dallas_crop.png",
+        "kind":  "photo",
+        "description":  "President John F. Kennedy motorcade, Dallas, Texas, Friday, November 22, 1963. Also in the presidential limousine are Jackie Kennedy, Texas Governor John Connally and his wife, Nellie.",
+        "pixels":  "3641x2444"
+    },
+    {
+        "approved":  false,
+        "file":  "photos/11-22-kennedy-4.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/3/32/John_F._Kennedy_motorcade%2C_Dallas%2C_Texas%2C_Nov._22%2C_1963.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail_unscaled",
+        "caption":  "John F. Kennedy motorcade, Dallas, Texas, Nov. 22, 1963",
+        "creator":  "Victor Hugo King",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:John_F._Kennedy_motorcade,_Dallas,_Texas,_Nov._22,_1963.jpg",
+        "kind":  "photo",
+        "description":  "John F. Kennedy motorcade, Dallas, Texas, Nov. 22, 1963. Partially restored version of original file with some artifacts removed.",
+        "pixels":  "3636x2429"
+    }
+]

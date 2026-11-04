@@ -1,0 +1,15 @@
+{
+  "_comment": "A reference link counts as an official source only when its host matches one of these patterns: governments, armed forces, universities and academies, international organisations, national archives and libraries, museums, the Nobel institution, the Churches, and encyclopedias with an editorial board. Wikipedia and every site anyone can edit are never official. Patterns are regular expressions on the host name.",
+  "hostPatterns": [
+    "\\.gov$", "\\.gov\\.[a-z]{2}$", "\\.gouv\\.[a-z]{2}$", "\\.gob\\.[a-z]{2}$", "\\.govt\\.[a-z]{2}$", "\\.mil$", "\\.mil\\.[a-z]{2}$",
+    "\\.edu$", "\\.edu\\.[a-z]{2}$", "\\.ac\\.[a-z]{2}$",
+    "\\.europa\\.eu$", "(^|\\.)un\\.org$", "(^|\\.)unesco\\.org$", "(^|\\.)nato\\.int$", "(^|\\.)icrc\\.org$", "\\.int$",
+    "(^|\\.)nobelprize\\.org$", "(^|\\.)si\\.edu$", "(^|\\.)britishmuseum\\.org$", "(^|\\.)metmuseum\\.org$", "(^|\\.)bnf\\.fr$", "(^|\\.)bl\\.uk$",
+    "(^|\\.)britannica\\.com$", "(^|\\.)treccani\\.it$", "(^|\\.)universalis\\.fr$", "(^|\\.)larousse\\.fr$",
+    "(^|\\.)parliament\\.gr$", "(^|\\.)hellenicparliament\\.gr$", "(^|\\.)academyofathens\\.gr$", "(^|\\.)culture\\.gr$", "(^|\\.)ekt\\.gr$",
+    "(^|\\.)uoa\\.gr$", "(^|\\.)auth\\.gr$", "(^|\\.)ntua\\.gr$", "(^|\\.)upatras\\.gr$", "(^|\\.)uoi\\.gr$", "(^|\\.)uoc\\.gr$", "(^|\\.)aegean\\.gr$",
+    "(^|\\.)army\\.gr$", "(^|\\.)haf\\.gr$", "(^|\\.)hellenicnavy\\.gr$", "(^|\\.)gak\\.gr$",
+    "(^|\\.)patriarchate\\.org$", "(^|\\.)ec-patr\\.net$", "(^|\\.)ecclesia\\.gr$", "(^|\\.)churchofcyprus\\.org\\.cy$", "(^|\\.)vatican\\.va$"
+  ],
+  "neverOfficial": [ "wikipedia.org", "wikimedia.org", "wikidata.org", "archive.org", "web.archive.org", "google.com", "youtube.com", "facebook.com", "blogspot.com", "wordpress.com", "medium.com" ]
+}

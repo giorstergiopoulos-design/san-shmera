@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Version>0.4.0</Version>
+    <AssemblyName>Chronikologio</AssemblyName>
+    <ApplicationIcon>chronikologio.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Chronikologio.Core/Chronikologio.Core.csproj" />
+    <ProjectReference Include="../Chronikologio.UI/Chronikologio.UI.csproj" />
+    <Reference Include="Opsis.UI"><HintPath>../../libs/Opsis.UI.dll</HintPath><Private>true</Private></Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="../../data/**/*.json;../../data/**/*.tsv" Link="data/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../data/images/**/*.jpg;../../data/images/**/*.jpeg;../../data/images/**/*.png" Link="data/images/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

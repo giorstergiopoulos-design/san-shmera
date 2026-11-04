@@ -1,0 +1,50 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "photos/11-09-berlinwall-1.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/2/25/BerlinWall-BrandenburgGate.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "BerlinWall-BrandenburgGate",
+        "creator":  "Sue Ream, photographer (San Francisco, California)",
+        "license":  "CC BY 3.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:BerlinWall-BrandenburgGate.jpg",
+        "kind":  "photo",
+        "description":  "People atop the Berlin Wall near the Brandenburg Gate on 9 November 1989. The text on the sign \"Achtung! Sie verlassen jetzt West-Berlin\" (\"Notice! You are now leaving West Berlin\") has been modified with an additional text \"Wie denn?\" (\"How?\"). Also in blue is the logo for ONCE, whose cycling team was started in 1989",
+        "pixels":  "1119x1663"
+    },
+    {
+        "approved":  false,
+        "file":  "photos/11-09-berlinwall-2.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/0576_1989_BERLIN_Mauer_%281_december%29_%2814285537256%29.jpg/3840px-0576_1989_BERLIN_Mauer_%281_december%29_%2814285537256%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "0576 1989 BERLIN Mauer (1 december) (14285537256)",
+        "creator":  "Aad van der Drift",
+        "license":  "CC BY 2.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:0576_1989_BERLIN_Mauer_(1_december)_(14285537256).jpg",
+        "kind":  "photo",
+        "description":  "Jugendliche Mauerspechte an der Berliner Mauer",
+        "pixels":  "6820x4492"
+    },
+    {
+        "approved":  false,
+        "file":  "photos/11-09-berlinwall-3.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Berlin-Mauerfall-3-10-November-1989.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Berlin-Mauerfall-3-10-November-1989",
+        "creator":  "Vietinghoff",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Berlin-Mauerfall-3-10-November-1989.jpg",
+        "kind":  "photo",
+        "description":  "Symbol of the fall of the Berlin Wall",
+        "pixels":  "1500x1952"
+    },
+    {
+        "approved":  false,
+        "file":  "photos/11-09-berlinwall-4.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/e/ee/November_The_Wall_Berlin_-_Germany_Photography_1989_-_panoramio.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "November The Wall Berlin - Germany Photography 1989 - panoramio",
+        "creator":  "pictures Jettcom",
+        "license":  "CC BY 3.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:November_The_Wall_Berlin_-_Germany_Photography_1989_-_panoramio.jpg",
+        "kind":  "photo",
+        "description":  "November The Wall Berlin - Germany Photography 1989",
+        "pixels":  "1654x1215"
+    }
+]

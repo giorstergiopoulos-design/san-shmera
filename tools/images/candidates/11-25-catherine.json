@@ -1,0 +1,62 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "icons/11-25-catherine-1.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/3/3d/Saints_Thecla_and_Catherine_icon_%28Syria%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail_unscaled",
+        "caption":  "Saints Thecla and Catherine icon (Syria)",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saints_Thecla_and_Catherine_icon_(Syria).jpg",
+        "kind":  "icon",
+        "description":  "Saints Thecla and Catherine icon",
+        "pixels":  "2599x3303"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/11-25-catherine-2.png",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/1/13/Catherine_of_Alexandria_Philotheos_Skoufos.png?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Catherine of Alexandria Philotheos Skoufos",
+        "creator":  "Philotheos Skoufos",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Catherine_of_Alexandria_Philotheos_Skoufos.png",
+        "kind":  "icon",
+        "description":  "",
+        "pixels":  "1555x1920"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/11-25-catherine-3.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/9/9c/Saint_Catherine_Icon_from_Sts_Cosma_and_Damian_Church_in_Kostur_1842.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Saint Catherine Icon from Sts Cosma and Damian Church in Kostur 1842",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_Catherine_Icon_from_Sts_Cosma_and_Damian_Church_in_Kostur_1842.jpg",
+        "kind":  "icon",
+        "description":  "Saint_Catherine_Icon_from_Sts_Cosma_and_Damian and Apostles Church_in_Kostur.",
+        "pixels":  "832x1414"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/11-25-catherine-4.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/2/2b/Saint_Catherine_vita_icon_from_Palekh_%2819th_c%2C_priv.coll%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Saint Catherine vita icon from Palekh (19th c, priv.coll)",
+        "creator":  "Anonymous Russian icon painter (before 1917)Public domain image (according to PD-Russia-expired)",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_Catherine_vita_icon_from_Palekh_(19th_c,_priv.coll).jpg",
+        "kind":  "icon",
+        "description":  "A VITA ICON OF ST CATHERINE OF ALEXANDRIA PALEKH, BEGINNING OF THE 19TH CENTURY. 42 by 32.5 cm.",
+        "pixels":  "2007x2500"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/11-25-catherine-5.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/1/19/Catherine_of_Alexandria_%28Yaroslavl_%28%3F%29%2C_1730-1740s%2C_priv.coll%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Catherine of Alexandria (Yaroslavl (?), 1730-1740s, priv.coll)",
+        "creator":  "Anonymous Russian icon painter (before 1917)Public domain image (according to PD-Russia-expired)",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Catherine_of_Alexandria_(Yaroslavl_(%3F),_1730-1740s,_priv.coll).jpg",
+        "kind":  "icon",
+        "description":  "MacDougall\u0027s Fine Art Auctions",
+        "pixels":  "624x1255"
+    }
+]

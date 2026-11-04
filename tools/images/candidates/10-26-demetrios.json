@@ -1,0 +1,38 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "icons/10-26-demetrios-1.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/e/e4/Saint_Demetrius_of_Protat.JPG?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Saint Demetrius of Protat",
+        "creator":  "Manuel Panselinos",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_Demetrius_of_Protat.JPG",
+        "kind":  "icon",
+        "description":  "Saint Demetrios of Thessalonica, fresco by Manuel Panselinos in the Protaton Church. Saint Demetrios came from a wealthy family and because he was athletic in appearance and heroic in spirit, he became a high-ranking officer in the Roman army at a very young age. This is why he is depicted in Byzantine icons in military dress, either standing or riding a horse. Throughout his life, he considered himself a soldier of Christ first, and a military soldier second.",
+        "pixels":  "1548x1877"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/10-26-demetrios-2.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Dimitirios_icon.jpg/1920px-Dimitirios_icon.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Dimitirios icon",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Dimitirios_icon.jpg",
+        "kind":  "icon",
+        "description":  "St. Demetrius of Thessalonica.",
+        "pixels":  "3488x5040"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/10-26-demetrios-3.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/%D0%A1%D0%B2._%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%A1%D0%BE%D0%BB%D1%83%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_-_Google_Art_Project.jpg/1920px-%D0%A1%D0%B2._%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%A1%D0%BE%D0%BB%D1%83%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Св. Дмитрий Солунский - Google Art Project",
+        "creator":  "Unknown, 12th - beginning 13th century",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%B2._%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%A1%D0%BE%D0%BB%D1%83%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_-_Google_Art_Project.jpg",
+        "kind":  "icon",
+        "description":  "Kievan mosaic of Saint Demetrius Solunsky (early 1113 year, Kiev). Non-natural colours.",
+        "pixels":  "2312x4000"
+    }
+]

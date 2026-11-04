@@ -1,0 +1,33 @@
+{
+  "_comment": "Images are accepted only from official bodies (museums, archives, space agencies, libraries, the Church) or from Wikimedia Commons, and only under a licence that allows reuse without share-alike. Hosts match by suffix. Pixabay, Pexels, Unsplash, Pinterest and Icons8 are NOT accepted: their licences cover the photograph, not the modern iconography or artwork in it. The Wikipedia article sites are never accepted as a source. Add a host only after reading the body's own reuse statement.",
+  "allowedHosts": [
+    "nasa.gov",
+    "loc.gov",
+    "archives.gov",
+    "metmuseum.org",
+    "si.edu",
+    "nga.gov",
+    "clevelandart.org",
+    "artic.edu",
+    "rijksmuseum.nl",
+    "europeana.eu",
+    "culture.gov.gr",
+    "parliament.gr",
+    "commons.wikimedia.org",
+    "upload.wikimedia.org",
+    "thumb.wikimedia.org"
+  ],
+  "allowedLicenses": [
+    "Public Domain",
+    "CC0 1.0",
+    "NASA public domain",
+    "US Government work (public domain)",
+    "CC BY 4.0",
+    "CC BY 3.0",
+    "CC BY 2.5",
+    "CC BY 2.0"
+  ],
+  "maxBytes": 12582912,
+  "minLongSidePixels": 1200,
+  "allowedExtensions": [ ".jpg", ".jpeg", ".png" ]
+}

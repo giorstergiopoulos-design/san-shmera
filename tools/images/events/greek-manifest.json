@@ -1,0 +1,1894 @@
+[
+    {
+        "key":  "02-14",
+        "year":  "1993",
+        "region":  "Κύπρος",
+        "title":  "Ο Γλαύκος Κληρίδης εκλέγεται πρόεδρος της Κύπρου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-19",
+        "year":  "1959",
+        "region":  "Κύπρος",
+        "title":  "Οι συμφωνίες Ζυρίχης-Λονδίνου για την Κύπρο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-08",
+        "year":  "1970",
+        "region":  "Κύπρος",
+        "title":  "Αποτυχημένη απόπειρα κατά του Μακαρίου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-14",
+        "year":  "1957",
+        "region":  "Κύπρος",
+        "title":  "Απαγχονίζεται ο Ευαγόρας Παλληκαρίδης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-01",
+        "year":  "1955",
+        "region":  "Κύπρος",
+        "title":  "Η ΕΟΚΑ ξεκινά τον απελευθερωτικό αγώνα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-24",
+        "year":  "2004",
+        "region":  "Κύπρος",
+        "title":  "Οι Ελληνοκύπριοι απορρίπτουν το Σχέδιο Ανάν",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-01",
+        "year":  "2004",
+        "region":  "Κύπρος",
+        "title":  "Η Κύπρος εντάσσεται στην Ευρωπαϊκή Ένωση",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-04",
+        "year":  "1878",
+        "region":  "Κύπρος",
+        "title":  "Η Κύπρος περνά στη Βρετανία",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-15",
+        "year":  "1974",
+        "region":  "Κύπρος",
+        "title":  "Το πραξικόπημα κατά του Μακαρίου στην Κύπρο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-20",
+        "year":  "1974",
+        "region":  "Κύπρος",
+        "title":  "Η τουρκική εισβολή στην Κύπρο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-14",
+        "year":  "1974",
+        "region":  "Κύπρος",
+        "title":  "Η δεύτερη φάση της τουρκικής εισβολής",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-16",
+        "year":  "1960",
+        "region":  "Κύπρος",
+        "title":  "Η Κύπρος γίνεται ανεξάρτητο κράτος",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-05",
+        "year":  "2006",
+        "region":  "Κύπρος",
+        "title":  "Ο Χρυσόστομος Β΄ εκλέγεται Αρχιεπίσκοπος Κύπρου",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Αρχιεπίσκοπος Κύπρου Μακάριος Γ΄",
+                          "title":  "File:Makarios III and Robert F. Wagner NYWTS cropped.jpg",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/5/5e/Makarios_III_and_Robert_F._Wagner_NYWTS_cropped.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Makarios_III_and_Robert_F._Wagner_NYWTS_cropped.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "New York World-Telegram and the Sun staff photographer: Fernandez, Orlando, photographer. Cropped by Badseed using The GIMP.",
+                          "caption":  "Archbishop Makarios of Cyprus. Mayor Wagner greets Archbishop Makarios at City Hall / World Telegram \u0026 Sun photo by O. Fernandez.",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "11-15",
+        "year":  "1983",
+        "region":  "Κύπρος",
+        "title":  "Η μονομερής ανακήρυξη του κατεχομένου βορρά",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-13",
+        "year":  "2002",
+        "region":  "Κύπρος",
+        "title":  "Η Ευρωπαϊκή Ένωση αποφασίζει την ένταξη της Κύπρου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-21",
+        "year":  "1963",
+        "region":  "Κύπρος",
+        "title":  "Τα επεισόδια των Χριστουγέννων του 1963 στην Κύπρο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-10",
+        "year":  "1956",
+        "region":  "Κύπρος",
+        "title":  "Απαγχονίζονται οι Μιχαλάκης Καραολής και Ανδρέας Δημητρίου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-19",
+        "year":  "1974",
+        "region":  "Κύπρος",
+        "title":  "Δολοφονείται ο Αμερικανός πρέσβης Ρότζερ Ντέιβις",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-30",
+        "year":  "1963",
+        "region":  "Κύπρος",
+        "title":  "Χαράσσεται η Πράσινη Γραμμή στη Λευκωσία",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-03",
+        "year":  "2015",
+        "region":  "Ελλάδα",
+        "title":  "Συλλαμβάνεται ο Χριστόδουλος Ξηρός",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-08",
+        "year":  "1991",
+        "region":  "Ελλάδα",
+        "title":  "Δολοφονείται ο εκπαιδευτικός Νίκος Τεμπονέρας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-14",
+        "year":  "1943",
+        "region":  "Ελλάδα",
+        "title":  "Σκοτώνεται ο Ιωάννης Τσιγάντες",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-18",
+        "year":  "1913",
+        "region":  "Ελλάδα",
+        "title":  "Η ναυμαχία της Λήμνου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-22",
+        "year":  "1973",
+        "region":  "Ελλάδα",
+        "title":  "Σκοτώνεται ο Αλέξανδρος Ωνάσης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-31",
+        "year":  "1996",
+        "region":  "Ελλάδα",
+        "title":  "Η νύχτα των Ιμίων",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-01",
+        "year":  "2022",
+        "region":  "Ελλάδα",
+        "title":  "Δολοφονείται ο Άλκης Καμπανός",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-02",
+        "year":  "1950",
+        "region":  "Ελλάδα",
+        "title":  "Πεθαίνει ο Κωνσταντίνος Καραθεοδωρή",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-07",
+        "year":  "1963",
+        "region":  "Ελλάδα",
+        "title":  "Ο σεισμός και το τσουνάμι στο Αίγιο",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Σεισμός στην Καλαμάτα το 1986",
+                          "title":  "File:1986 Kalamata Greece earthquake shakemap.jpg",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/0/03/1986_Kalamata_Greece_earthquake_shakemap.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:1986_Kalamata_Greece_earthquake_shakemap.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "United States Geological Survey",
+                          "caption":  "USGS Shakemap of the Kalamata, Greece, earthquake of September 13, 1986",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "02-08",
+        "year":  "1981",
+        "region":  "Ελλάδα",
+        "title":  "Η τραγωδία της Θύρας 7",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-09",
+        "year":  "1948",
+        "region":  "Ελλάδα",
+        "title":  "Ο ΔΣΕ βομβαρδίζει τη Θεσσαλονίκη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-11",
+        "year":  "1959",
+        "region":  "Ελλάδα",
+        "title":  "Η δίκη του Μαξ Μέρτεν",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-12",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Το ναυάγιο του «Όρια»",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-19",
+        "year":  "1962",
+        "region":  "Ελλάδα",
+        "title":  "Πεθαίνει ο Γεώργιος Παπανικολάου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-21",
+        "year":  "1973",
+        "region":  "Ελλάδα",
+        "title":  "Η κατάληψη της Νομικής Σχολής Αθηνών",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-23",
+        "year":  "1943",
+        "region":  "Ελλάδα",
+        "title":  "Η πολιτική επιστράτευση στην Κατοχή",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-26",
+        "year":  "2020",
+        "region":  "Ελλάδα",
+        "title":  "Το πρώτο κρούσμα κορονοϊού στην Ελλάδα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-15",
+        "year":  "1943",
+        "region":  "Ελλάδα",
+        "title":  "Ο πρώτος συρμός από τη Θεσσαλονίκη προς το Άουσβιτς",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Ιστορία των Εβραίων στη Θεσσαλονίκη",
+                          "title":  "File:Monastir Synagogue.JPG",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Monastir_Synagogue.JPG/1280px-Monastir_Synagogue.JPG?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Monastir_Synagogue.JPG",
+                          "license":  "CC BY 3.0",
+                          "creator":  "NYC2TLV",
+                          "caption":  "Exteior view of the Monastir Synagogue in Thessaloniki, Greece",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "03-22",
+        "year":  "2020",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα μπαίνει σε καραντίνα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-02",
+        "year":  "1986",
+        "region":  "Ελλάδα",
+        "title":  "Η βόμβα στην πτήση TWA 840",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-10",
+        "year":  "1826",
+        "region":  "Ελλάδα",
+        "title":  "Η Έξοδος του Μεσολογγίου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-01",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Οι 200 εκτελεσμένοι της Καισαριανής",
+        "found":  true,
+        "candidate":  {
+                          "article":  "200 της Καισαριανής",
+                          "title":  "File:Πλάκα ονομάτων 200 Σκοπευτήριο Καισαριανής.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/%CE%A0%CE%BB%CE%AC%CE%BA%CE%B1_%CE%BF%CE%BD%CE%BF%CE%BC%CE%AC%CF%84%CF%89%CE%BD_200_%CE%A3%CE%BA%CE%BF%CF%80%CE%B5%CF%85%CF%84%CE%AE%CF%81%CE%B9%CE%BF_%CE%9A%CE%B1%CE%B9%CF%83%CE%B1%CF%81%CE%B9%CE%B1%CE%BD%CE%AE%CF%82.jpg/1280px-%CE%A0%CE%BB%CE%AC%CE%BA%CE%B1_%CE%BF%CE%BD%CE%BF%CE%BC%CE%AC%CF%84%CF%89%CE%BD_200_%CE%A3%CE%BA%CE%BF%CF%80%CE%B5%CF%85%CF%84%CE%AE%CF%81%CE%B9%CE%BF_%CE%9A%CE%B1%CE%B9%CF%83%CE%B1%CF%81%CE%B9%CE%B1%CE%BD%CE%AE%CF%82.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:%CE%A0%CE%BB%CE%AC%CE%BA%CE%B1_%CE%BF%CE%BD%CE%BF%CE%BC%CE%AC%CF%84%CF%89%CE%BD_200_%CE%A3%CE%BA%CE%BF%CF%80%CE%B5%CF%85%CF%84%CE%AE%CF%81%CE%B9%CE%BF_%CE%9A%CE%B1%CE%B9%CF%83%CE%B1%CF%81%CE%B9%CE%B1%CE%BD%CE%AE%CF%82.jpg",
+                          "license":  "CC BY 4.0",
+                          "creator":  "Spartacos31",
+                          "caption":  "Monument with the names of the 200 communist-fighters executed by the NAZI forces on May Day 1944, at the Kaisariani Shooting Range",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "05-02",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Πεθαίνει η Πηνελόπη Δέλτα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-03",
+        "year":  "1810",
+        "region":  "Ελλάδα",
+        "title":  "Ο Λόρδος Βύρων διασχίζει τον Ελλήσποντο κολυμπώντας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-06",
+        "year":  "2012",
+        "region":  "Ελλάδα",
+        "title":  "Οι εκλογές που ανέτρεψαν τον δικομματισμό",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-24",
+        "year":  "1998",
+        "region":  "Ελλάδα",
+        "title":  "Ο Αγγελόπουλος κερδίζει τον Χρυσό Φοίνικα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-26",
+        "year":  "1916",
+        "region":  "Ελλάδα",
+        "title":  "Η παράδοση του οχυρού Ρούπελ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-02",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Η σφαγή του Κοντομαρί",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-08",
+        "year":  "1995",
+        "region":  "Ελλάδα",
+        "title":  "Το casus belli της Τουρκίας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-12",
+        "year":  "1914",
+        "region":  "Μικρά Ασία",
+        "title":  "Η σφαγή της Φώκαιας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-25",
+        "year":  "1925",
+        "region":  "Ελλάδα",
+        "title":  "Ο Πάγκαλος καταλύει τη Δημοκρατία",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-26",
+        "year":  "2007",
+        "region":  "Ελλάδα",
+        "title":  "Ο καύσωνας των 47,5°C",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-28",
+        "year":  "2015",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα ξυπνά με κλειστές τράπεζες",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-30",
+        "year":  "1913",
+        "region":  "Ελλάδα",
+        "title":  "Η σφαγή του Δοξάτου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-11",
+        "year":  "1988",
+        "region":  "Ελλάδα",
+        "title":  "Η επίθεση στο κρουαζιερόπλοιο «City of Poros»",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-14",
+        "year":  "1992",
+        "region":  "Ελλάδα",
+        "title":  "Η δολοφονία Αξαρλιάν",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-15",
+        "year":  "1965",
+        "region":  "Ελλάδα",
+        "title":  "Παραιτείται ο Γεώργιος Παπανδρέου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-17",
+        "year":  "1912",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελευθέρα Πολιτεία της Ικαρίας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-19",
+        "year":  "2010",
+        "region":  "Ελλάδα",
+        "title":  "Η δολοφονία του δημοσιογράφου Σωκράτη Γκιόλια",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-22",
+        "year":  "1974",
+        "region":  "Ελλάδα",
+        "title":  "Η επιχείρηση «Νίκη» στην Κύπρο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-30",
+        "year":  "1920",
+        "region":  "Ελλάδα",
+        "title":  "Απόπειρα δολοφονίας του Βενιζέλου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-05",
+        "year":  "1973",
+        "region":  "Ελλάδα",
+        "title":  "Η επίθεση στο αεροδρόμιο του Ελληνικού",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-10",
+        "year":  "1920",
+        "region":  "Ελλάδα",
+        "title":  "Η Συνθήκη των Σεβρών",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-17",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Το Μπλόκο της Κοκκινιάς",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Μπλόκο της Κοκκινιάς",
+                          "title":  "File:Mantra mplokou tis kokkinias.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Mantra_mplokou_tis_kokkinias.jpg/1280px-Mantra_mplokou_tis_kokkinias.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Mantra_mplokou_tis_kokkinias.jpg",
+                          "license":  "CC0 1.0",
+                          "creator":  "Χρήστης:Up2TheStage",
+                          "caption":  "Ο μνημειακός χώρος της Μάντρας Μπλόκου της Κοκκινιάς",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "08-20",
+        "year":  "1954",
+        "region":  "Ελλάδα",
+        "title":  "Η πρώτη προσφυγή της Ελλάδας στον ΟΗΕ για το Κυπριακό",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-22",
+        "year":  "1926",
+        "region":  "Ελλάδα",
+        "title":  "Ο Κονδύλης ανατρέπει τον Πάγκαλο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-01",
+        "year":  "1911",
+        "region":  "Ελλάδα",
+        "title":  "Το «Αβέρωφ» μπαίνει στην υπηρεσία του Πολεμικού Ναυτικού",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-04",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Η ελληνική σημαία ξαναϋψώνεται στην Προσοτσάνη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-05",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Η εκτέλεση της Ηρώς Κωνσταντοπούλου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-21",
+        "year":  "2018",
+        "region":  "Ελλάδα",
+        "title":  "Ο θάνατος του Ζακ Κωστόπουλου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-28",
+        "year":  "2013",
+        "region":  "Ελλάδα",
+        "title":  "Συλλαμβάνονται ηγετικά στελέχη της Χρυσής Αυγής",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "10-07",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Η εξέγερση στο Άουσβιτς",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-03",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Κυκλοφορεί το χαρτονόμισμα των 100 δισεκατομμυρίων δραχμών",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-05",
+        "year":  "1961",
+        "region":  "Ελλάδα",
+        "title":  "Η φονική πλημμύρα της Αθήνας",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Πλημμύρες στη Δυτική Αττική (2017)",
+                          "title":  "File:Numa 16 November 2017.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Numa_16_November_2017.jpg/1280px-Numa_16_November_2017.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Numa_16_November_2017.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "NASA",
+                          "caption":  "Cyclone Numa, a rare \"medicane\" or Mediterranean tropical-like cyclone, to the west of Greece on 16 November 2017.",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "11-15",
+        "year":  "2017",
+        "region":  "Ελλάδα",
+        "title":  "Η φονική πλημμύρα στη Μάνδρα",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Πλημμύρες στη Δυτική Αττική (2017)",
+                          "title":  "File:Numa 16 November 2017.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Numa_16_November_2017.jpg/1280px-Numa_16_November_2017.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Numa_16_November_2017.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "NASA",
+                          "caption":  "Cyclone Numa, a rare \"medicane\" or Mediterranean tropical-like cyclone, to the west of Greece on 16 November 2017.",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "11-21",
+        "year":  "1916",
+        "region":  "Ελλάδα",
+        "title":  "Βυθίζεται το «Βρετανικός» στην Κέα",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Χρονολόγιο της νεότερης ελληνικής ιστορίας",
+                          "title":  "File:Map of Greece, Archipelago and part of Anadoli; Louis Stanislas d\u0027Arcy Delarochette 1791.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Map_of_Greece%2C_Archipelago_and_part_of_Anadoli%3B_Louis_Stanislas_d%27Arcy_Delarochette_1791.jpg/1280px-Map_of_Greece%2C_Archipelago_and_part_of_Anadoli%3B_Louis_Stanislas_d%27Arcy_Delarochette_1791.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Map_of_Greece,_Archipelago_and_part_of_Anadoli;_Louis_Stanislas_d%27Arcy_Delarochette_1791.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Louis Stanislas d\u0027Arcy Delarochette",
+                          "caption":  "Greece, Archipelago and part of Anadoli. Published for Willm. Faden, Geographer to the King. W. Palmer sculp. . Scale: 1,350,000",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "11-23",
+        "year":  "1988",
+        "region":  "Ελλάδα",
+        "title":  "Συλλαμβάνεται ο Γιώργος Κοσκωτάς",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-19",
+        "year":  "1923",
+        "region":  "Ελλάδα",
+        "title":  "Ο Γεώργιος Β΄ φεύγει από την Ελλάδα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-22",
+        "year":  "1963",
+        "region":  "Ελλάδα",
+        "title":  "Η πυρκαγιά του «Λακωνία»",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-26",
+        "year":  "1968",
+        "region":  "Ελλάδα",
+        "title":  "Επίθεση στο αεροσκάφος της El Al στο Ελληνικό",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Επίθεση στην Πτήση 253 της El Al",
+                          "title":  "File:OrlyAirport1965-Boeing707-EL-AL.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/OrlyAirport1965-Boeing707-EL-AL.jpg/1280px-OrlyAirport1965-Boeing707-EL-AL.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:OrlyAirport1965-Boeing707-EL-AL.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "HZ",
+                          "caption":  "El-Al Boeing 707 at Orly Airport",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "04-08",
+        "year":  "1820",
+        "region":  "Ελλάδα",
+        "title":  "Ανακαλύπτεται η Αφροδίτη της Μήλου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-15",
+        "year":  "1919",
+        "region":  "Μικρά Ασία",
+        "title":  "Η ελληνική απόβαση στη Σμύρνη",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Ελληνική απόβαση στη Σμύρνη",
+                          "title":  "File:Izmir15Mayis1919.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Izmir15Mayis1919.jpg/1280px-Izmir15Mayis1919.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Izmir15Mayis1919.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Unknown authorUnknown author",
+                          "caption":  "Greek \u0027evzone\u0027 soldiers stationed in Smyrna (Izmir) as the Greek population welcomes them into the city on 15 May 1919",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "05-19",
+        "year":  "1919",
+        "region":  "Πόντος",
+        "title":  "Ημέρα Μνήμης της Γενοκτονίας των Ποντίων",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-12",
+        "year":  "-490",
+        "region":  "Ελλάδα",
+        "title":  "Η Μάχη του Μαραθώνα (κατά την παράδοση)",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Μάχη του Μαραθώνα",
+                          "title":  "File:Les Héros de Marathon Georges Rochegrosse 1859.jpg",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/5/56/Les_H%C3%A9ros_de_Marathon_Georges_Rochegrosse_1859.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Les_H%C3%A9ros_de_Marathon_Georges_Rochegrosse_1859.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Georges Rochegrosse",
+                          "caption":  "Battle of Marathon, Georges Rochegrosse 1859",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "01-01",
+        "year":  "1981",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα γίνεται δέκατο μέλος της ΕΟΚ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-01",
+        "year":  "2001",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα μπαίνει στην Ευρωζώνη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-04",
+        "year":  "1956",
+        "region":  "Ελλάδα",
+        "title":  "Ο Καραμανλής ιδρύει την Εθνική Ριζοσπαστική Ένωση",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-09",
+        "year":  "1938",
+        "region":  "Ελλάδα",
+        "title":  "Γάμος του διαδόχου Παύλου με τη Φρειδερίκη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-10",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Ο ελληνικός στρατός καταλαμβάνει την Κλεισούρα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-13",
+        "year":  "1997",
+        "region":  "Ελλάδα",
+        "title":  "Ανακαλύπτεται το Λύκειο του Αριστοτέλη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-17",
+        "year":  "1986",
+        "region":  "Ελλάδα",
+        "title":  "Εγκαινιάζεται το Μουσείο Κυκλαδικής Τέχνης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-24",
+        "year":  "1947",
+        "region":  "Ελλάδα",
+        "title":  "Ο Δημήτριος Μάξιμος γίνεται πρωθυπουργός",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Δημήτριος Ράλλης",
+                          "title":  "File:Dimitrios G. Rallis.JPG",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/8/86/Dimitrios_G._Rallis.JPG?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Dimitrios_G._Rallis.JPG",
+                          "license":  "Public Domain",
+                          "creator":  "Diomedes, Paulos",
+                          "caption":  "Hestia (1876) Author: Diomedes, Paulos Subject: Greek literature, Modern; Greek periodicals Publisher: Athēnēsi : s.n. Year: 1894 Possible copyright status: NOT_IN_COPYRIGHT Language: Greek Digitizing sponsor: Google Book from the collections of: Harvard University Collection: americana",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "01-28",
+        "year":  "1996",
+        "region":  "Ελλάδα",
+        "title":  "Η κρίση των Ιμίων",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-28",
+        "year":  "2000",
+        "region":  "Ελλάδα",
+        "title":  "Εγκαινιάζεται το Μετρό της Αθήνας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-29",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Ο Κορυζής διαδέχεται τον Μεταξά",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "01-30",
+        "year":  "1923",
+        "region":  "Ελλάδα",
+        "title":  "Η Σύμβαση της Λωζάνης για την ανταλλαγή πληθυσμών",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-03",
+        "year":  "1830",
+        "region":  "Ελλάδα",
+        "title":  "Το Πρωτόκολλο της Ανεξαρτησίας της Ελλάδας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-05",
+        "year":  "1913",
+        "region":  "Ελλάδα",
+        "title":  "Η πρώτη αεροναυτική αποστολή",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-06",
+        "year":  "1833",
+        "region":  "Ελλάδα",
+        "title":  "Ο Όθων φτάνει στο Ναύπλιο",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Όθων της Ελλάδας",
+                          "title":  "File:Prinz Otto von Bayern Koenig von Griechenland 1833.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Prinz_Otto_von_Bayern_Koenig_von_Griechenland_1833.jpg/1280px-Prinz_Otto_von_Bayern_Koenig_von_Griechenland_1833.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Prinz_Otto_von_Bayern_Koenig_von_Griechenland_1833.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Friedrich Dürck",
+                          "caption":  "Prinz Octavius of Bavaria, King of Greece; after Joseph Stieler (1781–1858)",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "02-10",
+        "year":  "1947",
+        "region":  "Ελλάδα",
+        "title":  "Τα Δωδεκάνησα περνούν στην Ελλάδα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-16",
+        "year":  "1923",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα υιοθετεί το Γρηγοριανό ημερολόγιο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-18",
+        "year":  "1952",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα εντάσσεται στο ΝΑΤΟ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-24",
+        "year":  "1981",
+        "region":  "Ελλάδα",
+        "title":  "Ο σεισμός των Αλκυονίδων",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-24",
+        "year":  "1994",
+        "region":  "Ελλάδα",
+        "title":  "Η Βουλή αναγνωρίζει τη Γενοκτονία των Ποντίων",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "02-28",
+        "year":  "2023",
+        "region":  "Ελλάδα",
+        "title":  "Το σιδηροδρομικό δυστύχημα στα Τέμπη",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Διαδηλώσεις για το σιδηροδρομικό δυστύχημα στα Τέμπη",
+                          "title":  "File:National strike of 16 March 2023, protest.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/National_strike_of_16_March_2023%2C_protest.jpg/1280px-National_strike_of_16_March_2023%2C_protest.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:National_strike_of_16_March_2023,_protest.jpg",
+                          "license":  "CC0 1.0",
+                          "creator":  "NikosLikomitros",
+                          "caption":  "Still from the national strike of 16 March 2023 in Athens. Students of the school of Philosophy of Athens University can be seen.",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "02-29",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Η Συμφωνία της Πλάκας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-01",
+        "year":  "1935",
+        "region":  "Ελλάδα",
+        "title":  "Το βενιζελικό κίνημα του 1935",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-03",
+        "year":  "2002",
+        "region":  "Ελλάδα",
+        "title":  "Τέλος της δραχμής",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-06",
+        "year":  "1964",
+        "region":  "Ελλάδα",
+        "title":  "Πεθαίνει ο βασιλιάς Παύλος",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-07",
+        "year":  "1948",
+        "region":  "Ελλάδα",
+        "title":  "Η ενσωμάτωση των Δωδεκανήσων",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-08",
+        "year":  "1995",
+        "region":  "Ελλάδα",
+        "title":  "Ο Κωστής Στεφανόπουλος εκλέγεται Πρόεδρος της Δημοκρατίας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-09",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Η ιταλική εαρινή επίθεση",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-12",
+        "year":  "1910",
+        "region":  "Ελλάδα",
+        "title":  "Καθελκύεται το θωρηκτό «Γεώργιος Αβέρωφ»",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-12",
+        "year":  "2005",
+        "region":  "Ελλάδα",
+        "title":  "Ο Κάρολος Παπούλιας γίνεται Πρόεδρος της Δημοκρατίας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-16",
+        "year":  "1964",
+        "region":  "Ελλάδα",
+        "title":  "Η Τουρκία καταγγέλλει τη συμφωνία Βενιζέλου-Ατατούρκ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-18",
+        "year":  "1913",
+        "region":  "Ελλάδα",
+        "title":  "Δολοφονείται ο βασιλιάς Γεώργιος Α΄",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-20",
+        "year":  "1973",
+        "region":  "Ελλάδα",
+        "title":  "Η κατάληψη της Νομικής Σχολής Αθηνών",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-25",
+        "year":  "1924",
+        "region":  "Ελλάδα",
+        "title":  "Ανακηρύσσεται η Β΄ Ελληνική Δημοκρατία",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-25",
+        "year":  "1932",
+        "region":  "Ελλάδα",
+        "title":  "Αποκαλυπτήρια του Μνημείου του Άγνωστου Στρατιώτη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-28",
+        "year":  "1969",
+        "region":  "Ελλάδα",
+        "title":  "Ο Σεφέρης καταγγέλλει τη χούντα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-28",
+        "year":  "2001",
+        "region":  "Ελλάδα",
+        "title":  "Ανοίγει το αεροδρόμιο «Ελευθέριος Βενιζέλος»",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-30",
+        "year":  "1961",
+        "region":  "Ελλάδα",
+        "title":  "Μονογράφεται η συμφωνία σύνδεσης της Ελλάδας με την ΕΟΚ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "03-31",
+        "year":  "1947",
+        "region":  "Ελλάδα",
+        "title":  "Η Στρατιωτική Διοίκηση Δωδεκανήσων",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-03",
+        "year":  "1990",
+        "region":  "Ελλάδα",
+        "title":  "Η πρώτη μεταμόσχευση καρδιάς στην Ελλάδα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-09",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Οι Γερμανοί μπαίνουν στη Θεσσαλονίκη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-11",
+        "year":  "1990",
+        "region":  "Ελλάδα",
+        "title":  "Ο Κωνσταντίνος Μητσοτάκης γίνεται πρωθυπουργός",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-17",
+        "year":  "1967",
+        "region":  "Ελλάδα",
+        "title":  "Συναυλία των Rolling Stones στην Αθήνα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-18",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Αυτοκτονεί ο πρωθυπουργός Αλέξανδρος Κορυζής",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-20",
+        "year":  "2000",
+        "region":  "Ελλάδα",
+        "title":  "Ο Παναθηναϊκός πρωταθλητής Ευρώπης στο μπάσκετ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-22",
+        "year":  "1931",
+        "region":  "Ελλάδα",
+        "title":  "Εγκαινιάζεται το Μουσείο Μπενάκη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-23",
+        "year":  "2010",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα ζητά ενεργοποίηση του μηχανισμού στήριξης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-26",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Ο Γεώργιος Παπανδρέου πρωθυπουργός της εξόριστης κυβέρνησης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-27",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Οι Γερμανοί εισέρχονται στην Αθήνα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "04-28",
+        "year":  "1998",
+        "region":  "Ελλάδα",
+        "title":  "Ο Χριστόδουλος εκλέγεται Αρχιεπίσκοπος Αθηνών",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Αρχιεπίσκοπος Αθηνών Σεραφείμ",
+                          "title":  "File:Seraphin of Athens.jpg",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/a/a6/Seraphin_of_Athens.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Seraphin_of_Athens.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Unknown authorUnknown author",
+                          "caption":  "Arcybiskup Aten i całej Grecji Serafin",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "05-05",
+        "year":  "1980",
+        "region":  "Ελλάδα",
+        "title":  "Ο Κωνσταντίνος Καραμανλής Πρόεδρος της Δημοκρατίας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-09",
+        "year":  "1980",
+        "region":  "Ελλάδα",
+        "title":  "Ο Γεώργιος Ράλλης πρωθυπουργός",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-14",
+        "year":  "1928",
+        "region":  "Ελλάδα",
+        "title":  "Η Τράπεζα της Ελλάδος αρχίζει να λειτουργεί",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-14",
+        "year":  "1962",
+        "region":  "Ελλάδα",
+        "title":  "Γάμος της Σοφίας με τον Χουάν Κάρλος",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-17",
+        "year":  "1902",
+        "region":  "Ελλάδα",
+        "title":  "Ανακαλύπτεται ο Μηχανισμός των Αντικυθήρων",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-20",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Αρχίζει η Μάχη της Κρήτης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-21",
+        "year":  "2005",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελένη Παπαρίζου κερδίζει τη Eurovision",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-22",
+        "year":  "1963",
+        "region":  "Ελλάδα",
+        "title":  "Η επίθεση κατά του Γρηγόρη Λαμπράκη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-23",
+        "year":  "1973",
+        "region":  "Ελλάδα",
+        "title":  "Το κίνημα του Ναυτικού κατά της χούντας",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Κίνημα του Ναυτικού 23ης Μαΐου 1973",
+                          "title":  "File:Velos D16.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Velos_D16.jpg/1280px-Velos_D16.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Velos_D16.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Pmoshs at English Wikipedia",
+                          "caption":  "Destroyer Velos D16 formerly USS Charrette as floating museum photo taken by me in 21 January 2006. On board: Museum of Antidictatorship Struggle",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "05-23",
+        "year":  "2007",
+        "region":  "Ελλάδα",
+        "title":  "Ο τελικός του Champions League στην Αθήνα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-28",
+        "year":  "1979",
+        "region":  "Ελλάδα",
+        "title":  "Υπογράφεται η συνθήκη ένταξης της Ελλάδας στην ΕΟΚ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "05-30",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Ο Γλέζος και ο Σάντας κατεβάζουν τη σβάστικα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-01",
+        "year":  "1973",
+        "region":  "Ελλάδα",
+        "title":  "Η χούντα καταργεί τη μοναρχία",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-05",
+        "year":  "1925",
+        "region":  "Ελλάδα",
+        "title":  "Ο ιδρυτικός νόμος του Αριστοτελείου Πανεπιστημίου",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-11",
+        "year":  "1917",
+        "region":  "Ελλάδα",
+        "title":  "Ο Αλέξανδρος γίνεται βασιλιάς",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-14",
+        "year":  "1987",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα πρωταθλήτρια Ευρώπης στο μπάσκετ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-17",
+        "year":  "2018",
+        "region":  "Ελλάδα",
+        "title":  "Υπογράφεται η Συμφωνία των Πρεσπών",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Συμφωνία των Πρεσπών",
+                          "title":  "File:Потпишување на договорот за македонско-грчкиот спор (17.06.2018, Преспа) (42853677381).jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/%D0%9F%D0%BE%D1%82%D0%BF%D0%B8%D1%88%D1%83%D0%B2%D0%B0%D1%9A%D0%B5_%D0%BD%D0%B0_%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%BE%D1%82_%D0%B7%D0%B0_%D0%BC%D0%B0%D0%BA%D0%B5%D0%B4%D0%BE%D0%BD%D1%81%D0%BA%D0%BE-%D0%B3%D1%80%D1%87%D0%BA%D0%B8%D0%BE%D1%82_%D1%81%D0%BF%D0%BE%D1%80_%2817.06.2018%2C_%D0%9F%D1%80%D0%B5%D1%81%D0%BF%D0%B0%29_%2842853677381%29.jpg/1280px-%D0%9F%D0%BE%D1%82%D0%BF%D0%B8%D1%88%D1%83%D0%B2%D0%B0%D1%9A%D0%B5_%D0%BD%D0%B0_%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%BE%D1%82_%D0%B7%D0%B0_%D0%BC%D0%B0%D0%BA%D0%B5%D0%B4%D0%BE%D0%BD%D1%81%D0%BA%D0%BE-%D0%B3%D1%80%D1%87%D0%BA%D0%B8%D0%BE%D1%82_%D1%81%D0%BF%D0%BE%D1%80_%2817.06.2018%2C_%D0%9F%D1%80%D0%B5%D1%81%D0%BF%D0%B0%29_%2842853677381%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%BE%D1%82%D0%BF%D0%B8%D1%88%D1%83%D0%B2%D0%B0%D1%9A%D0%B5_%D0%BD%D0%B0_%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%BE%D1%82_%D0%B7%D0%B0_%D0%BC%D0%B0%D0%BA%D0%B5%D0%B4%D0%BE%D0%BD%D1%81%D0%BA%D0%BE-%D0%B3%D1%80%D1%87%D0%BA%D0%B8%D0%BE%D1%82_%D1%81%D0%BF%D0%BE%D1%80_(17.06.2018,_%D0%9F%D1%80%D0%B5%D1%81%D0%BF%D0%B0)_(42853677381).jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Влада на Република Македонија from Македонија",
+                          "caption":  "Потпишување на договорот за македонско-грчкиот спор [17.06.2018, Преспа]",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "06-20",
+        "year":  "1978",
+        "region":  "Ελλάδα",
+        "title":  "Ο σεισμός της Θεσσαλονίκης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "06-23",
+        "year":  "1996",
+        "region":  "Ελλάδα",
+        "title":  "Πεθαίνει ο Ανδρέας Παπανδρέου",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Ανδρέας Παπανδρέου",
+                          "title":  "File:1981 Press Photo Andreas Papandreou (3x4 cropped).png",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/b/bd/1981_Press_Photo_Andreas_Papandreou_%283x4_cropped%29.png?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:1981_Press_Photo_Andreas_Papandreou_(3x4_cropped).png",
+                          "license":  "Public Domain",
+                          "creator":  "R. Norman Matheny / distributed by Los Angeles Times Syndicate",
+                          "caption":  "Prime Minister of Greece Andreas Papandreou.",
+                          "mime":  "image/png"
+                      }
+    },
+    {
+        "key":  "07-01",
+        "year":  "2004",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα προκρίνεται στον τελικό του Euro 2004",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-04",
+        "year":  "2004",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα πρωταθλήτρια Ευρώπης στο ποδόσφαιρο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-05",
+        "year":  "2015",
+        "region":  "Ελλάδα",
+        "title":  "Το δημοψήφισμα του 2015",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-07",
+        "year":  "2019",
+        "region":  "Ελλάδα",
+        "title":  "Η Νέα Δημοκρατία κερδίζει τις εκλογές",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-09",
+        "year":  "1961",
+        "region":  "Ελλάδα",
+        "title":  "Η Συμφωνία Σύνδεσης Ελλάδας-ΕΟΚ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-12",
+        "year":  "1967",
+        "region":  "Ελλάδα",
+        "title":  "Η χούντα αφαιρεί την ιθαγένεια από τη Μελίνα Μερκούρη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-23",
+        "year":  "1974",
+        "region":  "Ελλάδα",
+        "title":  "Η χούντα παραδίδει την εξουσία",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-24",
+        "year":  "1923",
+        "region":  "Ελλάδα",
+        "title":  "Η Συνθήκη της Λωζάνης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-24",
+        "year":  "1974",
+        "region":  "Ελλάδα",
+        "title":  "Ο Καραμανλής επιστρέφει από το Παρίσι",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "07-29",
+        "year":  "1973",
+        "region":  "Ελλάδα",
+        "title":  "Το δημοψήφισμα της χούντας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-01",
+        "year":  "2020",
+        "region":  "Ελλάδα",
+        "title":  "Ανοίγει το πρώτο υποβρύχιο μουσείο της Ελλάδας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-04",
+        "year":  "1936",
+        "region":  "Ελλάδα",
+        "title":  "Η δικτατορία του Μεταξά",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-13",
+        "year":  "2004",
+        "region":  "Ελλάδα",
+        "title":  "Η έναρξη των Ολυμπιακών Αγώνων της Αθήνας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-18",
+        "year":  "1917",
+        "region":  "Ελλάδα",
+        "title":  "Η Μεγάλη Πυρκαγιά της Θεσσαλονίκης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "08-29",
+        "year":  "2004",
+        "region":  "Ελλάδα",
+        "title":  "Λήξη των Ολυμπιακών Αγώνων της Αθήνας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-02",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Η σφαγή του Χορτιάτη",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-06",
+        "year":  "1955",
+        "region":  "Ελλάδα",
+        "title":  "Τα Σεπτεμβριανά της Κωνσταντινούπολης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-07",
+        "year":  "1999",
+        "region":  "Ελλάδα",
+        "title":  "Ο σεισμός της Πάρνηθας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-09",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Ιδρύεται ο Εθνικός Δημοκρατικός Ελληνικός Σύνδεσμος",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-13",
+        "year":  "1922",
+        "region":  "Μικρά Ασία",
+        "title":  "Η καταστροφή της Σμύρνης",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Καταστροφή της Σμύρνης",
+                          "title":  "File:Great Fire of Smyrna.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Great_Fire_of_Smyrna.jpg/1280px-Great_Fire_of_Smyrna.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Great_Fire_of_Smyrna.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Unknown authorUnknown author",
+                          "caption":  "Great Fire of Smyrna as seen from an Italian ship. Original photo 13.5 x 8.5 cm.",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "09-16",
+        "year":  "1991",
+        "region":  "Ελλάδα",
+        "title":  "Πρεμιέρα της σειράς «Λάμψη»",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-17",
+        "year":  "2004",
+        "region":  "Ελλάδα",
+        "title":  "Ξεκινούν οι Παραολυμπιακοί Αγώνες της Αθήνας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-18",
+        "year":  "1964",
+        "region":  "Ελλάδα",
+        "title":  "Γάμος του βασιλιά Κωνσταντίνου Β΄ και της Άννας-Μαρίας",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Γαμήλια τελετή του Κωνσταντίνου Β\u0027 της Ελλάδας και της Πριγκίπισσας Άννας-Μαρίας της Ελλάδας",
+                          "title":  "File:Huwelijken, Bestanddeelnr 254-7177.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Huwelijken%2C_Bestanddeelnr_254-7177.jpg/1280px-Huwelijken%2C_Bestanddeelnr_254-7177.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Huwelijken,_Bestanddeelnr_254-7177.jpg",
+                          "license":  "CC0 1.0",
+                          "creator":  "Anefo",
+                          "caption":  "Collectie / Archief : Fotocollectie Anefo Reportage / Serie : [ onbekend ] Beschrijving : huwelijken Datum : ongedateerd Trefwoorden : huwelijken Fotograaf : Fotograaf Onbekend / Anefo Auteursrechthebbende : Nationaal Archief Materiaalsoort : Dia (kleur) Nummer archiefinventaris : bekijk toegang 2.24.01.07 Bestanddeelnummer : 254-7177",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "09-20",
+        "year":  "1960",
+        "region":  "Ελλάδα",
+        "title":  "Το πρώτο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-23",
+        "year":  "1974",
+        "region":  "Ελλάδα",
+        "title":  "Νομιμοποιείται το Κομμουνιστικό Κόμμα Ελλάδας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-25",
+        "year":  "2005",
+        "region":  "Ελλάδα",
+        "title":  "Η Ελλάδα πρωταθλήτρια Ευρώπης στο μπάσκετ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-26",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Η Συμφωνία της Καζέρτας",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Συμφωνία της Καζέρτας",
+                          "title":  "File:1944 Greece Dekemvriana ELAS British memos and Caserta Agreement.png",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/1944_Greece_Dekemvriana_ELAS_British_memos_and_Caserta_Agreement.png/1280px-1944_Greece_Dekemvriana_ELAS_British_memos_and_Caserta_Agreement.png?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:1944_Greece_Dekemvriana_ELAS_British_memos_and_Caserta_Agreement.png",
+                          "license":  "Public Domain",
+                          "creator":  "The Goverment of Greece // Ελληνική Κυβέρνηση",
+                          "caption":  "Pamphlet with memos exchanged between the Greek People\u0027s Liberation Army (ELAS) and the British \u0026 Greek Government Forces in Greece, during the Athens revolt of Dec. 1944 (Dekemvriana) (left). The back page (right) includes the 1944 Caserta Agreement of Sept. 1944 between the Greek Government in exile and the major Greek Resistance groups .",
+                          "mime":  "image/png"
+                      }
+    },
+    {
+        "key":  "09-27",
+        "year":  "1941",
+        "region":  "Ελλάδα",
+        "title":  "Ιδρύεται το Εθνικό Απελευθερωτικό Μέτωπο",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "09-29",
+        "year":  "1995",
+        "region":  "Ελλάδα",
+        "title":  "Ο Νίκος Γκάλης αποσύρεται από το μπάσκετ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "10-06",
+        "year":  "1955",
+        "region":  "Ελλάδα",
+        "title":  "Ο Καραμανλής γίνεται πρωθυπουργός για πρώτη φορά",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Κώστας Καραμανλής",
+                          "title":  "File:Karamanlis (3) (cropped).jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Karamanlis_%283%29_%28cropped%29.jpg/1280px-Karamanlis_%283%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Karamanlis_(3)_(cropped).jpg",
+                          "license":  "CC BY 2.0",
+                          "creator":  "European People\u0027s Party",
+                          "caption":  "EPP Summit 14 December 2006",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "10-10",
+        "year":  "1993",
+        "region":  "Ελλάδα",
+        "title":  "Το ΠΑΣΟΚ επιστρέφει στην εξουσία",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "10-12",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Η απελευθέρωση της Αθήνας",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "10-18",
+        "year":  "1981",
+        "region":  "Ελλάδα",
+        "title":  "Το ΠΑΣΟΚ κερδίζει τις εκλογές",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "10-20",
+        "year":  "1968",
+        "region":  "Ελλάδα",
+        "title":  "Ο γάμος του Αριστοτέλη Ωνάση με τη Ζάκλιν Κένεντι",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "10-24",
+        "year":  "1970",
+        "region":  "Ελλάδα",
+        "title":  "Παγκόσμιο ρεκόρ του Χρήστου Παπανικολάου",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Χρήστος Παπανικολάου",
+                          "title":  "File:Christos Papanikolaou 1966.jpg",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/5/53/Christos_Papanikolaou_1966.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Christos_Papanikolaou_1966.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Unknown authorUnknown author",
+                          "caption":  "CAMPIONI DELLO SPORT 1968/69-n. 59 - PAPANICOLAU -GRE-Rec",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "10-26",
+        "year":  "1912",
+        "region":  "Ελλάδα",
+        "title":  "Η απελευθέρωση της Θεσσαλονίκης",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Απελευθέρωση της Θεσσαλονίκης",
+                          "title":  "File:Internationale geschiedenis, Eerste Balkanoorlog, SFA022816365.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Internationale_geschiedenis%2C_Eerste_Balkanoorlog%2C_SFA022816365.jpg/1280px-Internationale_geschiedenis%2C_Eerste_Balkanoorlog%2C_SFA022816365.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Internationale_geschiedenis,_Eerste_Balkanoorlog,_SFA022816365.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Unknown authorUnknown author",
+                          "caption":  "Omschrijving: Internationale geschiedenis, Eerste Balkanoorlog. De aankomst van de Griekse koning George I (die in 1913 vermoord zal worden) na de overwinning op de Turken in Thessaloniki (Saloniki) tijdens de Eerste Balkanoorlog. Griekenland, november 1912. Publiek kijkt vanaf de balkons van Brasserie-patisserie \u0027Egypte\u0027 toe.",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "10-30",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Η απελευθέρωση της Θεσσαλονίκης από τους Γερμανούς",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-01",
+        "year":  "1962",
+        "region":  "Ελλάδα",
+        "title":  "Η συμφωνία σύνδεσης Ελλάδας-ΕΟΚ τίθεται σε ισχύ",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-02",
+        "year":  "1998",
+        "region":  "Ελλάδα",
+        "title":  "Ο ΟΤΕ στο Χρηματιστήριο της Νέας Υόρκης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-08",
+        "year":  "1940",
+        "region":  "Ελλάδα",
+        "title":  "Η μάχη Ελαίας-Καλαμά",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-08",
+        "year":  "1977",
+        "region":  "Ελλάδα",
+        "title":  "Ο Μανόλης Ανδρόνικος ανακαλύπτει τον τάφο του Φιλίππου Β΄",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-17",
+        "year":  "1974",
+        "region":  "Ελλάδα",
+        "title":  "Οι πρώτες εκλογές μετά τη χούντα",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Ελληνική Υπόθεση (Συμβούλιο της Ευρώπης)",
+                          "title":  "File:The Greek Case title page.jpg",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/7/71/The_Greek_Case_title_page.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:The_Greek_Case_title_page.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "European Commission of Human Rights",
+                          "caption":  "en:Greek Case",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "11-17",
+        "year":  "1985",
+        "region":  "Ελλάδα",
+        "title":  "Δολοφονία του Μιχάλη Καλτεζά",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-20",
+        "year":  "1989",
+        "region":  "Ελλάδα",
+        "title":  "Ξεκινά το Mega Channel",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-22",
+        "year":  "1940",
+        "region":  "Ελλάδα",
+        "title":  "Ο ελληνικός στρατός μπαίνει στην Κορυτσά",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "11-30",
+        "year":  "2024",
+        "region":  "Ελλάδα",
+        "title":  "Εγκαινιάζεται το Μετρό Θεσσαλονίκης",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-01",
+        "year":  "1913",
+        "region":  "Ελλάδα",
+        "title":  "Η Κρήτη ενώνεται με την Ελλάδα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-03",
+        "year":  "1944",
+        "region":  "Ελλάδα",
+        "title":  "Αρχίζουν τα Δεκεμβριανά",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-06",
+        "year":  "2008",
+        "region":  "Ελλάδα",
+        "title":  "Δολοφονία του Αλέξανδρου Γρηγορόπουλου",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Δολοφονία του Αλέξανδρου Γρηγορόπουλου",
+                          "title":  "File:Alexandros Grigoropulos - plaque 1 (2023) (cropped).jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Alexandros_Grigoropulos_-_plaque_1_%282023%29_%28cropped%29.jpg/1280px-Alexandros_Grigoropulos_-_plaque_1_%282023%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Alexandros_Grigoropulos_-_plaque_1_(2023)_(cropped).jpg",
+                          "license":  "CC0 1.0",
+                          "creator":  "Vera de Kok",
+                          "caption":  "Memorial plaque to Alexandros Grigoropulos",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "12-08",
+        "year":  "1974",
+        "region":  "Ελλάδα",
+        "title":  "Το δημοψήφισμα για το πολίτευμα",
+        "found":  false,
+        "candidate":  null
+    },
+    {
+        "key":  "12-13",
+        "year":  "1943",
+        "region":  "Ελλάδα",
+        "title":  "Το ολοκαύτωμα των Καλαβρύτων",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Σφαγή των Καλαβρύτων",
+                          "title":  "File:Kalavritablick-vom-mahnmal-aus.jpg",
+                          "url":  "https://upload.wikimedia.org/wikipedia/commons/7/76/Kalavritablick-vom-mahnmal-aus.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Kalavritablick-vom-mahnmal-aus.jpg",
+                          "license":  "CC BY 3.0",
+                          "creator":  "Hpschaefer https://www.reserv-art.de",
+                          "caption":  "Kalavryta, view from the memorial",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "12-16",
+        "year":  "1912",
+        "region":  "Ελλάδα",
+        "title":  "Η ναυμαχία της Έλλης",
+        "found":  true,
+        "candidate":  {
+                          "article":  "Ναυμαχία της Έλλης",
+                          "title":  "File:Battle Elli.jpg",
+                          "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Battle_Elli.jpg/1280px-Battle_Elli.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+                          "page":  "https://commons.wikimedia.org/wiki/File:Battle_Elli.jpg",
+                          "license":  "Public Domain",
+                          "creator":  "Vasileios Hatzis",
+                          "caption":  "",
+                          "mime":  "image/jpeg"
+                      }
+    },
+    {
+        "key":  "12-23",
+        "year":  "1975",
+        "region":  "Ελλάδα",
+        "title":  "Δολοφονία του σταθμάρχη της CIA Ρίτσαρντ Γουέλς",
+        "found":  false,
+        "candidate":  null
+    }
+]

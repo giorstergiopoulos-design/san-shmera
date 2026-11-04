@@ -1,0 +1,74 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "icons/04-23-george-1.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Saint_George_the_Victory-bearer._Orthodox_icon._Photo_2.jpg/1920px-Saint_George_the_Victory-bearer._Orthodox_icon._Photo_2.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint George the Victory-bearer. Orthodox icon. Photo 2",
+        "creator":  "Wikivorker",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_George_the_Victory-bearer._Orthodox_icon._Photo_2.jpg",
+        "kind":  "icon",
+        "description":  "[Orthodox|Eastern Orthodoxy] icon",
+        "pixels":  "3024x4032"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/04-23-george-2.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Saint_George_the_Victory-bearer._Orthodox_icon._Photo_1.jpg/1920px-Saint_George_the_Victory-bearer._Orthodox_icon._Photo_1.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint George the Victory-bearer. Orthodox icon. Photo 1",
+        "creator":  "Wikivorker",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_George_the_Victory-bearer._Orthodox_icon._Photo_1.jpg",
+        "kind":  "icon",
+        "description":  "[Orthodox|Eastern Orthodoxy] icon",
+        "pixels":  "3022x3237"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/04-23-george-3.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Saint_George_the_Victory-bearer._Orthodox_icon.jpg/1920px-Saint_George_the_Victory-bearer._Orthodox_icon.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint George the Victory-bearer. Orthodox icon",
+        "creator":  "Wikivorker",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_George_the_Victory-bearer._Orthodox_icon.jpg",
+        "kind":  "icon",
+        "description":  "Icon in the Orthodox church, Batumi, Georgia",
+        "pixels":  "3024x4032"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/04-23-george-4.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Saint_George_cemetery_Orthodox_chapel_in_Topilec_-_icon_over_the_entrance.jpg/1920px-Saint_George_cemetery_Orthodox_chapel_in_Topilec_-_icon_over_the_entrance.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint George cemetery Orthodox chapel in Topilec - icon over the entrance",
+        "creator":  "Happa",
+        "license":  "CC BY 3.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_George_cemetery_Orthodox_chapel_in_Topilec_-_icon_over_the_entrance.jpg",
+        "kind":  "icon",
+        "description":  "Ikona nad wejściem do kaplicy",
+        "pixels":  "3354x4747"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/04-23-george-5.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Saint_George_the_Victory-bearer.jpg/1920px-Saint_George_the_Victory-bearer.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint George the Victory-bearer",
+        "creator":  "Wikivorker",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_George_the_Victory-bearer.jpg",
+        "kind":  "icon",
+        "description":  "Icon in the Orthodox church, Batumi, Georgia",
+        "pixels":  "3024x4032"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/04-23-george-6.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Icon_of_Saint_George_Great_Martyr.jpg/1920px-Icon_of_Saint_George_Great_Martyr.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Icon of Saint George Great Martyr",
+        "creator":  "Unknown artistUnknown artist",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Icon_of_Saint_George_Great_Martyr.jpg",
+        "kind":  "icon",
+        "description":  "",
+        "pixels":  "2148x3032"
+    }
+]

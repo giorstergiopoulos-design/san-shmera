@@ -1,0 +1,62 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "icons/11-08-michael-1.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/a/a9/Saint_Michael_%28Yaroslavl%2C_13th_c.%2C_GTG%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Saint Michael (Yaroslavl, 13th c., GTG)",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_Michael_(Yaroslavl,_13th_c.,_GTG).jpg",
+        "kind":  "icon",
+        "description":  "The 13th-century icon of St. Michael from Archangel Cathedral in Yaroslavl",
+        "pixels":  "1300x2157"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/11-08-michael-2.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/3/31/Icon_Pendant_with_the_Archangel_Michael_MET_sf1988-408-1s2.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Icon Pendant with the Archangel Michael MET sf1988-408-1s2",
+        "creator":  "Unknown author",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Icon_Pendant_with_the_Archangel_Michael_MET_sf1988-408-1s2.jpg",
+        "kind":  "icon",
+        "description":  "Byzantine; Pendant; Metalwork-Lead",
+        "pixels":  "1775x2469"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/11-08-michael-3.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/2/2e/Icon_Pendant_with_the_Archangel_Michael_MET_sf1988-408-1s1.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Icon Pendant with the Archangel Michael MET sf1988-408-1s1",
+        "creator":  "Unknown author",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Icon_Pendant_with_the_Archangel_Michael_MET_sf1988-408-1s1.jpg",
+        "kind":  "icon",
+        "description":  "Byzantine; Pendant; Metalwork-Lead",
+        "pixels":  "1814x2460"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/11-08-michael-4.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/e/ee/Unknown_artist_-_Icon_with_Archangel_Michael_-_855_-_Blackburn_Museum_and_Art_Gallery.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Unknown artist - Icon with Archangel Michael - 855 - Blackburn Museum and Art Gallery",
+        "creator":  "anonymous",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Unknown_artist_-_Icon_with_Archangel_Michael_-_855_-_Blackburn_Museum_and_Art_Gallery.jpg",
+        "kind":  "icon",
+        "description":  "",
+        "pixels":  "869x1200"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/11-08-michael-5.png",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/a/a6/V%C4%83c%C4%83re%C8%99ti_icon_of_the_Archangel_Michael.png?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Văcărești icon of the Archangel Michael",
+        "creator":  "Anonymous (painter)Unknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:V%C4%83c%C4%83re%C8%99ti_icon_of_the_Archangel_Michael.png",
+        "kind":  "icon",
+        "description":  "Icon of the Archangel Michael from the Văcărești Monastery, later preserved by Bucharest City Museum (Șuțu Palace). Done in Western European fashion as one of Wallachia\u0027s first neoclassical icons, it is known for having been the object of a cult by the Iron Guard in 1927–1941 (first revered by Guard leader Corneliu Zelea Codreanu during his 1923 stay at Văcărești Prison). See Nicoleta Bădilă, \"Povestea nespusă a unui arhanghel: Sfântul Mihail de la Mănăstirea Văcărești\", in Urbanitas. Revistă de Studii Urbane Integrate, 3/2022, pp. 105–123.",
+        "pixels":  "988x1407"
+    }
+]

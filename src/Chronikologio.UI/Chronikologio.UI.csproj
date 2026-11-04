@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Version>0.4.0</Version>
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="../Chronikologio.Core/Chronikologio.Core.csproj" /></ItemGroup>
+  <!-- The official flags (Wikimedia Commons, public domain; see Flags/CREDITS.md), embedded so every host can draw them without files next to it. -->
+  <ItemGroup><EmbeddedResource Include="Flags\*.png" LogicalName="Flags.%(Filename)%(Extension)" /></ItemGroup>
+  <!-- The shared flat controls and theme tokens of the Opsis family (see libs/Opsis.UI.version.txt). Private: it is copied next to every program that uses this project. -->
+  <ItemGroup>
+    <Reference Include="Opsis.UI">
+      <HintPath>..\..\libs\Opsis.UI.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

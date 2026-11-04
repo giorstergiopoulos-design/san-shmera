@@ -1,0 +1,74 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "icons/12-06-nicholas-1.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Saint_Nicholas%2C_Orthodox_icon_2.jpg/1920px-Saint_Nicholas%2C_Orthodox_icon_2.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint Nicholas, Orthodox icon 2",
+        "creator":  "Wikivorker",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_Nicholas,_Orthodox_icon_2.jpg",
+        "kind":  "icon",
+        "description":  "The Orthodox icon of Saint Nicholas in the same-name church in Batumi, Georgia",
+        "pixels":  "3024x4032"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/12-06-nicholas-2.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/The_Orthodox_icon_of_Saint_Nicholas_the_Wonderworker.jpg/1920px-The_Orthodox_icon_of_Saint_Nicholas_the_Wonderworker.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "The Orthodox icon of Saint Nicholas the Wonderworker",
+        "creator":  "Wikivorker",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:The_Orthodox_icon_of_Saint_Nicholas_the_Wonderworker.jpg",
+        "kind":  "icon",
+        "description":  "The icon from the church of Saint Nicholas, Batumi",
+        "pixels":  "3024x4032"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/12-06-nicholas-3.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Saint_Nicholas%2C_the_Orthodox_icon.jpg/1920px-Saint_Nicholas%2C_the_Orthodox_icon.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint Nicholas, the Orthodox icon",
+        "creator":  "Wikivorker",
+        "license":  "CC0 1.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_Nicholas,_the_Orthodox_icon.jpg",
+        "kind":  "icon",
+        "description":  "The icon in the church of Saint Nicholas, Batumi",
+        "pixels":  "3024x4032"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/12-06-nicholas-4.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Icon_of_Saint_Nicholas_in_Saint_Nicholas_Russian_Orthodox_Church%2C_Juneau%2C_Alaska.jpg/1920px-Icon_of_Saint_Nicholas_in_Saint_Nicholas_Russian_Orthodox_Church%2C_Juneau%2C_Alaska.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Icon of Saint Nicholas in Saint Nicholas Russian Orthodox Church, Juneau, Alaska",
+        "creator":  "mark byzewski",
+        "license":  "CC BY 2.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Icon_of_Saint_Nicholas_in_Saint_Nicholas_Russian_Orthodox_Church,_Juneau,_Alaska.jpg",
+        "kind":  "icon",
+        "description":  "Icon of Saint Nicholas in Saint Nicholas Russian Orthodox Church, Juneau, Alaska.",
+        "pixels":  "3456x5184"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/12-06-nicholas-5.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Saint_Nicholas_Orthodox_church_in_Topilec_-_st._Nicholas_icon_over_the_entrance.jpg/1920px-Saint_Nicholas_Orthodox_church_in_Topilec_-_st._Nicholas_icon_over_the_entrance.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Saint Nicholas Orthodox church in Topilec - st. Nicholas icon over the entrance",
+        "creator":  "Happa",
+        "license":  "CC BY 3.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Saint_Nicholas_Orthodox_church_in_Topilec_-_st._Nicholas_icon_over_the_entrance.jpg",
+        "kind":  "icon",
+        "description":  "Ikona św. Mikołaja nad wejściem do cerkwi",
+        "pixels":  "2241x2283"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/12-06-nicholas-6.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Icon_of_Saint_Nicholas_the_Miracle_Worker_in_Saint_Nicholas_Russian_Orthodox_Church%2C_Juneau%2C_Alaska.jpg/1920px-Icon_of_Saint_Nicholas_the_Miracle_Worker_in_Saint_Nicholas_Russian_Orthodox_Church%2C_Juneau%2C_Alaska.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Icon of Saint Nicholas the Miracle Worker in Saint Nicholas Russian Orthodox Church, Juneau, Alaska",
+        "creator":  "mark byzewski",
+        "license":  "CC BY 2.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Icon_of_Saint_Nicholas_the_Miracle_Worker_in_Saint_Nicholas_Russian_Orthodox_Church,_Juneau,_Alaska.jpg",
+        "kind":  "icon",
+        "description":  "Icon of Saint Nicholas the Miracle Worker in Saint Nicholas Russian Orthodox Church, Juneau, Alaska.",
+        "pixels":  "3456x5184"
+    }
+]

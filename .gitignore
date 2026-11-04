@@ -1,0 +1,9 @@
+bin/
+obj/
+dist/
+Output/
+.vs/
+*.user
+*.log
+scratch-*.log
+*.pdb

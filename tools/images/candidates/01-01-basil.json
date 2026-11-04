@@ -1,0 +1,74 @@
+﻿[
+    {
+        "approved":  false,
+        "file":  "icons/01-01-basil-1.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Novgorod_School_-_Saint_Basil_the_Great_-_NG.M.01523_-_National_Museum_of_Art%2C_Architecture_and_Design.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Novgorod School - Saint Basil the Great - NG.M.01523 - National Museum of Art, Architecture and Design",
+        "creator":  "School of Novgorod school",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Novgorod_School_-_Saint_Basil_the_Great_-_NG.M.01523_-_National_Museum_of_Art,_Architecture_and_Design.jpg",
+        "kind":  "icon",
+        "description":  "",
+        "pixels":  "990x3000"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-01-basil-2.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/4/4a/Semen_Spiridonov_Kholmogorets._Basil_the_Great._1674.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Semen Spiridonov Kholmogorets. Basil the Great. 1674",
+        "creator":  "Semyon Spiridonov",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Semen_Spiridonov_Kholmogorets._Basil_the_Great._1674.jpg",
+        "kind":  "icon",
+        "description":  "Семён Спиридонов Колмогорец. Святитель Василий Великий, с житием в 42 клеймах. 1674. Дерево, левкас, темпера. Из церкви Николы Мокрого в Ярославле.",
+        "pixels":  "1148x2667"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-01-basil-3.jpg",
+        "url":  "https://upload.wikimedia.org/wikipedia/commons/8/84/Aposeothis_of_Basil_the_Great_%28Moscow%2C_Old_believers%2C_19_c%2C_priv.coll%29.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=original",
+        "caption":  "Aposeothis of Basil the Great (Moscow, Old believers, 19 c, priv.coll)",
+        "creator":  "Anonymous Russian icon painter (before 1917)Public domain image (according to PD-Russia-expired)",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Aposeothis_of_Basil_the_Great_(Moscow,_Old_believers,_19_c,_priv.coll).jpg",
+        "kind":  "icon",
+        "description":  "MacDougall\u0027s Fine Art Auctions",
+        "pixels":  "989x1200"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-01-basil-4.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/0134Hb._Saints_Basil_the_Great%2C_John_Chrysostom%2C_and_Gregory_the_Theologian.jpg/1920px-0134Hb._Saints_Basil_the_Great%2C_John_Chrysostom%2C_and_Gregory_the_Theologian.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "0134Hb. Saints Basil the Great, John Chrysostom, and Gregory the Theologian",
+        "creator":  "Unknown authorUnknown author",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:0134Hb._Saints_Basil_the_Great,_John_Chrysostom,_and_Gregory_the_Theologian.jpg",
+        "kind":  "icon",
+        "description":  "Saints Basil the Great, John Chrysostom, and Gregory the Theologian (tempera on wood). Second quarter of the 19th century. Central Russia: Museum of Christian Culture, Ladygina Lane, 5, Admiralty District, St. Petersburg.",
+        "pixels":  "2202x3904"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-01-basil-5.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Blaj_Iconostasis_Saint_Basil.jpg/1920px-Blaj_Iconostasis_Saint_Basil.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Blaj Iconostasis Saint Basil",
+        "creator":  "Mihai Andrei",
+        "license":  "CC BY 4.0",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Blaj_Iconostasis_Saint_Basil.jpg",
+        "kind":  "icon",
+        "description":  "Stefan Tenețchi, Saint Basil the Great, Iconostasis in Blaj, 18th Century",
+        "pixels":  "3000x4000"
+    },
+    {
+        "approved":  false,
+        "file":  "icons/01-01-basil-6.jpg",
+        "url":  "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Menaion_icon_%2817_c.%2C_TsAK%29_-_August.jpg/1920px-Menaion_icon_%2817_c.%2C_TsAK%29_-_August.jpg?utm_source=commons.wikimedia.org\u0026utm_campaign=imageinfo\u0026utm_content=thumbnail",
+        "caption":  "Menaion icon (17 c., TsAK) - August",
+        "creator":  "Anonymous Russian icon painter (before 1917)Public domain image (according to PD-Russia-expired)",
+        "license":  "Public Domain",
+        "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Menaion_icon_(17_c.,_TsAK)_-_August.jpg",
+        "kind":  "icon",
+        "description":  "Икона \"Минея\". Август. Центральная Россия, первая четверть XVII века. Музей христианского искусства «Церковно-археологический кабинет». Инв. ММДА «ЦАК» КП-216",
+        "pixels":  "3317x4000"
+    }
+]
