@@ -2,7 +2,7 @@ using System.Globalization;
 
 namespace Chronikologio.Core;
 
-public enum FeedKind { NameDays, Saint, Event, Birth, Holiday, Fasting }
+public enum FeedKind { NameDays, Saint, Event, Birth, Holiday, Fasting, Death }
 
 public sealed record FeedItem(FeedKind Kind, string Text, string Source);
 
@@ -35,6 +35,9 @@ public static class SanSimeraFeed
 
         if (day.People.Count > 0)
             items.Add(new FeedItem(FeedKind.Birth, string.Format(Loc.T("feed.birth"), stamp, string.Join(", ", day.People.Take(4).Select(p => $"{p.Name} ({p.YearText})"))), "Χρονικολόγιο"));
+
+        if (day.DeathList.Count > 0)
+            items.Add(new FeedItem(FeedKind.Death, string.Format(Loc.T("feed.death"), stamp, string.Join(", ", day.DeathList.Take(4).Select(p => $"{p.Name} ({p.YearText})"))), "Χρονικολόγιο"));
 
         return items;
     }

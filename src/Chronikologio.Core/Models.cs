@@ -39,7 +39,8 @@ public sealed record Commemoration(
     SourceRef[] Sources,
     bool IsMajorFeast = false,
     ImageRef[]? Images = null,
-    bool TransfersAfterEaster = false);
+    bool TransfersAfterEaster = false,
+    string? Id = null);
 
 /// <summary>A historical event of the day. Year is null for an annual observance. Summary/Details follow the same rules as for a commemoration.</summary>
 public sealed record HistoricalEvent(
@@ -50,7 +51,8 @@ public sealed record HistoricalEvent(
     string Region,
     Verification Status,
     SourceRef[] Sources,
-    ImageRef[]? Images = null)
+    ImageRef[]? Images = null,
+    string? Id = null)
 {
     private static readonly HashSet<string> GreekRegions = new(StringComparer.Ordinal)
     {
@@ -66,7 +68,7 @@ public sealed record HistoricalEvent(
 }
 
 /// <summary>A notable person born on the day. Persons of the Greek world (Region "Ελλάδα") are listed before the others. Year is negative for BC.</summary>
-public sealed record Person(int Year, string Name, string Description, string Region, ImageRef[]? Images = null)
+public sealed record Person(int Year, string Name, string Description, string Region, ImageRef[]? Images = null, string? Id = null)
 {
     public bool IsGreek => Region is "Ελλάδα" or "Κύπρος";
 
@@ -86,13 +88,16 @@ public sealed record DayRecord(int Day, Commemoration[]? Commemorations = null, 
 public sealed record MonthFile(string Tradition, string Calendar, int Month, DayRecord[] Days, SourceRef[]? DefaultSources = null);
 
 /// <summary>Everything known for one date, merged from all loaded traditions.</summary>
-public sealed record DayView(int Month, int Day, IReadOnlyList<Commemoration> Commemorations, IReadOnlyList<HistoricalEvent> Events, string? Fasting = null, IReadOnlyList<Person>? Births = null, IReadOnlyList<Holiday>? Holidays = null)
+public sealed record DayView(int Month, int Day, IReadOnlyList<Commemoration> Commemorations, IReadOnlyList<HistoricalEvent> Events, string? Fasting = null, IReadOnlyList<Person>? Births = null, IReadOnlyList<Holiday>? Holidays = null, IReadOnlyList<Person>? Deaths = null)
 {
     /// <summary>The holidays of the date (national feast days, public holidays, days of memory, local holidays). Known only for a day asked with its year.</summary>
     public IReadOnlyList<Holiday> HolidayList => Holidays ?? Array.Empty<Holiday>();
 
     /// <summary>Persons born on the day, Greek first.</summary>
     public IReadOnlyList<Person> People => Births ?? Array.Empty<Person>();
+
+    /// <summary>Persons who died on the day, Greek first.</summary>
+    public IReadOnlyList<Person> DeathList => Deaths ?? Array.Empty<Person>();
 
     public IEnumerable<NameDay> Names => Commemorations.SelectMany(c => c.Names);
 

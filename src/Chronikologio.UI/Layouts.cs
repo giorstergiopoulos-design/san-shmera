@@ -428,7 +428,7 @@ public sealed class CardsLayout : DayLayout
         var image = DayImages.First(Store, day, out var info);
         _saint.Set(Loc.T("card.saint"), (names.Length > 0 ? names + "\n\n" : "") + saint, image, info is null ? null : $"{info.Caption}\n{info.Creator} · {info.License}");
         _events.Set(Store, day);
-        _births.Set(Loc.T("details.births").Trim(), ShortText.BirthsText(day));
+        _births.Set(Loc.T(day.DeathList.Count > 0 ? "card.people" : "details.births").Trim(), ShortText.PeopleText(day));
     }
 }
 

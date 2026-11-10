@@ -72,6 +72,12 @@ public sealed class DayDetailsView : RichTextBox
             foreach (var p in day.People)
                 Append($"{p.YearText} — {p.Name}, {p.Description}", 10f, FontStyle.Regular);
         }
+        if (day.DeathList.Count > 0)
+        {
+            Append(Loc.T("details.deaths"), 12.5f, FontStyle.Bold);
+            foreach (var p in day.DeathList)
+                Append($"{p.YearText} — {p.Name}, {p.Description}", 10f, FontStyle.Regular);
+        }
         SelectionStart = 0;
         ScrollToCaret();
     }

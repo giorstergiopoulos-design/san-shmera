@@ -65,19 +65,22 @@ public sealed class DayStore
                 try
                 {
                     var name = Path.GetFileName(file);
+                    if (name.Equals(EntryIds.RegistryFile, StringComparison.Ordinal)) continue;   // read by ApplyIds
                     if (name.StartsWith("lives", StringComparison.Ordinal)) store.AddLives(file, errors);
                     else if (name.StartsWith("saints", StringComparison.Ordinal)) store.AddSaints(file, errors);
                     else if (name.StartsWith("events", StringComparison.Ordinal)) store.AddEvents(file, errors);
                     else if (name.StartsWith("verification", StringComparison.Ordinal)) store.AddChecks(file, errors);
                     else if (name.StartsWith("eventimages", StringComparison.Ordinal)) store.AddEventImages(file, errors);
                     else if (name.StartsWith("saintimages", StringComparison.Ordinal)) store.AddSaintImages(file, errors);
-                    else store.AddBirths(file, errors);
+                    else if (name.StartsWith("deaths", StringComparison.Ordinal)) store.AddBirths(file, errors, store._deaths, "deaths");
+                    else store.AddBirths(file, errors, store._births, "births");
                 }
                 catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { errors.Add($"{file}: {ex.Message}"); }
             }
         store.ApplySupplements();
         store.ApplyLives();
         store.RemoveRepeatedEvents();
+        store.ApplyIds(dataRoot);
         store.ApplyChecks();
         store.ApplyEventImages();
         store.ApplySaintImages();
@@ -394,7 +397,9 @@ public sealed class DayStore
     /// Reads the births files: one line per person, "MM-DD|year|region|name|description"; lines starting with # are comments.
     /// A bad line is reported in <see cref="Errors"/> and skipped.
     /// </summary>
-    private void AddBirths(string file, List<string> errors)
+    private readonly Dictionary<(int Month, int Day), List<Person>> _deaths = new();
+
+    private void AddBirths(string file, List<string> errors, Dictionary<(int Month, int Day), List<Person>> target, string kind)
     {
         var number = 0;
         foreach (var line in File.ReadLines(file))
@@ -407,10 +412,10 @@ public sealed class DayStore
                 || !int.TryParse(f[1], out var year)
                 || month is < 1 or > 12 || day < 1 || day > DateTime.DaysInMonth(2024, month))
             {
-                errors.Add($"{file}:{number}: bad births line");
+                errors.Add($"{file}:{number}: bad {kind} line");
                 continue;
             }
-            if (!_births.TryGetValue((month, day), out var list)) _births[(month, day)] = list = new List<Person>();
+            if (!target.TryGetValue((month, day), out var list)) target[(month, day)] = list = new List<Person>();
             list.Add(new Person(year, f[3].Trim(), f[4].Trim(), f[2].Trim()));
         }
     }
@@ -420,10 +425,33 @@ public sealed class DayStore
         var births = _births.TryGetValue((month, day), out var b)
             ? b.OrderBy(p => Rank(p.Region, p.IsGreek)).ThenBy(p => p.Year < 0 ? int.MinValue + (-p.Year) : p.Year).ToList()
             : new List<Person>();
+        var deaths = _deaths.TryGetValue((month, day), out var d)
+            ? d.OrderBy(p => Rank(p.Region, p.IsGreek)).ThenBy(p => p.Year < 0 ? int.MinValue + (-p.Year) : p.Year).ToList()
+            : new List<Person>();
         return _days.TryGetValue((month, day), out var s)
-            ? new DayView(month, day, s.C, s.E.OrderBy(e => Rank(e.Region, e.IsGreek)).ThenBy(e => e.Year ?? int.MaxValue).ToList(), null, births)
-            : new DayView(month, day, Array.Empty<Commemoration>(), Array.Empty<HistoricalEvent>(), null, births);
+            ? new DayView(month, day, s.C, s.E.OrderBy(e => Rank(e.Region, e.IsGreek)).ThenBy(e => e.Year ?? int.MaxValue).ToList(), null, births, null, deaths)
+            : new DayView(month, day, Array.Empty<Commemoration>(), Array.Empty<HistoricalEvent>(), null, births, null, deaths);
     }
+
+    /// <summary>Gives every entry its stable identifier: the one of the registry file, or the one made from its content when it is not registered yet.</summary>
+    private void ApplyIds(string dataRoot)
+    {
+        var registry = EntryIds.LoadRegistry(dataRoot);
+        string Id(string kind, int month, int day, int? year, string title) =>
+            registry.TryGetValue(EntryIds.Key(kind, month, day, year, title), out var id) ? id : EntryIds.Make(kind, month, day, year, title);
+        foreach (var ((month, day), slot) in _days)
+        {
+            for (var i = 0; i < slot.C.Count; i++) slot.C[i] = slot.C[i] with { Id = Id("saint", month, day, null, slot.C[i].Title) };
+            for (var i = 0; i < slot.E.Count; i++) slot.E[i] = slot.E[i] with { Id = Id("event", month, day, slot.E[i].Year, slot.E[i].Title) };
+        }
+        foreach (var ((month, day), list) in _births)
+            for (var i = 0; i < list.Count; i++) list[i] = list[i] with { Id = Id("birth", month, day, list[i].Year, list[i].Name) };
+        foreach (var ((month, day), list) in _deaths)
+            for (var i = 0; i < list.Count; i++) list[i] = list[i] with { Id = Id("death", month, day, list[i].Year, list[i].Name) };
+    }
+
+    public int DeathCount => _deaths.Values.Sum(l => l.Count);
+    public int DeathDayCount => _deaths.Count;
 
     public int BirthCount => _births.Values.Sum(l => l.Count);
     public int BirthDayCount => _births.Count;

@@ -76,6 +76,20 @@ public static class ShortText
     public static string BirthsText(DayView day, int take = 5) =>
         string.Join("\n", day.People.Take(take).Select(p => $"{p.YearText} — {p.Name}, {p.Description}"));
 
+    /// <summary>The births of the day and, under them, the deaths (each part only when the day has it).</summary>
+    public static string PeopleText(DayView day, int take = 4)
+    {
+        var sb = new StringBuilder();
+        if (day.People.Count > 0) sb.Append(string.Join("\n", day.People.Take(take).Select(p => $"{p.YearText} — {p.Name}, {p.Description}")));
+        if (day.DeathList.Count > 0)
+        {
+            if (sb.Length > 0) sb.Append("\n\n");
+            sb.Append(Loc.T("details.deaths").Trim()).Append('\n');
+            sb.Append(string.Join("\n", day.DeathList.Take(take).Select(p => $"{p.YearText} — {p.Name}, {p.Description}")));
+        }
+        return sb.ToString();
+    }
+
     /// <summary>Whole sentences up to the limit; a single longer sentence is cut at a word and closed with "…".</summary>
     internal static string Shorten(string text, int max)
     {
