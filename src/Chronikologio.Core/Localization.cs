@@ -51,7 +51,10 @@ public static class Loc
             ["menu.theme"] = "Θέμα",
             ["menu.calendar"] = "Εορτολόγιο",
             ["menu.language"] = "Γλώσσα",
+
             ["layout.day"] = "Ημέρα",
+            ["timeline.none"] = "Δεν υπάρχουν χρονολογίες για αυτή την ημέρα.",
+            ["band.on"] = "Στις",
             ["chip.domestic"] = "Ελλάδα",
             ["chip.domestic.cy"] = "Κύπρος",
             ["chip.world"] = "Κόσμος",

@@ -111,6 +111,25 @@ public sealed class EventTile : Panel
 
     public bool HasPhoto => _image is not null;
 
+    /// <summary>Raised when the card is clicked anywhere (it opens the whole text).</summary>
+    public event Action? Opened;
+
+    private void WireClicks(Control c)
+    {
+        if (c is PhotoBox) return;   // the photograph has its own click: it opens large
+        c.Click += (_, _) => Opened?.Invoke();
+        c.Cursor = Cursors.Hand;
+        foreach (Control child in c.Controls) WireClicks(child);
+    }
+
+    protected override void OnHandleCreated(EventArgs e)
+    {
+        base.OnHandleCreated(e);
+        if (!_wired) { _wired = true; WireClicks(this); }
+    }
+
+    private bool _wired;
+
     private static string Cut(string text, int max)
     {
         text = text.Trim();
@@ -204,7 +223,12 @@ public sealed class DayOverviewLayout : DayLayout
     private readonly FlowLayoutPanel _names = new() { Dock = DockStyle.Top, Height = 34, WrapContents = true, Padding = new Padding(0, 4, 0, 0) };
     private readonly Label _others = new() { Dock = DockStyle.Bottom, Height = 22, Tag = "muted", AutoEllipsis = true };
     private readonly LinkLabel _read = new() { Dock = DockStyle.Bottom, Height = 24, LinkBehavior = LinkBehavior.HoverUnderline };
-    private readonly FlowLayoutPanel _filters = new() { Height = 36, WrapContents = false, AutoSize = false, Margin = new Padding(0, 0, 0, 6) };
+    private readonly FlowLayoutPanel _days = new() { Height = 38, WrapContents = false, AutoSize = false, Margin = new Padding(0, 0, 0, 8) };
+    private readonly Chip[] _dayChips = Enumerable.Range(0, 7).Select(_ => new Chip(true) { Margin = new Padding(0, 0, 8, 0) }).ToArray();
+    private readonly AuroraBand _band = new() { Height = 92, Margin = new Padding(0, 0, 0, 8) };
+    private readonly Label _bandText = new() { Left = 14, Top = 8, Height = 22, AutoSize = false, BackColor = Color.Transparent, Font = new Font("Segoe UI", 10.5f, FontStyle.Bold) };
+    private readonly FlowLayoutPanel _filters = new() { Left = 10, Top = 40, Height = 40, WrapContents = false, AutoSize = false, BackColor = Color.Transparent };
+    private readonly YearTimeline _timeline = new() { Margin = new Padding(0, 0, 0, 10) };
     private readonly FlowLayoutPanel _cards = new() { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, WrapContents = true, Margin = new Padding(0) };
     private readonly Chip[] _chips = { new(true), new(true), new(true), new(true) };
     private Image? _heroImage;
@@ -231,13 +255,24 @@ public sealed class DayOverviewLayout : DayLayout
         _heroPhoto.Click += (_, _) => { if (_heroImage is not null) PhotoDialog.ShowFor(FindForm(), _heroImage, _heroInfo); };
 
         foreach (var chip in _chips) _filters.Controls.Add(chip);
+        _band.Controls.Add(_bandText);
+        _band.Controls.Add(_filters);
+        for (var i = 0; i < _dayChips.Length; i++)
+        {
+            var offset = i - 3;
+            _days.Controls.Add(_dayChips[i]);
+            _dayChips[i].Click += (_, _) => ChangeDate(SelectedDate.AddDays(offset));
+        }
+        _timeline.MarkClicked += OnMarkClicked;
         for (var i = 0; i < _chips.Length; i++)
         {
             var index = i;
             _chips[i].Click += (_, _) => { _filter = index; ShowCards(); };
         }
+        _stack.Controls.Add(_days);
         _stack.Controls.Add(_hero);
-        _stack.Controls.Add(_filters);
+        _stack.Controls.Add(_band);
+        _stack.Controls.Add(_timeline);
         _stack.Controls.Add(_cards);
         _stack.Resize += (_, _) => FitWidths();
 
@@ -270,7 +305,11 @@ public sealed class DayOverviewLayout : DayLayout
     {
         var w = Math.Max(300, _stack.ClientSize.Width - _stack.Padding.Horizontal - SystemInformation.VerticalScrollBarWidth);
         _hero.Width = w;
-        _filters.Width = w;
+        _days.Width = w;
+        _band.Width = w;
+        _bandText.Width = w - 28;
+        _filters.Width = w - 20;
+        _timeline.Width = w;
         _cards.MaximumSize = new Size(w, 0);
         _cards.Width = w;
         _heroText.Width = _hero.Width - _heroPhoto.Width - 40;
@@ -294,6 +333,46 @@ public sealed class DayOverviewLayout : DayLayout
         if (_filter < 0 || _filter > 3 || counts[_filter] == 0) _filter = Array.FindIndex(counts, c => c > 0) is var first and >= 0 ? first : 0;
         ShowCards();
         FitWidths();
+    }
+
+    // the strip of days, the line of years and the text of the band follow the day and the chosen filter
+    private void ShowStrips()
+    {
+        for (var i = 0; i < _dayChips.Length; i++)
+        {
+            var d = SelectedDate.AddDays(i - 3);
+            _dayChips[i].Text = d.ToString("ddd d", Loc.Culture);
+            _dayChips[i].Selected = i == 3;
+        }
+        if (_day is null) return;
+        var region = Store.Region;
+        var marks = new List<YearTimeline.Mark>();
+        var domestic = _day.Events.Where(e => Countries.IsDomestic(region, e)).ToList();
+        var abroad = _day.Events.Where(e => !Countries.IsDomestic(region, e)).ToList();
+        for (var i = 0; i < domestic.Count; i++) if (domestic[i].Year is { } y) marks.Add(new YearTimeline.Mark(y, domestic[i].Title, 0, i));
+        for (var i = 0; i < abroad.Count; i++) if (abroad[i].Year is { } y) marks.Add(new YearTimeline.Mark(y, abroad[i].Title, 1, i));
+        for (var i = 0; i < _day.People.Count; i++) marks.Add(new YearTimeline.Mark(_day.People[i].Year, _day.People[i].Name, 2, i));
+        for (var i = 0; i < _day.DeathList.Count; i++) marks.Add(new YearTimeline.Mark(_day.DeathList[i].Year, _day.DeathList[i].Name, 3, i));
+        _timeline.SetMarks(marks);
+
+        var count = new[] { domestic.Count, abroad.Count, _day.People.Count, _day.DeathList.Count }[Math.Clamp(_filter, 0, 3)];
+        var years = marks.Where(m => m.Kind == _filter).Select(m => m.Year).ToList();
+        var name = new[] { Loc.TR("chip.domestic", region), Loc.T("chip.world"), Loc.T("chip.births"), Loc.T("chip.deaths") }[Math.Clamp(_filter, 0, 3)];
+        var span = years.Count > 0 ? $" · {Year(years.Min())} – {Year(years.Max())}" : "";
+        _bandText.Text = $"{Loc.T("band.on")} {SelectedDate.ToString("d MMMM", Loc.Culture)} · {name}: {count}{span}";
+    }
+
+    private static string Year(int y) => y < 0 ? $"{-y} π.Χ." : y.ToString(CultureInfo.InvariantCulture);
+
+    private void OnMarkClicked(YearTimeline.Mark mark)
+    {
+        _filter = mark.Kind;
+        ShowCards();
+        if (mark.Index >= 0 && mark.Index < _cards.Controls.Count)
+        {
+            var tile = _cards.Controls[mark.Index];
+            _stack.ScrollControlIntoView(tile);
+        }
     }
 
     private void ShowHero(DayView day)
@@ -355,6 +434,7 @@ public sealed class DayOverviewLayout : DayLayout
     private void ShowCards()
     {
         for (var i = 0; i < _chips.Length; i++) _chips[i].Selected = i == _filter;
+        ShowStrips();
         foreach (Control c in _cards.Controls.Cast<Control>().ToList()) { _cards.Controls.Remove(c); c.Dispose(); }
         if (_day is null) return;
         var region = Store.Region;
@@ -368,15 +448,25 @@ public sealed class DayOverviewLayout : DayLayout
         {
             var list = events.ToList();
             if (list.Count == 0) _cards.Controls.Add(new Label { Text = _filter == 0 ? Loc.TR("event.none.gr", region) : Loc.T("event.none.world"), AutoSize = true, Tag = "muted", Padding = new Padding(2, 8, 0, 0) });
-            foreach (var e in list) _cards.Controls.Add(TileFor(e));
+            foreach (var e in list) { var tile = TileFor(e); var ev = e; tile.Opened += () => OpenEvent(ev); _cards.Controls.Add(tile); }
         }
         else
         {
             var people = _filter == 2 ? _day.People : _day.DeathList;
             if (people.Count == 0) _cards.Controls.Add(new Label { Text = Loc.T("short.noentries"), AutoSize = true, Tag = "muted", Padding = new Padding(2, 8, 0, 0) });
-            foreach (var person in people) _cards.Controls.Add(new EventTile(person.YearText, person.Name, person.Description, "", null, null, null));
+            foreach (var person in people) { var tile = new EventTile(person.YearText, person.Name, person.Description, "", null, null, null); var who = person; tile.Opened += () => TextDialog.Show(FindForm(), who.Name, who.YearText + " — " + who.Name, who.Description); _cards.Controls.Add(tile); }
         }
         Paint(_cards, ChronikologioTheme.Palette, false);   // only the new cards: RestyleAll would show the day again
+    }
+
+    // the whole text of an event: what the card has cut, the longer text and the sources
+    private void OpenEvent(HistoricalEvent e)
+    {
+        var sb = new System.Text.StringBuilder(e.Summary);
+        if (!string.IsNullOrWhiteSpace(e.Details)) sb.Append("\n\n").Append(e.Details);
+        sb.Append("\n\n").Append(Loc.T("details.sources").Trim()).Append(": ");
+        sb.Append(string.Join("  ·  ", e.Sources.Select(s => s.Url ?? s.Citation)));
+        TextDialog.Show(FindForm(), e.Title, (e.Year is { } y ? Year(y) + " — " : "") + e.Title, sb.ToString().Replace("\n", Environment.NewLine));
     }
 
     private EventTile TileFor(HistoricalEvent e)

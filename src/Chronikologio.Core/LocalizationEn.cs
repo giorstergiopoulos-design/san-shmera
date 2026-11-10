@@ -20,7 +20,10 @@ internal static class LocalizationEn
         ["menu.theme"] = "Theme",
         ["menu.calendar"] = "Calendar",
         ["menu.language"] = "Language",
+
         ["layout.day"] = "Day",
+        ["timeline.none"] = "There are no years for this day.",
+        ["band.on"] = "On",
         ["chip.domestic"] = "Greece",
         ["chip.domestic.cy"] = "Cyprus",
         ["chip.world"] = "World",

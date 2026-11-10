@@ -323,12 +323,14 @@ public abstract class DayLayout : UserControl
         var card = inCard || tag == "card";
         if (c is EventCarousel carousel) carousel.Restyle();
         // dark scroll bars (and light ones in a light theme) wherever a control can scroll
-        if (c is ListView or RichTextBox or ScrollableControl { AutoScroll: true }) ThemeNative.StyleScrollbars(c);
+        if (c is ListView or TextBoxBase or ScrollableControl { AutoScroll: true }) ThemeNative.StyleScrollbars(c);
         switch (c)
         {
             case DayHeader or CalendarPanel: return;
             case MiniCalendar mini: mini.Restyle(); return;
             case Chip chip: chip.Restyle(); return;
+            case AuroraBand band: foreach (Control child in band.Controls) { child.ForeColor = p.Text; } band.Invalidate(); return;
+            case YearTimeline line: line.Invalidate(); return;
             case FlatButton: return;
             case PictureBox: c.BackColor = card ? p.Surface : p.Background; return;
             case ListView or TextBoxBase or ComboBox:
@@ -373,6 +375,7 @@ internal sealed class CardBox : Panel
         Padding = new Padding(10, 8, 10, 8);
         Margin = new Padding(4);
         Dock = DockStyle.Fill;
+        TextFit.ScrollWhenLonger(_body);   // a longer text than the card scrolls
         Controls.Add(_body);
         Controls.Add(_picture);
         Controls.Add(_title);

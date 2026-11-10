@@ -50,6 +50,7 @@ public sealed class EventCarousel : Panel
         _picture.Dock = DockStyle.Fill;
         _picturePanel.Padding = new Padding(0, 4, 0, 0);   // a little air under the title line
 
+        TextFit.ScrollWhenLonger(_text);   // a longer text than the frame scrolls
         Controls.Add(_text);
         Controls.Add(_picturePanel);
         Controls.Add(_noPicture);
