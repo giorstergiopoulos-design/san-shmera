@@ -21,6 +21,9 @@ public static class Countries
     public static bool IsDomestic(string region, HistoricalEvent e) => region == "cy" ? e.IsCypriot : e.IsGreek;
 
     public static string LanguageOf(string region) => All.FirstOrDefault(c => c.Region == region)?.Language ?? "el";
+
+    /// <summary>The interface language: the one the user chose ("el", "en"), or, for "auto" (the default), the language of the country.</summary>
+    public static string Resolve(string? setting, string region) => setting is "el" or "en" ? setting : LanguageOf(region);
 }
 
 /// <summary>
@@ -47,6 +50,10 @@ public static class Loc
             ["menu.today"] = "Σήμερα",
             ["menu.theme"] = "Θέμα",
             ["menu.calendar"] = "Εορτολόγιο",
+            ["menu.language"] = "Γλώσσα",
+            ["language.auto"] = "Αυτόματη (η γλώσσα της χώρας)",
+            ["language.el"] = "Ελληνικά",
+            ["language.en"] = "English",
             ["menu.hidemenu"] = "Απόκρυψη μενού",
             ["menu.help"] = "Βοήθεια",
             ["menu.shortcuts"] = "Συντομεύσεις",
@@ -116,7 +123,7 @@ public static class Loc
                 "ΧΡΗΣΗ\n" +
                 "• Πάτησε μια ημέρα στο ημερολόγιο. Κάτω από αυτό εμφανίζεται σύντομο κείμενο και, αν υπάρχει, μια εικόνα.\n" +
                 "• Το κουμπί «Πλήρες κείμενο και πηγές» (ή διπλό κλικ στο σύντομο κείμενο) ανοίγει το πλήρες κείμενο, με τις εικόνες δίπλα του.\n" +
-                "• Η σημαία πάνω αριστερά αλλάζει τη χώρα: το εορτολόγιο και η γλώσσα της εφαρμογής αλλάζουν μαζί. Τώρα υπάρχουν η Ελλάδα και η Κύπρος.\n" +
+                "• Η σημαία πάνω αριστερά αλλάζει τη χώρα: το εορτολόγιο αλλάζει μαζί της, και η γλώσσα της εφαρμογής επίσης, εκτός αν διαλέξεις γλώσσα από το μενού Προβολή › Γλώσσα. Τώρα υπάρχουν η Ελλάδα και η Κύπρος.\n" +
                 "• Η αναζήτηση ονόματος βρίσκει πότε γιορτάζει ένα όνομα, με ή χωρίς τόνους.\n" +
                 "• Οι μεγάλες εορτές φαίνονται με έντονο αριθμό και μια μικρή γραμμή κάτω από την ημέρα.\n\n" +
                 "ΕΜΦΑΝΙΣΗ\n" +
@@ -134,7 +141,7 @@ public static class Loc
                 "Ως πρόσθετο του Opsis, το ημερολόγιο αντικαθιστά το ενσωματωμένο και η ροή «Σαν σήμερα» μπορεί να εμφανίζεται στις μπάρες του News Crawler.",
             ["about.format"] = "Χρονικολόγιο — έκδοση {0}",
             ["help.text"] = "Ctrl+M: εμφάνιση ή απόκρυψη του μενού\nCtrl+T: αλλαγή θέματος\nCtrl+L: αλλαγή διάταξης\nCtrl+Home: σήμερα\nF1: οδηγίες χρήσης\n\n" +
-                            "Η σημαία πάνω αριστερά αλλάζει τη χώρα, δηλαδή το εορτολόγιο και τη γλώσσα της εφαρμογής.\n" +
+                            "Η σημαία πάνω αριστερά αλλάζει τη χώρα, δηλαδή το εορτολόγιο και, αν δεν έχεις διαλέξει γλώσσα, τη γλώσσα της εφαρμογής.\n" +
                             "Διπλό κλικ στο σύντομο κείμενο ή πάτημα του κουμπιού κάτω από αυτό ανοίγει το πλήρες κείμενο με τις πηγές.",
             ["short.noentries"] = "Δεν υπάρχουν ακόμη εγγραφές για αυτή την ημέρα.",
             ["short.noothers"] = "Δεν υπάρχουν ακόμη άλλες εγγραφές για αυτή την ημέρα.",
@@ -150,9 +157,26 @@ public static class Loc
             ["details.verified"] = " (επαληθευμένα)",
             ["details.synaxarion"] = "Συναξαριστής saint.gr (ο βίος του αγίου): ",
             ["details.official"] = "επίσημη πηγή: ",
-            ["details.pointer"] = "για περισσότερα (ανοιχτή εγκυκλοπαίδεια, όχι επίσημη πηγή): "
+            ["details.pointer"] = "για περισσότερα (ανοιχτή εγκυκλοπαίδεια, όχι επίσημη πηγή): ",
+            ["feed.names"] = "Γιορτάζουν σήμερα, {0}: {1}",
+            ["feed.saint"] = "{0}: {1}",
+            ["feed.event"] = "Σαν σήμερα, {0}: {1}",
+            ["feed.event.year"] = "Σαν σήμερα, {0} {1}: {2}",
+            ["feed.birth"] = "Γεννήθηκαν σαν σήμερα, {0}: {1}"
         }
     };
+
+    static Loc() => Tables["en"] = LocalizationEn.Table();
+
+    /// <summary>The languages the interface has a table for.</summary>
+    public static IReadOnlyList<string> Languages => Tables.Keys.ToList();
+
+    /// <summary>The keys of one language (for the tests that keep the tables in step).</summary>
+    public static IReadOnlyCollection<string> KeysOf(string language) => Tables[language].Keys;
+
+    /// <summary>The text of a key in a given language (Greek when that language lacks it), without changing the language of the app.</summary>
+    public static string TIn(string language, string key) =>
+        Tables.TryGetValue(language, out var table) && table.TryGetValue(key, out var s) ? s : Tables["el"].TryGetValue(key, out s) ? s : key;
 
     private static string _language = "el";
 
@@ -161,7 +185,7 @@ public static class Loc
 
     public static string Language => _language;
 
-    public static CultureInfo Culture => CultureInfo.GetCultureInfo(_language switch { "el" => "el-GR", _ => _language });
+    public static CultureInfo Culture => CultureInfo.GetCultureInfo(_language switch { "el" => "el-GR", "en" => "en-GB", _ => _language });
 
     /// <summary>Switches the language; false (and nothing changes) when the app has no table for it.</summary>
     public static bool Set(string language)

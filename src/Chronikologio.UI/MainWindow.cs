@@ -26,6 +26,7 @@ public sealed class MainWindow : Form
     private readonly MenuStrip _menu = new() { Dock = DockStyle.Top, Renderer = new FlatMenuRenderer(), Visible = false };
     private readonly List<ToolStripMenuItem> _themeItems = new();
     private readonly List<ToolStripMenuItem> _regionItems = new();
+    private readonly List<ToolStripMenuItem> _languageItems = new();
 
     public MainWindow(string dataRoot, string? settingsPath = null)
     {
@@ -33,7 +34,7 @@ public sealed class MainWindow : Form
         _settingsPath = settingsPath;
         _settings = UiSettings.Load(settingsPath);
         _store = DayStore.Load(dataRoot, _settings.Region);
-        Loc.Set(Countries.LanguageOf(_store.Region));
+        Loc.Set(Countries.Resolve(_settings.Language, _store.Region));
 
         Font = new Font("Segoe UI", 10f);
         // Wide enough for the side rail, the two columns of cards and the small calendar; the last size is remembered.
@@ -185,12 +186,26 @@ public sealed class MainWindow : Form
         _searchBar.SetPlaceholder(Loc.T("search.placeholder"));
         _themeItems.Clear();
         _regionItems.Clear();
+        _languageItems.Clear();
         _layoutItems.Clear();
         _menu.Items.Clear();
         BuildMenu();
         BuildRail();
         foreach (var item in _themeItems) item.Checked = (string?)item.Tag == ChronikologioTheme.Name;
     }
+
+    /// <summary>The language of the interface: "auto" (that of the country), "el" or "en". Kept apart from the country and remembered.</summary>
+    public void ChooseLanguage(string setting)
+    {
+        if (setting is not ("auto" or "el" or "en")) return;
+        _settings.Language = setting;
+        _settings.Save(_settingsPath);
+        if (!Loc.Set(Countries.Resolve(setting, _store.Region))) return;
+        foreach (var item in _languageItems) item.Checked = (string?)item.Tag == setting;
+    }
+
+    /// <summary>The language setting in use: "auto", "el" or "en".</summary>
+    public string LanguageSetting => _settings.Language;
 
     public void ChooseTheme(string name)
     {
@@ -249,6 +264,15 @@ public sealed class MainWindow : Form
             calendar.DropDownItems.Add(item);
         }
         view.DropDownItems.Add(calendar);
+        var languages = new ToolStripMenuItem(Loc.T("menu.language"));
+        foreach (var code in new[] { "auto", "el", "en" })
+        {
+            var chosen = code;
+            var item = new ToolStripMenuItem(Loc.T("language." + code), null, (_, _) => ChooseLanguage(chosen)) { Tag = code, Checked = code == _settings.Language };
+            _languageItems.Add(item);
+            languages.DropDownItems.Add(item);
+        }
+        view.DropDownItems.Add(languages);
         view.DropDownItems.Add(new ToolStripMenuItem(Loc.T("menu.hidemenu"), null, (_, _) => ToggleMenu()) { ShortcutKeyDisplayString = "Ctrl+M" });
 
         var help = new ToolStripMenuItem(Loc.T("menu.help"));

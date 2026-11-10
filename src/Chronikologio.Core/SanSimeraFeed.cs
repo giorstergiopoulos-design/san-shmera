@@ -15,7 +15,7 @@ public static class SanSimeraFeed
     {
         var day = store.GetDay(date);
         var items = new List<FeedItem>();
-        var stamp = date.ToString("d MMMM", El);
+        var stamp = date.ToString("d MMMM", Loc.Culture);
 
         // holidays and the fast first: the bars of a news ticker are most useful with "what kind of day is it"
         foreach (var h in day.HolidayList)
@@ -25,16 +25,16 @@ public static class SanSimeraFeed
 
         var names = day.Names.Select(n => n.Name).Distinct().ToList();
         if (names.Count > 0)
-            items.Add(new FeedItem(FeedKind.NameDays, $"Γιορτάζουν σήμερα, {stamp}: {string.Join(", ", names)} {OldCalendar.Note(date)}".TrimEnd(), "Χρονικολόγιο"));
+            items.Add(new FeedItem(FeedKind.NameDays, (string.Format(Loc.T("feed.names"), stamp, string.Join(", ", names)) + " " + OldCalendar.Note(date)).TrimEnd(), "Χρονικολόγιο"));
 
         foreach (var c in day.Commemorations.OrderByDescending(c => c.IsMajorFeast))
             items.Add(new FeedItem(FeedKind.Saint, $"{stamp}: {c.Title}", "Χρονικολόγιο"));
 
         foreach (var e in day.Events)
-            items.Add(new FeedItem(FeedKind.Event, e.Year is { } y ? $"Σαν σήμερα, {stamp} {y}: {e.Title}" : $"Σαν σήμερα, {stamp}: {e.Title}", "Χρονικολόγιο"));
+            items.Add(new FeedItem(FeedKind.Event, e.Year is { } y ? string.Format(Loc.T("feed.event.year"), stamp, y.ToString(CultureInfo.InvariantCulture), e.Title) : string.Format(Loc.T("feed.event"), stamp, e.Title), "Χρονικολόγιο"));
 
         if (day.People.Count > 0)
-            items.Add(new FeedItem(FeedKind.Birth, $"Γεννήθηκαν σαν σήμερα, {stamp}: " + string.Join(", ", day.People.Take(4).Select(p => $"{p.Name} ({p.YearText})")), "Χρονικολόγιο"));
+            items.Add(new FeedItem(FeedKind.Birth, string.Format(Loc.T("feed.birth"), stamp, string.Join(", ", day.People.Take(4).Select(p => $"{p.Name} ({p.YearText})"))), "Χρονικολόγιο"));
 
         return items;
     }

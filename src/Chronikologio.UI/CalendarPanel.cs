@@ -24,7 +24,6 @@ public sealed class CalendarPanel : UserControl
     public CalendarPanel(DayStore store)
     {
         _store = store;
-        Loc.Set(Countries.LanguageOf(store.Region));
         Font = new Font("Segoe UI", 9.5f);
         MinimumSize = new Size(220, 300);
         var nav = new Panel { Dock = DockStyle.Top, Height = 28 };
@@ -96,10 +95,10 @@ public sealed class CalendarPanel : UserControl
     {
         if (!DayStore.Regions.Contains(region) || region == _store.Region) return;
         var store = DayStore.Load(_store.DataRoot, region);
-        Loc.Set(Countries.LanguageOf(region));
+        var settings = UiSettings.Load(SettingsPath);
+        Loc.Set(Countries.Resolve(settings.Language, region));
         SetStore(store);
         ShowFlag();
-        var settings = UiSettings.Load(SettingsPath);
         settings.Region = region;
         settings.Save(SettingsPath);
         StoreChanged?.Invoke(store);

@@ -15,6 +15,9 @@ public sealed class UiSettings
     /// <summary>"gr" = the calendar of the Church of Greece (default), "cy" = the calendar of the Church of Cyprus.</summary>
     public string Region { get; set; } = "gr";
 
+    /// <summary>The language of the interface: "auto" (the language of the country, the default), "el" or "en". Independent of the country when chosen.</summary>
+    public string Language { get; set; } = "auto";
+
     /// <summary>Size of the window when it was last closed (client area), and whether it was maximised.</summary>
     public int Width { get; set; } = 1120;
     public int Height { get; set; } = 740;
@@ -39,6 +42,7 @@ public sealed class UiSettings
             if (!ChronikologioTheme.Names.Contains(s.Theme)) s.Theme = "system";
             if (!DayStore.Regions.Contains(s.Region)) s.Region = "gr";
             if (!LayoutNames.Contains(s.Layout)) s.Layout = "cards";
+            if (s.Language is not ("auto" or "el" or "en")) s.Language = "auto";
             s.Width = Math.Clamp(s.Width, MinWidth, 4000);
             s.Height = Math.Clamp(s.Height, MinHeight, 3000);
             return s;
