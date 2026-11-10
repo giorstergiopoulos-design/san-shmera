@@ -38,10 +38,11 @@ public class OldCalendarTests
     }
 
     [Fact]
-    public void TheShortTextShowsTheOldCalendarDateNextToTheNames()
+    public void TheOldCalendarDateIsSaidOnceNotInEveryTextOfTheDay()
     {
         var text = ShortText.Build(Store.GetDay(12, 6));
         Assert.Contains("Γιορτάζουν: Νικόλαος", text);
-        Assert.Contains("(παλαιό ημερολόγιο: 19 Δεκεμβρίου)", text);
+        Assert.DoesNotContain("παλαιό ημερολόγιο", text);   // it is in the title of the day (the header or the date of the panel)
+        Assert.DoesNotContain("παλαιό ημερολόγιο", ShortText.NamesLine(Store.GetDay(12, 6)));
     }
 }

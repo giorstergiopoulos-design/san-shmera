@@ -194,6 +194,43 @@ public class UiAuditTests : IDisposable
         }
     }
 
+    /// <summary>Draws days that have photographs (an event photo and a saint icon) in every layout and in both themes, to look at the margins and the scaling of the pictures.</summary>
+    [Fact]
+    public void RenderDaysWithPhotos()
+    {
+        var dir = Environment.GetEnvironmentVariable("CHRON_RENDER_DIR");
+        if (string.IsNullOrEmpty(dir)) return;
+        Directory.CreateDirectory(dir);
+        var store = Chronikologio.Core.DayStore.Load(Path.Combine(AppContext.BaseDirectory, "data"), "gr");
+        var days = new List<DateOnly>();
+        for (var i = 0; i < 366 && days.Count < 4; i += 23)
+        {
+            var d = new DateOnly(2026, 1, 1).AddDays(i);
+            for (var k = 0; k < 20; k++)
+            {
+                var day = store.GetDay(d.AddDays(k));
+                if (day.SaintImages.Any() && day.Events.Any(e => e.Images is { Length: > 0 }) && !days.Contains(d.AddDays(k))) { days.Add(d.AddDays(k)); break; }
+            }
+        }
+        foreach (var theme in new[] { "dark", "light" })
+        {
+            ChronikologioTheme.Set(theme);
+            foreach (var layout in UiSettings.LayoutNames)
+                foreach (var date in days)
+                {
+                    using var window = Open(1100, 700);
+                    window.ChooseTheme(theme);
+                    window.ChooseLayout(layout);
+                    window.SetDate(date);
+                    Application.DoEvents();
+                    window.PerformLayout();
+                    using var bmp = new Bitmap(window.Width, window.Height);
+                    window.DrawToBitmap(bmp, new Rectangle(Point.Empty, window.Size));
+                    bmp.Save(Path.Combine(dir, $"photos-{theme}-{layout}-{date:MMdd}.png"), System.Drawing.Imaging.ImageFormat.Png);
+                }
+        }
+    }
+
     /// <summary>Draws the whole window per layout and theme into PNG files (only when CHRON_RENDER_DIR is set) and reports how many controls the audit looked at.</summary>
     [Fact]
     public void RenderWindows()

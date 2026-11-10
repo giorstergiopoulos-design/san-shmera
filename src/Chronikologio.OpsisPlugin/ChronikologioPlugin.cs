@@ -28,11 +28,17 @@ public sealed class ChronikologioPlugin : IOpsisNewsCrawlerPlugin, IPluginWidget
 
     public void Start()
     {
+        PluginLog.Write($"Start: plugin {Version}, language {_language}, host contract {typeof(PluginFeeds).Assembly.Location}");
         var service = Service;
         PluginFeeds.Register(new PluginFeed(FeedKey, "Σαν σήμερα", "On this day", BuildFeed));
         // a new snapshot (midnight, another country, another language): register the feed again, which tells the bars to ask for the lines again
-        service.Changed += () => PluginFeeds.Register(new PluginFeed(FeedKey, "Σαν σήμερα", "On this day", BuildFeed));
+        service.Changed += () => 
+        {
+            PluginLog.Write($"snapshot ready: {service.Current?.Items.Count} lines for {service.Current?.Date}, region {service.Current?.Region}; feeds registered now: {PluginFeeds.All().Count}");
+            PluginFeeds.Register(new PluginFeed(FeedKey, "Σαν σήμερα", "On this day", BuildFeed));
+        };
         service.Start();
+        PluginLog.Write($"feed '{FeedKey}' registered; feeds known to the host: {string.Join(", ", PluginFeeds.All().Select(f => f.Key))}");
     }
 
     public void Stop()
@@ -86,8 +92,11 @@ public sealed class ChronikologioPlugin : IOpsisNewsCrawlerPlugin, IPluginWidget
     }
 
     // Called by the bars on the UI thread: only reads the ready snapshot (empty for the first moments after Start).
+    private int _asked;
+
     private IReadOnlyList<PluginFeedItem> BuildFeed()
     {
+        if (_asked++ < 3 || _asked % 200 == 0) PluginLog.Write($"the bars asked for the lines (time {_asked}); snapshot: {(_service?.Current is { } c ? c.Items.Count + " lines" : "not ready")}");
         var service = _service;
         if (service is null) return Array.Empty<PluginFeedItem>();
         service.CheckDate();

@@ -14,7 +14,7 @@ public sealed class EventCarousel : Panel
     private readonly Label _counter = new() { Dock = DockStyle.Right, AutoSize = false, Width = 64, TextAlign = ContentAlignment.MiddleCenter, Tag = "muted" };
     private readonly FlatButton _left = new() { Text = "◀", Dock = DockStyle.Right, Width = 36 };
     private readonly FlatButton _right = new() { Text = "▶", Dock = DockStyle.Right, Width = 36 };
-    private readonly PictureBox _picture = new() { Dock = DockStyle.Left, Width = 180, SizeMode = PictureBoxSizeMode.Zoom };
+    private readonly PhotoBox _picture = new() { Dock = DockStyle.Left, Width = 180 };
     private readonly Label _noPicture = new() { Dock = DockStyle.Bottom, Height = 22, AutoEllipsis = true, TextAlign = ContentAlignment.MiddleLeft, Tag = "muted", Visible = false };
     private readonly Panel _picturePanel = new() { Dock = DockStyle.Left, Width = 180 };
     private readonly TextBox _text = new() { Dock = DockStyle.Fill, Multiline = true, ReadOnly = true, BorderStyle = BorderStyle.None, ScrollBars = ScrollBars.None, TabStop = false };
@@ -48,6 +48,7 @@ public sealed class EventCarousel : Panel
         // the picture and its "none" label share the left column
         _picturePanel.Controls.Add(_picture);
         _picture.Dock = DockStyle.Fill;
+        _picturePanel.Padding = new Padding(0, 4, 0, 0);   // a little air under the title line
 
         Controls.Add(_text);
         Controls.Add(_picturePanel);
@@ -98,6 +99,8 @@ public sealed class EventCarousel : Panel
         _picture.Image?.Dispose();
         _picture.Image = null;
         _left.Enabled = _right.Enabled = _events.Count > 1;
+        // with one event (or none) there is nothing to turn through: the title gets the room of the arrows and the counter
+        _left.Visible = _right.Visible = _counter.Visible = _events.Count > 1;
         if (_events.Count == 0)
         {
             _counter.Text = "";
@@ -152,7 +155,7 @@ public sealed class EventCarousel : Panel
             var citation = e.Sources.FirstOrDefault()?.Citation ?? "";
             var cut = citation.IndexOf(". ", StringComparison.Ordinal);
             var shown = cut > 0 ? citation[..(cut + 1)] : citation;
-            if (shown.Length > 100) shown = shown[..99].TrimEnd() + "β€¦";
+            if (shown.Length > 100) shown = shown[..99].TrimEnd() + "…";
             _source.Text = Loc.T("event.source") + ": " + shown;
             _tip.SetToolTip(_source, citation);
             return;

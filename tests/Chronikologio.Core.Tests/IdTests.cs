@@ -74,3 +74,27 @@ public class IdTests
         File.WriteAllLines(file, lines, new System.Text.UTF8Encoding(false));
     }
 }
+
+public class NameDumpTests
+{
+    [Fact]
+    public void DumpNames()
+    {
+        var file = Environment.GetEnvironmentVariable("CHRON_NAMES");
+        if (string.IsNullOrEmpty(file)) return;
+        var dir = AppContext.BaseDirectory;
+        while (dir is not null && !Directory.Exists(Path.Combine(dir, "data"))) dir = Path.GetDirectoryName(dir);
+        var lines = new List<string>();
+        foreach (var region in new[] { "gr", "cy" })
+        {
+            var store = DayStore.Load(Path.Combine(dir!, "data"), region);
+            // only the database that was written by hand: the memories taken from the Megas Synaxaristis are not counted (they are what is compared with it)
+            foreach (var (m, d, c) in store.AllCommemorationsByDay().Where(x => !x.C.Sources.Any(s => s.Url?.Contains("synaxarion.gr/gr/sid/", StringComparison.Ordinal) == true)))
+            {
+                lines.Add($"title|{m:00}-{d:00}|{c.Title}");
+                foreach (var n in c.Names) lines.Add($"{m:00}-{d:00}|{n.Name}|{string.Join(",", n.Variants)}|{n.Etymology.Origin}|{n.Etymology.Meaning}");
+            }
+        }
+        File.WriteAllLines(file, lines.Distinct());
+    }
+}

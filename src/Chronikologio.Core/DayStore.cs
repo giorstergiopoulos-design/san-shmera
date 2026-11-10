@@ -66,6 +66,8 @@ public sealed class DayStore
                 {
                     var name = Path.GetFileName(file);
                     if (name.Equals(EntryIds.RegistryFile, StringComparison.Ordinal)) continue;   // read by ApplyIds
+                    // the saints of the Megas Synaxaristis of the Church of Greece belong to the Greek calendar only
+                    if (name.StartsWith("saints-syn", StringComparison.Ordinal) && region != "gr") continue;
                     if (name.StartsWith("lives", StringComparison.Ordinal)) store.AddLives(file, errors);
                     else if (name.StartsWith("saints", StringComparison.Ordinal)) store.AddSaints(file, errors);
                     else if (name.StartsWith("events", StringComparison.Ordinal)) store.AddEvents(file, errors);
@@ -143,7 +145,7 @@ public sealed class DayStore
             number++;
             if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#')) continue;
             var f = line.Split('|');
-            if (f.Length != 4 || f[0].Length != 5 || f[0][2] != '-'
+            if ((f.Length != 4 && f.Length != 5) || f[0].Length != 5 || f[0][2] != '-'
                 || !int.TryParse(f[0][..2], out var month) || !int.TryParse(f[0][3..], out var day)
                 || month is < 1 or > 12 || day < 1 || day > DateTime.DaysInMonth(2024, month))
             {
@@ -160,7 +162,10 @@ public sealed class DayStore
                     new Etymology(n[2].Trim(), n[3].Trim())));
             }
             if (!_days.TryGetValue((month, day), out var slot)) _days[(month, day)] = slot = (new(), new());
-            slot.C.Add(new Commemoration(f[1].Trim(), f[2].Trim(), null, names.ToArray(), Verification.Unverified, SaintsSource));
+            // a fifth field is the number of the page of the saint on synaxarion.gr: the memory was found in the Megas Synaxaristis, so the date is cross-checked (Reviewed) and the page is the source
+            var fromSynaxarion = f.Length == 5 && f[4].Trim().Length > 0;
+            var sources = fromSynaxarion ? new[] { new SourceRef("calendar-crosscheck", "Μέγας Συναξαριστής (synaxarion.gr)", $"https://www.synaxarion.gr/gr/sid/{f[4].Trim()}/sxsaintinfo.aspx") } : SaintsSource;
+            slot.C.Add(new Commemoration(f[1].Trim(), f[2].Trim(), null, names.ToArray(), fromSynaxarion ? Verification.Reviewed : Verification.Unverified, sources));
         }
     }
 
@@ -220,7 +225,7 @@ public sealed class DayStore
         {
             if (!_days.TryGetValue((month, day), out var slot)) continue;
             for (var i = 0; i < slot.C.Count; i++)
-                if (slot.C[i].Title.StartsWith(title, StringComparison.Ordinal)) slot.C[i] = slot.C[i] with { Details = life };
+                if (TextNorm.StartsWithWord(slot.C[i].Title, title)) slot.C[i] = slot.C[i] with { Details = life };
         }
     }
 
@@ -278,7 +283,7 @@ public sealed class DayStore
         {
             if (!_days.TryGetValue((month, day), out var slot)) continue;
             for (var i = 0; i < slot.C.Count; i++)
-                if (slot.C[i].Title.StartsWith(title, StringComparison.Ordinal) && !(slot.C[i].Images ?? Array.Empty<ImageRef>()).Any(x => x.File == image.File))
+                if (TextNorm.StartsWithWord(slot.C[i].Title, title) && !(slot.C[i].Images ?? Array.Empty<ImageRef>()).Any(x => x.File == image.File))
                     slot.C[i] = slot.C[i] with { Images = (slot.C[i].Images ?? Array.Empty<ImageRef>()).Append(image).ToArray() };
         }
     }
@@ -502,5 +507,7 @@ public sealed class DayStore
 
     public int DayCount => _days.Count;
     public IEnumerable<Commemoration> AllCommemorations => _days.Values.SelectMany(v => v.C);
+
+    public IEnumerable<(int Month, int Day, Commemoration C)> AllCommemorationsByDay() => _days.OrderBy(k => k.Key).SelectMany(kv => kv.Value.C.Select(c => (kv.Key.Month, kv.Key.Day, c)));
     public IEnumerable<HistoricalEvent> AllEvents => _days.Values.SelectMany(v => v.E);
 }

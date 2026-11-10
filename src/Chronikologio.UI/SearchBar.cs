@@ -9,7 +9,7 @@ namespace Chronikologio.UI;
 /// </summary>
 public sealed class SearchBar : Panel
 {
-    private sealed record Entry(string Folded, string Text, string Kind, int Month, int Day);
+    private sealed record Entry(string Folded, string Text, string Kind, int Month, int Day, int Priority = 0);
 
     private sealed class Magnifier : Control
     {
@@ -128,8 +128,10 @@ public sealed class SearchBar : Panel
             var day = _store.GetDay(d.Month, d.Day);
             foreach (var c in day.Commemorations)
             {
-                foreach (var n in c.Names) list.Add(new Entry(TextNorm.Fold(n.Name + " " + string.Join(" ", n.Variants)), n.Name, "name", d.Month, d.Day));
-                list.Add(new Entry(TextNorm.Fold(c.Title), c.Title, "saint", d.Month, d.Day));
+                // the memories taken from the Megas Synaxaristis come after the hand-written ones in the results
+                var priority = c.Sources.Any(s => s.Url?.Contains("synaxarion.gr/gr/sid/", StringComparison.Ordinal) == true) ? 1 : 0;
+                foreach (var n in c.Names) list.Add(new Entry(TextNorm.Fold(n.Name + " " + string.Join(" ", n.Variants)), n.Name, "name", d.Month, d.Day, priority));
+                list.Add(new Entry(TextNorm.Fold(c.Title), c.Title, "saint", d.Month, d.Day, priority));
             }
             foreach (var e in day.Events)
                 list.Add(new Entry(TextNorm.Fold(e.Title), (e.Year is { } y ? y.ToString(CultureInfo.InvariantCulture) + " · " : "") + e.Title, "event", d.Month, d.Day));
@@ -146,7 +148,10 @@ public sealed class SearchBar : Panel
         var hits = Index().Where(e => e.Folded.Contains(q, StringComparison.Ordinal))
             .OrderBy(e => e.Kind == "name" ? 0 : e.Kind == "saint" ? 1 : 2)
             .ThenBy(e => e.Folded.StartsWith(q, StringComparison.Ordinal) ? 0 : 1)
-            .DistinctBy(e => (e.Text, e.Month, e.Day)).Take(12).ToList();
+            .ThenBy(e => e.Priority)
+            .DistinctBy(e => (e.Text, e.Month, e.Day)).ToList();
+        // a few of each kind, so that a name celebrated on many days does not push the saints and the events out of the list
+        hits = hits.Where(e => e.Kind == "name").Take(6).Concat(hits.Where(e => e.Kind == "saint").Take(6)).Concat(hits.Where(e => e.Kind == "event").Take(4)).ToList();
         if (hits.Count == 0)
         {
             _list.Items.Add(Loc.T("search.none"));

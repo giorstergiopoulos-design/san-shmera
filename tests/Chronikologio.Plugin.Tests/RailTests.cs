@@ -15,6 +15,7 @@ public class RailTests : IDisposable
         (SideRail)typeof(MainWindow).GetField("_rail", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(w)!;
 
     [Theory]
+    [InlineData("day")]
     [InlineData("cards")]
     [InlineData("feed")]
     [InlineData("tabs")]

@@ -10,6 +10,9 @@ public sealed class DayDetailsView : RichTextBox
     /// <summary>False when the events are shown elsewhere (in the two frames with arrows): only the saints and the births are written here.</summary>
     public bool ShowEvents { get; set; } = true;
 
+    /// <summary>False when the old calendar date is already shown above (the header of the layouts): it is said once on a screen.</summary>
+    public bool ShowOldCalendar { get; set; } = true;
+
     public DayDetailsView()
     {
         ReadOnly = true;
@@ -27,7 +30,7 @@ public sealed class DayDetailsView : RichTextBox
         var day = store.GetDay(date);
         Clear();
         Append(date.ToString("dddd d MMMM yyyy", Loc.Culture), 14f, FontStyle.Bold);
-        if (OldCalendar.Note(date) is { Length: > 0 } oldNote) Append(oldNote, 10f, FontStyle.Regular);
+        if (ShowOldCalendar && OldCalendar.Note(date) is { Length: > 0 } oldNote) Append(oldNote, 10f, FontStyle.Regular);
         foreach (var h in day.HolidayList)
             Append(Holidays.Line(h) + (h.Note is { Length: > 0 } n ? " · " + n : ""), 10.5f, FontStyle.Bold);
         if (day.Fasting is not null) Append(day.Fasting, 10f, FontStyle.Italic);

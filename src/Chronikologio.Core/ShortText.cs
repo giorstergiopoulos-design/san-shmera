@@ -22,7 +22,7 @@ public static class ShortText
 
         var names = day.Names.Select(n => n.Name).Distinct().ToList();
         if (names.Count > 0)
-            sb.Append(Loc.T("short.names")).Append(string.Join(", ", names)).Append(". ").Append(OldCalendar.Note(day.Month, day.Day));
+            sb.Append(Loc.T("short.names")).Append(string.Join(", ", names)).Append('.');   // the old calendar date is said once, in the title of the day
 
         var main = day.Commemorations.OrderByDescending(c => c.IsMajorFeast).FirstOrDefault();
         if (main is not null)
@@ -53,11 +53,11 @@ public static class ShortText
     public static string NamesLine(DayView day)
     {
         var names = day.Names.Select(n => n.Name).Distinct().ToList();
-        return names.Count == 0 ? "" : Loc.T("short.names") + string.Join(", ", names) + ". " + OldCalendar.Note(day.Month, day.Day);
+        return names.Count == 0 ? "" : Loc.T("short.names") + string.Join(", ", names) + ".";
     }
 
     /// <summary>The saint(s) of the day: the main title with its short life, then the titles of the others.</summary>
-    public static string SaintText(DayView day)
+    public static string SaintText(DayView day, int maxOthers = 5)
     {
         if (day.Commemorations.Count == 0) return "";
         var ordered = day.Commemorations.OrderByDescending(c => c.IsMajorFeast).ToList();

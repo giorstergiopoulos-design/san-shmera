@@ -20,6 +20,15 @@ internal static class LocalizationEn
         ["menu.theme"] = "Theme",
         ["menu.calendar"] = "Calendar",
         ["menu.language"] = "Language",
+        ["layout.day"] = "Day",
+        ["chip.domestic"] = "Greece",
+        ["chip.domestic.cy"] = "Cyprus",
+        ["chip.world"] = "World",
+        ["chip.births"] = "Births",
+        ["chip.deaths"] = "Deaths",
+        ["hero.kicker"] = "Saint of the day",
+        ["hero.read"] = "Read the life and the sources →",
+        ["hero.others"] = "And {0} more: {1}",
         ["menu.settings"] = "Settings",
         ["settings.title"] = "Settings",
         ["settings.group.look"] = "Appearance",
@@ -115,7 +124,7 @@ internal static class LocalizationEn
             "• The Synaxarion of saint.gr (https://www.saint.gr), for the list of the saints of each day and the links to their lives. The texts of the app are written in our own words.\n" +
             "• The open calendar Orthocal (https://orthocal.info), to cross-check dates.\n" +
             "• The “On this day” columns of news sites, to cross-check the dates of events. Their texts are not copied.\n" +
-            "• Wikimedia Commons, for pictures with a free licence, and Wikipedia only for more information.\n" +
+            "• The Megas Synaxaristis (https://www.synaxarion.gr), for the memories of the saints of each day and their dates; the lives are written in our own words.\n" +
             "• The official flags of Greece and Cyprus, from Wikimedia Commons.\n\n" +
             "WITH OPSIS\n" +
             "As a plugin of Opsis, the calendar replaces the built-in one and the “On this day” feed can appear in the bars of the News Crawler.",
@@ -127,6 +136,7 @@ internal static class LocalizationEn
         ["short.noothers"] = "There are no other entries for this day yet.",
         ["short.names"] = "Celebrating: ",
         ["short.births"] = "Born: ",
+        ["short.moresaints"] = "… and {0} more memories; see the full text.",
         ["short.history.gr"] = "On this day in Greek history",
         ["short.history.world"] = "On this day in world history",
         ["details.empty"] = "\nThe database has no entries for this day yet.",

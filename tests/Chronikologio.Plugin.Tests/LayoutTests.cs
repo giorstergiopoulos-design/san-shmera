@@ -18,11 +18,11 @@ public class LayoutTests : IDisposable
     }
 
     [Fact]
-    public void TheWindowStartsWithTheCardsLayoutAndRemembersTheChoice()
+    public void TheWindowStartsWithTheDayLayoutAndRemembersTheChoice()
     {
         using (var window = new MainWindow(DataRoot(), _settings))
         {
-            Assert.Equal("cards", window.Layout);
+            Assert.Equal("day", window.Layout);
             window.ChooseLayout("feed");
             Assert.Equal("feed", window.Layout);
         }
@@ -31,14 +31,14 @@ public class LayoutTests : IDisposable
     }
 
     [Fact]
-    public void EveryLayoutCanBeChosenAndTheCycleVisitsAllThree()
+    public void EveryLayoutCanBeChosenAndTheCycleVisitsAllFour()
     {
         using var window = new MainWindow(DataRoot(), _settings);
         var seen = new HashSet<string> { window.Layout };
-        for (var i = 0; i < 2; i++) { window.CycleLayout(); seen.Add(window.Layout); }
-        Assert.Equal(new[] { "cards", "feed", "tabs" }.OrderBy(x => x), seen.OrderBy(x => x));
+        for (var i = 0; i < 3; i++) { window.CycleLayout(); seen.Add(window.Layout); }
+        Assert.Equal(new[] { "day", "cards", "feed", "tabs" }.OrderBy(x => x), seen.OrderBy(x => x));
         window.CycleLayout();
-        Assert.Equal(UiSettings.LayoutNames[(UiSettings.LayoutNames.ToList().IndexOf("tabs") + 1) % 3], window.Layout);
+        Assert.Equal(UiSettings.LayoutNames[(UiSettings.LayoutNames.ToList().IndexOf("tabs") + 1) % UiSettings.LayoutNames.Count], window.Layout);
     }
 
     [Fact]
@@ -46,7 +46,7 @@ public class LayoutTests : IDisposable
     {
         using var window = new MainWindow(DataRoot(), _settings);
         window.ChooseLayout("moon");
-        Assert.Equal("cards", window.Layout);
+        Assert.Equal("day", window.Layout);
     }
 
     [Fact]
@@ -87,10 +87,10 @@ public class LayoutTests : IDisposable
     }
 
     [Fact]
-    public void TheSettingsFileFallsBackToCardsForAnUnknownLayout()
+    public void TheSettingsFileFallsBackToTheDayLayoutForAnUnknownLayout()
     {
         File.WriteAllText(_settings, "{ \"Layout\": \"mars\" }");
-        Assert.Equal("cards", UiSettings.Load(_settings).Layout);
+        Assert.Equal("day", UiSettings.Load(_settings).Layout);
     }
 
     [Fact]

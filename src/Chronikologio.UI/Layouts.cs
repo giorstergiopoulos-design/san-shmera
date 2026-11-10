@@ -126,6 +126,19 @@ public sealed class MiniCalendar : UserControl
     }
 }
 
+/// <summary>A label that always stays on one line and ends with "…" when it does not fit (a plain Label wraps a long text onto a second line).</summary>
+internal sealed class EllipsisLabel : Label
+{
+    public EllipsisLabel() { SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true); AutoEllipsis = true; }
+
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        e.Graphics.Clear(BackColor);
+        TextRenderer.DrawText(e.Graphics, Text, Font, ClientRectangle, ForeColor,
+            TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.NoPrefix);
+    }
+}
+
 /// <summary>The top bar shared by the layouts: flag, previous and next day, the date, today, and the fasting line.</summary>
 public sealed class DayHeader : Panel
 {
@@ -133,7 +146,7 @@ public sealed class DayHeader : Panel
     private readonly Label _prev = new() { Text = "◀", Dock = DockStyle.Left, Width = 30, TextAlign = ContentAlignment.MiddleCenter, Cursor = Cursors.Hand };
     private readonly Label _next = new() { Text = "▶", Dock = DockStyle.Left, Width = 30, TextAlign = ContentAlignment.MiddleCenter, Cursor = Cursors.Hand };
     private readonly Label _date = new() { Dock = DockStyle.Left, AutoSize = false, Width = 330, TextAlign = ContentAlignment.MiddleLeft };
-    private readonly Label _old = new() { Dock = DockStyle.Fill, AutoSize = false, AutoEllipsis = true, TextAlign = ContentAlignment.MiddleLeft, Tag = "muted" };
+    private readonly EllipsisLabel _old = new() { Dock = DockStyle.Fill, Tag = "muted" };
     private readonly Label _fast = new() { Dock = DockStyle.Bottom, Height = 22, AutoSize = false, AutoEllipsis = true, TextAlign = ContentAlignment.MiddleLeft, Tag = "muted" };
     private readonly ToolTip _tip = new();
     private readonly FlatButton _today = new() { Dock = DockStyle.Right, Width = 90 };
@@ -179,6 +192,7 @@ public sealed class DayHeader : Panel
     public void Set(DateOnly date, DayView day, string region)
     {
         _date.Text = date.ToString("dddd d MMMM yyyy", Loc.Culture);
+        _date.Width = TextRenderer.MeasureText(_date.Text, _date.Font).Width + 24;   // as wide as the date, so the rest of the row is left to the old calendar date
         _old.Text = OldCalendar.Note(date);
         var holiday = string.Join(" · ", day.HolidayList.Select(Holidays.Line));
         _fast.Text = holiday.Length > 0 ? holiday : day.Fasting ?? "";
@@ -314,6 +328,7 @@ public abstract class DayLayout : UserControl
         {
             case DayHeader or CalendarPanel: return;
             case MiniCalendar mini: mini.Restyle(); return;
+            case Chip chip: chip.Restyle(); return;
             case FlatButton: return;
             case PictureBox: c.BackColor = card ? p.Surface : p.Background; return;
             case ListView or TextBoxBase or ComboBox:
@@ -338,8 +353,19 @@ internal sealed class CardBox : Panel
 {
     private readonly Label _title = new() { Dock = DockStyle.Top, Height = 24, Font = new Font("Segoe UI", 10.5f, FontStyle.Bold) };
     private readonly TextBox _body = new() { Dock = DockStyle.Fill, Multiline = true, ReadOnly = true, BorderStyle = BorderStyle.None, ScrollBars = ScrollBars.None, TabStop = false };
-    private readonly PictureBox _picture = new() { Dock = DockStyle.Left, Width = 0, SizeMode = PictureBoxSizeMode.Zoom };
+    private readonly PhotoBox _picture = new() { Dock = DockStyle.Left, Width = 0 };
     private readonly ToolTip _tip = new();
+
+    private Image? _fitImage;
+
+    // the picture column is as wide as the picture is at the height of the card: no empty band between an icon and the text
+    private void FitPicture()
+    {
+        if (_fitImage is null) { _picture.Width = 0; return; }
+        var h = Math.Max(120, _picture.Height > 30 ? _picture.Height : 180);
+        var w = Math.Min(190, (int)Math.Round(_fitImage.Width * (h / (double)_fitImage.Height)));
+        _picture.Width = Math.Max(90, w) + _picture.InsetRight;
+    }
 
     public CardBox()
     {
@@ -350,6 +376,7 @@ internal sealed class CardBox : Panel
         Controls.Add(_body);
         Controls.Add(_picture);
         Controls.Add(_title);
+        Resize += (_, _) => FitPicture();
     }
 
     // A thin accent stripe at the left edge ties the cards to the accent colour of the theme
@@ -368,7 +395,8 @@ internal sealed class CardBox : Panel
         _body.SelectionLength = 0;
         _picture.Image?.Dispose();
         _picture.Image = image;
-        _picture.Width = image is null ? 0 : 130;
+        _fitImage = image;
+        FitPicture();
         if (credit is not null) _tip.SetToolTip(_picture, credit);
     }
 }
@@ -444,7 +472,7 @@ public sealed class FeedLayout : DayLayout
 {
     private readonly Label[] _days = Enumerable.Range(0, 7).Select(_ => new Label { Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Cursor = Cursors.Hand, Margin = new Padding(2) }).ToArray();
     private readonly ImageStrip _images = new() { Dock = DockStyle.Left, Width = 250, Vertical = true, Padding = new Padding(8) };
-    private readonly DayDetailsView _text = new() { Dock = DockStyle.Fill, ShowEvents = false };
+    private readonly DayDetailsView _text = new() { Dock = DockStyle.Fill, ShowEvents = false, ShowOldCalendar = false };
     private readonly EventFrames _events = new() { Dock = DockStyle.Bottom, Height = 270 };
     private readonly MiniCalendar _mini;
 
@@ -501,7 +529,7 @@ public sealed class TabsLayout : DayLayout
     private readonly TabHost _tabs = new() { Dock = DockStyle.Fill };
     private readonly Panel _today = new(), _calendar = new(), _names = new(), _timeline = new(), _feasts = new();
     private readonly ImageStrip _images = new() { Dock = DockStyle.Left, Width = 330, ColumnWidth = 310, Vertical = true, Padding = new Padding(8) };
-    private readonly DayDetailsView _text = new() { Dock = DockStyle.Fill, ShowEvents = false };
+    private readonly DayDetailsView _text = new() { Dock = DockStyle.Fill, ShowEvents = false, ShowOldCalendar = false };
     private readonly EventFrames _events = new() { Dock = DockStyle.Bottom, Height = 270 };
     private readonly CalendarPanel _panel;
     private readonly TextBox _nameQuery = new() { Dock = DockStyle.Top, BorderStyle = BorderStyle.FixedSingle };

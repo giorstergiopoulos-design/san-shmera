@@ -78,7 +78,7 @@ public class SettingsTests : IDisposable
         dialog.Reset();
         Application.DoEvents();
         Assert.Equal("system", ChronikologioTheme.Name);
-        Assert.Equal("cards", w.Layout);
+        Assert.Equal("day", w.Layout);
         Assert.Equal("auto", w.LanguageSetting);
         Assert.Equal("cy", w.Region);   // the reset is about the look: the country stays
     }

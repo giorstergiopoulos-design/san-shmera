@@ -42,7 +42,8 @@ public class DataTests
         {
             Assert.False(string.IsNullOrWhiteSpace(c.Summary), c.Title);
             Assert.NotEmpty(c.Sources);
-            Assert.NotEmpty(c.Names);
+            // the memories found in the Megas Synaxaristis have a name only when the database knows the etymology of the name
+            if (!c.Sources.Any(s => s.Url?.Contains("synaxarion.gr/gr/sid/", StringComparison.Ordinal) == true)) Assert.NotEmpty(c.Names);
             Assert.All(c.Names, n => Assert.False(string.IsNullOrWhiteSpace(n.Etymology.Meaning), n.Name));
         }
         foreach (var e in Store.AllEvents)

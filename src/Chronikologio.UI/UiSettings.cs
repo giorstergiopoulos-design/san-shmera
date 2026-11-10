@@ -9,8 +9,8 @@ public sealed class UiSettings
     public string Theme { get; set; } = "system";
     public bool MenuShown { get; set; }
 
-    /// <summary>The way a day is shown: "cards", "feed" or "tabs".</summary>
-    public string Layout { get; set; } = "cards";
+    /// <summary>The way a day is shown: "day" (the default), "cards", "feed" or "tabs".</summary>
+    public string Layout { get; set; } = "day";
 
     /// <summary>"gr" = the calendar of the Church of Greece (default), "cy" = the calendar of the Church of Cyprus.</summary>
     public string Region { get; set; } = "gr";
@@ -27,7 +27,7 @@ public sealed class UiSettings
     public const int MinWidth = 880;
     public const int MinHeight = 580;
 
-    public static readonly IReadOnlyList<string> LayoutNames = new[] { "cards", "feed", "tabs" };
+    public static readonly IReadOnlyList<string> LayoutNames = new[] { "day", "cards", "feed", "tabs" };
 
     public static string DefaultPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Chronikologio", "settings.json");
 
@@ -41,7 +41,7 @@ public sealed class UiSettings
             var s = JsonSerializer.Deserialize<UiSettings>(File.ReadAllText(path)) ?? new UiSettings();
             if (!ChronikologioTheme.Names.Contains(s.Theme)) s.Theme = "system";
             if (!DayStore.Regions.Contains(s.Region)) s.Region = "gr";
-            if (!LayoutNames.Contains(s.Layout)) s.Layout = "cards";
+            if (!LayoutNames.Contains(s.Layout)) s.Layout = "day";
             if (s.Language is not ("auto" or "el" or "en")) s.Language = "auto";
             s.Width = Math.Clamp(s.Width, MinWidth, 4000);
             s.Height = Math.Clamp(s.Height, MinHeight, 3000);

@@ -27,7 +27,7 @@ public class LivesTests
         {
             var f = line.Split('|');
             
-            var matches = store.GetDay(int.Parse(f[0][..2]), int.Parse(f[0][3..])).Commemorations.Where(c => c.Title.StartsWith(f[1], StringComparison.Ordinal)).ToList();
+            var matches = store.GetDay(int.Parse(f[0][..2]), int.Parse(f[0][3..])).Commemorations.Where(c => TextNorm.StartsWithWord(c.Title, f[1])).ToList();
             Assert.True(matches.Count == 1, $"{f[0]} {f[1]}: {matches.Count} matches");
             Assert.False(string.IsNullOrWhiteSpace(matches[0].Details));
         }

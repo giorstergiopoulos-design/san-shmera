@@ -114,9 +114,6 @@ public sealed class MainWindow : Form
         _rail.SetItems(new[]
         {
             new SideRail.RailItem("today", "", Loc.T("menu.today") + " (Ctrl+Home)", GoToday),
-            new SideRail.RailItem("cards", "", Loc.T("layout.cards"), () => ChooseLayout("cards")),
-            new SideRail.RailItem("feed", "", Loc.T("layout.feed"), () => ChooseLayout("feed")),
-            new SideRail.RailItem("tabs", "", Loc.T("layout.tabs"), () => ChooseLayout("tabs")),
             new SideRail.RailItem("theme", "", Loc.T("menu.theme") + " (Ctrl+T)", CycleTheme),
             new SideRail.RailItem("settings", "\uE713", Loc.T("menu.settings") + " (Ctrl+,)", ShowSettings),
             new SideRail.RailItem("help", "", Loc.T("menu.about") + " (F1)", ShowGuide)
@@ -155,9 +152,10 @@ public sealed class MainWindow : Form
         old?.Dispose();
         _layout = name switch
         {
+            "cards" => new CardsLayout(_store),
             "feed" => new FeedLayout(_store),
             "tabs" => new TabsLayout(_store, _panel),
-            _ => new CardsLayout(_store)
+            _ => new DayOverviewLayout(_store)
         };
         _layout.Dock = DockStyle.Fill;
         _layout.SelectedDate = _date;
@@ -227,6 +225,7 @@ public sealed class MainWindow : Form
             case Keys.F1: ShowGuide(); return true;
             case Keys.Control | Keys.Oemcomma: ShowSettings(); return true;
             case Keys.Control | Keys.F: _searchBar.Focus(); return true;
+            case Keys.Control | Keys.K: _searchBar.Focus(); return true;
             default: return false;
         }
     }
@@ -297,7 +296,7 @@ public sealed class MainWindow : Form
     public void ResetLook()
     {
         ChooseTheme("system");
-        ChooseLayout("cards");
+        ChooseLayout("day");
         ChooseLanguage("auto");
         if (MenuVisible) ToggleMenu();
     }

@@ -16,7 +16,7 @@ public sealed class CalendarPanel : UserControl
     private readonly Opsis.UI.FlatButton _more = new() { Text = Loc.T("panel.more"), Dock = DockStyle.Bottom, Height = 32 };
     private readonly Label _date = new() { Dock = DockStyle.Top, Height = 24, TextAlign = ContentAlignment.BottomLeft };
     private readonly TextBox _short = new() { Dock = DockStyle.Fill, Multiline = true, ReadOnly = true, ScrollBars = ScrollBars.Vertical, BorderStyle = BorderStyle.FixedSingle, TabStop = false };
-    private readonly PictureBox _thumb = new() { Dock = DockStyle.Left, Width = 0, SizeMode = PictureBoxSizeMode.Zoom, Cursor = Cursors.Hand };
+    private readonly PhotoBox _thumb = new() { Dock = DockStyle.Left, Width = 0, Cursor = Cursors.Hand };
     private readonly Panel _bottom = new() { Dock = DockStyle.Bottom, Height = 190 };
     private readonly ToolTip _tip = new();
     private readonly CalendarGrid _grid = new() { Dock = DockStyle.Fill };
