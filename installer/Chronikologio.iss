@@ -36,6 +36,10 @@ ArchitecturesAllowed=x64compatible
 UninstallDisplayName={#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExe}
 SetupIconFile=..\src\Chronikologio.Windows\chronikologio.ico
+; the pictures of the pages (made from the icon by tools\installer\Make-WizardImages.ps1)
+WizardStyle=modern
+WizardImageFile=assets\wizard-large.bmp
+WizardSmallImageFile=assets\wizard-small.bmp
 ; The running programs that hold the files are closed by the [Code] section below (Opsis loads the plugins into its own process), without a question.
 CloseApplications=no
 RestartApplications=no
@@ -43,8 +47,8 @@ ShowLanguageDialog=auto
 LanguageDetectionMethod=uilanguage
 
 [Languages]
-Name: "greek"; MessagesFile: "compiler:Languages\Greek.isl"
-Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "greek"; MessagesFile: "compiler:Languages\Greek.isl"; LicenseFile: "license-el.txt"; InfoBeforeFile: "about-el.txt"
+Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "license-en.txt"; InfoBeforeFile: "about-en.txt"
 
 [Types]
 Name: "full"; Description: "Πλήρης εγκατάσταση"
@@ -59,6 +63,8 @@ Name: "desktopicon"; Description: "Δημιουργία συντόμευσης �
 
 [Files]
 Source: "{#DistDir}\app\*"; DestDir: "{app}"; Components: app; Flags: recursesubdirs ignoreversion
+Source: "license-el.txt"; DestDir: "{app}"; DestName: "LICENSE-el.txt"; Components: app; Flags: ignoreversion
+Source: "license-en.txt"; DestDir: "{app}"; DestName: "LICENSE-en.txt"; Components: app; Flags: ignoreversion
 ; The plugin goes into the plugins folder of the Opsis that was found (see [Code]).
 Source: "{#DistDir}\plugin\*"; DestDir: "{code:PluginDir}"; Components: plugin; Flags: recursesubdirs ignoreversion; Check: PluginWillInstall
 

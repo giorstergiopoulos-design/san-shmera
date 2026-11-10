@@ -1,0 +1,18 @@
+﻿Chronikologio — Timeline Calendar
+
+Name days, calendar and "On this day" for Greece and Cyprus.
+
+WHAT IT DOES
+• For every day of the year it shows which saints are honoured, which names celebrate and what they mean, with the lives of the saints and name etymologies.
+• On this day: events of Greek, Cypriot and world history with photographs, and births and deaths of well-known people.
+• Fasts, holidays, the old and the new calendar, Easter and the movable feasts.
+• Search for a name, a saint or an event, three more layouts, dark and light theme, Greek and English interface.
+
+WHAT IS INSTALLED
+• The Chronikologio app (Start menu, optionally the desktop).
+• Optionally, the plugin for Opsis: the calendar becomes a desktop widget and the "On this day" feed appears in the bars of the News Crawler. It needs Opsis 2.4.3 or newer; the setup checks it and, if Opsis is running, closes it and starts it again.
+
+A NOTE ON THE DATA
+The texts are written in our own words and have not yet been verified against official sources; the state of every entry is shown in the full text.
+
+The app is free and open source (MIT licence).

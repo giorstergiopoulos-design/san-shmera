@@ -1,0 +1,24 @@
+﻿LICENCE — Chronikologio
+
+The app is distributed FREE OF CHARGE as open-source software under the MIT licence. You may use, modify and distribute it freely, under the terms below.
+
+DISCLAIMER
+The software is provided "AS IS", without any warranty. The author is not liable for any damage or loss of data that may result from its use.
+The texts about saints, feasts and historical events are written in our own words and show their verification state; they are not an official church or historical source.
+
+CONTENT AND IMAGES
+The images come from Wikimedia Commons and have a free licence (public domain, CC0 or CC BY). Every image shows its creator, its licence and the link to its source.
+The data rest on public sources: the Megas Synaxaristis (synaxarion.gr) for the memories of the saints and the Greek Wikipedia (el.wikipedia.org) for names and years. Only the facts are taken from them; the texts of the app do not copy texts of other websites.
+
+THIRD-PARTY SOFTWARE
+The app uses the SixLabors.ImageSharp library (Six Labors Split License) to read WebP images.
+
+MIT License
+
+Copyright (c) 2026 Opsis Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
