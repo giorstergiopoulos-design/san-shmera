@@ -9,7 +9,7 @@
 ;           the setup says so. The uninstaller removes only the plugin files and its approval entry, never Opsis. install-plugin.bat is for developers.
 ; Silent install:  ChronikologioSetup.exe /VERYSILENT /COMPONENTS="app,plugin"
 #define MyAppName "Χρονικολόγιο"
-#define MyAppVersion "0.5.0"
+#define MyAppVersion "0.6.0"
 #define MyAppExe "Chronikologio.exe"
 #ifndef DistDir
   #define DistDir "..\dist"

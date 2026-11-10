@@ -534,7 +534,7 @@ public sealed class TabsLayout : DayLayout
     private readonly CalendarPanel _panel;
     private readonly TextBox _nameQuery = new() { Dock = DockStyle.Top, BorderStyle = BorderStyle.FixedSingle };
     private readonly ListView _nameList = NewList();
-    private readonly ComboBox _month = new() { Dock = DockStyle.Top, DropDownStyle = ComboBoxStyle.DropDownList };
+    private readonly FlatComboBox _month = new() { Dock = DockStyle.Top, Height = 32 };
     private readonly ListView _monthList = NewList();
     private readonly Label _easter = new() { Dock = DockStyle.Top, Height = 30, TextAlign = ContentAlignment.MiddleLeft, Tag = "muted" };
     private readonly ListView _feastList = NewList();
@@ -594,9 +594,7 @@ public sealed class TabsLayout : DayLayout
         SetColumns(_monthList, new[] { 190, 190, 360 }, Loc.T("col.day"), Loc.T("col.feast"), Loc.T("col.event"));
         SetColumns(_feastList, new[] { 200, 430, 330 }, Loc.T("col.date"), Loc.T("col.feast"), Loc.T("col.kind"));
         _filling = true;
-        _month.Items.Clear();
-        for (var m = 1; m <= 12; m++) _month.Items.Add(new DateTime(2000, m, 1).ToString("MMMM", Loc.Culture));
-        _month.SelectedIndex = SelectedDate.Month - 1;
+        _month.SetItems(Enumerable.Range(1, 12).Select(m => new DateTime(2000, m, 1).ToString("MMMM", Loc.Culture)), SelectedDate.Month - 1);
         _filling = false;
     }
 
@@ -619,7 +617,7 @@ public sealed class TabsLayout : DayLayout
         _events.Set(Store, day);
         if (_panel.SelectedDate != SelectedDate) _panel.SelectedDate = SelectedDate;
         _filling = true;
-        if (_month.Items.Count == 12) _month.SelectedIndex = SelectedDate.Month - 1;
+        if (_month.Count == 12) _month.SelectedIndex = SelectedDate.Month - 1;
         _filling = false;
         FillMonth();
         if (_nameList.Items.Count == 0) FillNames();

@@ -1,4 +1,5 @@
 using Chronikologio.Core;
+using Opsis.UI;
 
 namespace Chronikologio.UI;
 
@@ -9,8 +10,8 @@ namespace Chronikologio.UI;
 public sealed class SettingsDialog : Form
 {
     private readonly MainWindow _window;
-    private readonly ComboBox _theme = NewCombo(), _layout = NewCombo(), _region = NewCombo(), _language = NewCombo();
-    private readonly CheckBox _menu = new() { AutoSize = true };
+    private readonly FlatComboBox _theme = NewCombo(), _layout = NewCombo(), _region = NewCombo(), _language = NewCombo();
+    private readonly FlatCheckBox _menu = new() { AutoSize = true };
     private readonly Label _note = new() { AutoSize = false, Height = 34, Dock = DockStyle.Bottom, Tag = "muted" };
     private readonly Opsis.UI.FlatButton _reset = new() { Width = 190, Height = 34 };
     private readonly Opsis.UI.FlatButton _close = new() { Width = 110, Height = 34 };
@@ -18,7 +19,10 @@ public sealed class SettingsDialog : Form
     private readonly List<Label> _labels = new();
     private bool _filling;
 
-    private static ComboBox NewCombo() => new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 300, FlatStyle = FlatStyle.Flat };
+    private readonly Dictionary<FlatComboBox, List<Choice>> _choices = new();
+
+    // the combo boxes of Opsis.UI: drawn in the colours of the theme, no white boxes
+    private static FlatComboBox NewCombo() => new() { Width = 300, Height = 32 };
 
     public SettingsDialog(MainWindow window)
     {
@@ -51,10 +55,10 @@ public sealed class SettingsDialog : Form
         Controls.Add(buttons);
 
         Fill();
-        _theme.SelectedIndexChanged += (_, _) => { if (!_filling && _theme.SelectedItem is Choice c) _window.ChooseTheme(c.Key); };
-        _layout.SelectedIndexChanged += (_, _) => { if (!_filling && _layout.SelectedItem is Choice c) _window.ChooseLayout(c.Key); };
-        _region.SelectedIndexChanged += (_, _) => { if (!_filling && _region.SelectedItem is Choice c) { _window.ChooseRegion(c.Key); Fill(); } };
-        _language.SelectedIndexChanged += (_, _) => { if (!_filling && _language.SelectedItem is Choice c) { _window.ChooseLanguage(c.Key); } };
+        _theme.SelectedIndexChanged += (_, _) => { if (!_filling && Chosen(_theme) is { } c) _window.ChooseTheme(c.Key); };
+        _layout.SelectedIndexChanged += (_, _) => { if (!_filling && Chosen(_layout) is { } c) _window.ChooseLayout(c.Key); };
+        _region.SelectedIndexChanged += (_, _) => { if (!_filling && Chosen(_region) is { } c) { _window.ChooseRegion(c.Key); Fill(); } };
+        _language.SelectedIndexChanged += (_, _) => { if (!_filling && Chosen(_language) is { } c) { _window.ChooseLanguage(c.Key); } };
         _menu.CheckedChanged += (_, _) => { if (!_filling && _menu.Checked != _window.MenuVisible) _window.ToggleMenu(); };
         _reset.Click += (_, _) => { _window.ResetLook(); Fill(); };
         _close.Click += (_, _) => Close();
@@ -94,13 +98,16 @@ public sealed class SettingsDialog : Form
         return card;
     }
 
-    private static void Choices(ComboBox box, IEnumerable<Choice> choices, string current)
-    {
-        box.Items.Clear();
-        foreach (var c in choices) box.Items.Add(c);
-        box.SelectedItem = box.Items.Cast<Choice>().FirstOrDefault(c => c.Key == current) ?? (box.Items.Count > 0 ? box.Items[0] : null);
-    }
+    private Choice? Chosen(FlatComboBox box) =>
+        _choices.TryGetValue(box, out var list) && box.SelectedIndex >= 0 && box.SelectedIndex < list.Count ? list[box.SelectedIndex] : null;
 
+    private void Choices(FlatComboBox box, IEnumerable<Choice> choices, string current)
+    {
+        var list = choices.ToList();
+        _choices[box] = list;
+        var index = Math.Max(0, list.FindIndex(c => c.Key == current));
+        box.SetItems(list.Select(c => c.Text), index);
+    }
     private void Fill()
     {
         _filling = true;
@@ -140,7 +147,7 @@ public sealed class SettingsDialog : Form
         foreach (var (card, head) in _cards) { card.BackColor = p.Surface; card.ForeColor = p.Text; head.BackColor = p.Surface; head.ForeColor = p.Accent; }
         foreach (var l in _labels) { l.BackColor = p.Surface; l.ForeColor = p.Text; }
         _menu.BackColor = p.Surface; _menu.ForeColor = p.Text;
-        foreach (var box in new[] { _theme, _layout, _region, _language }) { box.BackColor = p.Background; box.ForeColor = p.Text; }
+
         _note.BackColor = p.Background; _note.ForeColor = p.TextMuted;
         foreach (var table in _cards.SelectMany(c => c.Card.Controls.OfType<TableLayoutPanel>())) table.BackColor = p.Surface;
         Invalidate(true);
@@ -154,11 +161,11 @@ public sealed class SettingsDialog : Form
     }
 
     // test helpers
-    public IReadOnlyList<string> Themes => _theme.Items.Cast<Choice>().Select(c => c.Key).ToList();
+    public IReadOnlyList<string> Themes => _choices[_theme].Select(c => c.Key).ToList();
     public void Pick(string which, string key)
     {
-        var box = which switch { "theme" => _theme, "layout" => _layout, "region" => _region, _ => _language };
-        box.SelectedItem = box.Items.Cast<Choice>().First(c => c.Key == key);
+        FlatComboBox box = which switch { "theme" => _theme, "layout" => _layout, "region" => _region, _ => _language };
+        box.SelectedIndex = _choices[box].FindIndex(c => c.Key == key);
     }
     public void Reset() => _reset.PerformClick();
 }
