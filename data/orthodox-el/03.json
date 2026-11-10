@@ -14,7 +14,7 @@
       "names": [ { "name": "Αλέξιος", "variants": ["Αλέξης", "Αλεξία"], "etymology": { "origin": "ελληνική", "meaning": "Αυτός που προστατεύει και απομακρύνει τον κίνδυνο (από το «αλέξω»)." } } ] } ] },
     { "day": 25, "commemorations": [ {
       "title": "Ο Ευαγγελισμός της Θεοτόκου",
-      "images": [ { "file": "icons/03-25-annunciation-3.jpg", "caption": "Ο Ευαγγελισμός της Θεοτόκου. Εικόνα από τον ναό του Αγίου Κλήμεντος, Οχρίδα, 14ος αιώνας", "creator": "Άγνωστος αγιογράφος", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ohrid_annunciation_icon.jpg", "kind": "icon" } ],
+      "images": [ { "file": "icons/03-25-annunciation-3.webp", "caption": "Ο Ευαγγελισμός της Θεοτόκου. Εικόνα από τον ναό του Αγίου Κλήμεντος, Οχρίδα, 14ος αιώνας", "creator": "Άγνωστος αγιογράφος", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ohrid_annunciation_icon.jpg", "kind": "icon" } ],
       "summary": "Ο αρχάγγελος Γαβριήλ φέρνει στην Παναγία το μήνυμα ότι θα γεννήσει τον Υιό του Θεού. Η εορτή γιορτάζεται εννέα μήνες πριν από τα Χριστούγεννα και ταυτίζεται με την εθνική εορτή της 25ης Μαρτίου.",
       "names": [
         { "name": "Ευαγγελία", "variants": ["Ευαγγελίνα", "Βάγια", "Ευάγγελος", "Βαγγέλης", "Βαγγελιώ"], "etymology": { "origin": "ελληνική", "meaning": "Αυτή που φέρνει καλά νέα (ευ + αγγέλλω)." } },

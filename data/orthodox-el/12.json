@@ -15,13 +15,13 @@
       "names": [ { "name": "Σάββας", "variants": ["Σάββα", "Σαββούλα"], "etymology": { "origin": "αραμαϊκή", "meaning": "Συνδέεται με τη λέξη που σημαίνει «παππούς» ή «γέροντας».", "note": "Η ετυμολογία είναι αβέβαιη." } } ] } ] },
     { "day": 6, "commemorations": [ {
       "title": "Άγιος Νικόλαος, Αρχιεπίσκοπος Μύρων της Λυκίας",
-      "images": [ { "file": "icons/12-06-nicholas-2.jpg", "caption": "Ο Άγιος Νικόλαος ο Θαυματουργός. Ορθόδοξη εικόνα", "creator": "Wikivorker", "license": "CC0 1.0", "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Orthodox_icon_of_Saint_Nicholas_the_Wonderworker.jpg", "kind": "icon" } ],
+      "images": [ { "file": "icons/12-06-nicholas-2.webp", "caption": "Ο Άγιος Νικόλαος ο Θαυματουργός. Ορθόδοξη εικόνα", "creator": "Wikivorker", "license": "CC0 1.0", "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Orthodox_icon_of_Saint_Nicholas_the_Wonderworker.jpg", "kind": "icon" } ],
       "summary": "Ο Νικόλαος γεννήθηκε στα Πάταρα της Λυκίας και έγινε επίσκοπος Μύρων τον 4ο αιώνα. Ήταν γνωστός για τη φιλανθρωπία του και τα θαύματά του. Τιμάται ως προστάτης των ναυτικών.",
       "names": [ { "name": "Νικόλαος", "variants": ["Νίκος", "Νικολέτα", "Νικολίνα", "Νικόλας", "Νικολάκης"], "etymology": { "origin": "ελληνική", "meaning": "Αυτός που νικά τον λαό, δηλαδή ο νικητής (νίκη + λαός)." } } ],
       "isMajorFeast": true } ] },
     { "day": 12, "commemorations": [ {
       "title": "Άγιος Σπυρίδων ο Θαυματουργός, Επίσκοπος Τριμυθούντος",
-      "images": [ { "file": "icons/12-12-spyridon-2.jpg", "caption": "Ο Άγιος Σπυρίδων. Ορθόδοξη εικόνα", "creator": "Άγνωστος αγιογράφος", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint_Spyridon_icon.jpg", "kind": "icon" } ],
+      "images": [ { "file": "icons/12-12-spyridon-2.webp", "caption": "Ο Άγιος Σπυρίδων. Ορθόδοξη εικόνα", "creator": "Άγνωστος αγιογράφος", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint_Spyridon_icon.jpg", "kind": "icon" } ],
       "summary": "Ο Σπυρίδων γεννήθηκε στην Κύπρο και ήταν ποιμένας πριν γίνει επίσκοπος. Συμμετείχε στην Α΄ Οικουμενική Σύνοδο το 325 και πέθανε γύρω στο 348. Το λείψανό του φυλάσσεται στην Κέρκυρα, όπου είναι ο πολιούχος.",
       "names": [ { "name": "Σπυρίδων", "variants": ["Σπύρος", "Σπυριδούλα", "Σπυράκος"], "etymology": { "origin": "ελληνική", "meaning": "Συνδέεται πιθανώς με το «σπυρίδα», το καλάθι.", "note": "Η ετυμολογία είναι αβέβαιη." } } ],
       "isMajorFeast": true } ] },

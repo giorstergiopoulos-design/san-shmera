@@ -16,6 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="../../data/**/*.json;../../data/**/*.tsv" Link="data/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="../../data/images/**/*.jpg;../../data/images/**/*.jpeg;../../data/images/**/*.png" Link="data/images/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../data/images/**/*.jpg;../../data/images/**/*.jpeg;../../data/images/**/*.png;../../data/images/**/*.webp" Link="data/images/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

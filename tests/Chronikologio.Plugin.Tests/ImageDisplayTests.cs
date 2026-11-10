@@ -49,7 +49,7 @@ public class ImageDisplayTests
             .Select(i => i.File.Replace('/', Path.DirectorySeparatorChar)).ToHashSet(StringComparer.OrdinalIgnoreCase);
         var root = Path.Combine(DataRoot(), "images");
         var onDisk = Directory.GetFiles(root, "*.*", SearchOption.AllDirectories)
-            .Where(f => Path.GetExtension(f).ToLowerInvariant() is ".jpg" or ".jpeg" or ".png")   // the list of event photographs (eventimages.tsv) is data, not an image
+            .Where(f => Path.GetExtension(f).ToLowerInvariant() is ".jpg" or ".jpeg" or ".png" or ".webp")   // the list of event photographs (eventimages.tsv) is data, not an image
             .Select(f => Path.GetRelativePath(root, f));
         Assert.All(onDisk, f => Assert.Contains(f, used));
     }

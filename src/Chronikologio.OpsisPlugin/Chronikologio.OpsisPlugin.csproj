@@ -5,12 +5,16 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <Version>0.4.0</Version>
+    <!-- a class library does not copy the packages it uses unless told to: the plugin folder needs the WebP decoder next to the plugin -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <!-- The assembly name ends in "Plugin": Opsis loads every *Plugin.dll it finds in a plugin folder. -->
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../Chronikologio.Core/Chronikologio.Core.csproj" />
     <ProjectReference Include="../Chronikologio.UI/Chronikologio.UI.csproj" />
     <Reference Include="Opsis.UI"><HintPath>../../libs/Opsis.UI.dll</HintPath><Private>true</Private></Reference>
+    <!-- decodes the WebP images; copied into the plugin folder (Opsis does not have it) -->
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
     <!-- The contract is shared with the host (Opsis loads it in its default context), so it is not copied next to the plugin. -->
     <Reference Include="OpsisNewsCrawler.Plugin.Abstractions">
       <HintPath>../../libs/OpsisNewsCrawler.Plugin.Abstractions.dll</HintPath>
@@ -19,6 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="../../data/**/*.json;../../data/**/*.tsv" Link="data/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="../../data/images/**/*.jpg;../../data/images/**/*.jpeg;../../data/images/**/*.png" Link="data/images/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../data/images/**/*.jpg;../../data/images/**/*.jpeg;../../data/images/**/*.png;../../data/images/**/*.webp" Link="data/images/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

@@ -38,7 +38,7 @@ foreach (var file in Directory.EnumerateFiles(images, "*.*", SearchOption.AllDir
         using (var check = Image.Load(target)) { if (check.Width < 1 || check.Height < 1) throw new InvalidDataException("empty image"); }
         after += new FileInfo(target).Length;
         File.Delete(file);
-        renames[Path.GetRelativePath(images, file).Replace('\', '/')] = Path.GetRelativePath(images, target).Replace('\', '/');
+        renames[Path.GetRelativePath(images, file).Replace('\\', '/')] = Path.GetRelativePath(images, target).Replace('\\', '/');
     }
     catch (Exception ex)
     {

@@ -27,7 +27,7 @@
       "names": [ { "name": "Ιάκωβος", "variants": ["Ιακώβ", "Ιακωβίνα"], "etymology": { "origin": "εβραϊκή", "meaning": "«Αυτός που ακολουθεί τη φτέρνα» ή «ο Θεός να προστατεύει»." } } ] } ] },
     { "day": 26, "commemorations": [ {
       "title": "Άγιος Δημήτριος ο Μυροβλύτης και Θεσσαλονίκης",
-      "images": [ { "file": "icons/10-26-demetrios-1.jpg", "caption": "Ο Άγιος Δημήτριος. Τοιχογραφία του Μανουήλ Πανσέληνου, Πρωτάτο, Άγιον Όρος", "creator": "Μανουήλ Πανσέληνος", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint_Demetrius_of_Protat.JPG", "kind": "icon" } ],
+      "images": [ { "file": "icons/10-26-demetrios-1.webp", "caption": "Ο Άγιος Δημήτριος. Τοιχογραφία του Μανουήλ Πανσέληνου, Πρωτάτο, Άγιον Όρος", "creator": "Μανουήλ Πανσέληνος", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint_Demetrius_of_Protat.JPG", "kind": "icon" } ],
       "summary": "Ο Δημήτριος ήταν Ρωμαίος αξιωματούχος στη Θεσσαλονίκη και μαρτύρησε στις αρχές του 4ου αιώνα. Είναι ο πολιούχος της πόλης. Η εορτή του συμπίπτει με τα Δημήτρια, μία από τις μεγάλες γιορτές της Θεσσαλονίκης.",
       "names": [ { "name": "Δημήτριος", "variants": ["Δημήτρης", "Μήτσος", "Δήμητρα", "Μητσάκης"], "etymology": { "origin": "ελληνική", "meaning": "Αυτός που ανήκει στη Δήμητρα, τη θεά της γης και της βλάστησης." } } ],
       "isMajorFeast": true } ] }

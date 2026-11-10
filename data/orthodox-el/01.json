@@ -6,7 +6,7 @@
   "days": [
     { "day": 1, "commemorations": [ {
       "title": "Άγιος Βασίλειος ο Μέγας, Αρχιεπίσκοπος Καισαρείας",
-      "images": [ { "file": "icons/01-01-basil-2.jpg", "caption": "Ο Άγιος Βασίλειος ο Μέγας. Εικόνα του Σεμιόν Σπιριντόνοφ, 1674", "creator": "Σεμιόν Σπιριντόνοφ Χολμογκορέτς", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Semen_Spiridonov_Kholmogorets._Basil_the_Great._1674.jpg", "kind": "icon" } ],
+      "images": [ { "file": "icons/01-01-basil-2.webp", "caption": "Ο Άγιος Βασίλειος ο Μέγας. Εικόνα του Σεμιόν Σπιριντόνοφ, 1674", "creator": "Σεμιόν Σπιριντόνοφ Χολμογκορέτς", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Semen_Spiridonov_Kholmogorets._Basil_the_Great._1674.jpg", "kind": "icon" } ],
       "summary": "Ο Βασίλειος γεννήθηκε γύρω στο 330 στην Καισάρεια της Καππαδοκίας και έγινε επίσκοπος της πόλης. Ήταν μεγάλος θεολόγος και φιλάνθρωπος, οργάνωσε φιλανθρωπικά ιδρύματα και πέθανε το 379. Την ίδια ημέρα γιορτάζεται η Περιτομή του Χριστού.",
       "names": [ { "name": "Βασίλειος", "variants": ["Βασίλης", "Βασιλική", "Βάσω", "Βασιλεία"], "etymology": { "origin": "ελληνική", "meaning": "Ο βασιλικός, αυτός που ταιριάζει σε βασιλιά (από το «βασιλεύς»)." } } ],
       "isMajorFeast": true } ] },
@@ -27,7 +27,7 @@
       "isMajorFeast": true } ] },
     { "day": 17, "commemorations": [ {
       "title": "Όσιος Αντώνιος ο Μέγας",
-      "images": [ { "file": "icons/01-17-anthony-5.jpg", "caption": "Ο Όσιος Αντώνιος ο Μέγας. Ορθόδοξη εικόνα", "creator": "Άγνωστος αγιογράφος", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:St_Anthony_the_Great.jpg", "kind": "icon" } ],
+      "images": [ { "file": "icons/01-17-anthony-5.webp", "caption": "Ο Όσιος Αντώνιος ο Μέγας. Ορθόδοξη εικόνα", "creator": "Άγνωστος αγιογράφος", "license": "Public Domain", "sourceUrl": "https://commons.wikimedia.org/wiki/File:St_Anthony_the_Great.jpg", "kind": "icon" } ],
       "summary": "Ο Αντώνιος γεννήθηκε γύρω στο 251 στην Αίγυπτο και έζησε ως ασκητής στην έρημο. Θεωρείται ο πατέρας του μοναχισμού και πέθανε το 356.",
       "names": [ { "name": "Αντώνης", "variants": ["Αντώνιος", "Αντωνία", "Αντωνίνα", "Τόνια"], "etymology": { "origin": "λατινική", "meaning": "Από το ρωμαϊκό γένος Antonius.", "note": "Η προέλευση του ρωμαϊκού ονόματος είναι αβέβαιη." } } ],
       "isMajorFeast": true } ] },

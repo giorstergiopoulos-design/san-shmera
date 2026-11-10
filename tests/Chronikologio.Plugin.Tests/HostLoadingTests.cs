@@ -48,6 +48,21 @@ public class HostLoadingTests
     }
 
     [Fact]
+    public void InsideThePluginContextTheImagesInWebpCanBeRead()
+    {
+        var context = new PluginContext(PluginDll());
+        try
+        {
+            var ui = context.LoadFromAssemblyName(new AssemblyName("Chronikologio.UI"));
+            var load = ui.GetType("Chronikologio.UI.ImageLoader")!.GetMethod("Load")!;
+            var webp = Directory.EnumerateFiles(Path.Combine(AppContext.BaseDirectory, "data", "images"), "*.webp", SearchOption.AllDirectories).First();
+            using var image = (System.Drawing.Image)load.Invoke(null, new object[] { webp })!;
+            Assert.True(image.Width > 10 && image.Height > 10);
+        }
+        finally { context.Unload(); }
+    }
+
+    [Fact]
     public void AfterStartTheCrawlerFindsTheFeedAndTheDesktopFindsTheWidgetThatReplacesTheCalendar()
     {
         var context = new PluginContext(PluginDll());
