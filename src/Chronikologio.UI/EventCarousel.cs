@@ -26,6 +26,13 @@ public sealed class EventCarousel : Panel
     private int _index;
     private string _empty = "";
 
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        base.OnPaint(e);
+        using var stripe = new SolidBrush(ChronikologioTheme.Palette.Accent);
+        e.Graphics.FillRectangle(stripe, 0, 0, 3, Height);   // the same accent stripe as the cards
+    }
+
     public EventCarousel()
     {
         Tag = "card";
@@ -126,9 +133,8 @@ public sealed class EventCarousel : Panel
             if (path is null) continue;
             try
             {
-                using var stream = File.OpenRead(path);
                 info = candidate;
-                return Image.FromStream(stream, useEmbeddedColorManagement: false, validateImageData: true);
+                return ImageLoader.Load(path);
             }
             catch (Exception ex) when (ex is ArgumentException or OutOfMemoryException or IOException) { }
         }

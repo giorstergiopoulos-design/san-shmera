@@ -32,9 +32,7 @@ public sealed class ImageStrip : FlowLayoutPanel
             Image bitmap;
             try
             {
-                // Loaded through a stream so the file is not locked while the image is shown.
-                using var stream = File.OpenRead(path);
-                bitmap = Image.FromStream(stream, useEmbeddedColorManagement: false, validateImageData: true);
+                bitmap = ImageLoader.Load(path);   // read completely, so the file is not locked while the image is shown
             }
             catch (Exception ex) when (ex is ArgumentException or OutOfMemoryException or IOException)
             {

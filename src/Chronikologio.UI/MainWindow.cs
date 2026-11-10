@@ -118,6 +118,7 @@ public sealed class MainWindow : Form
             new SideRail.RailItem("feed", "", Loc.T("layout.feed"), () => ChooseLayout("feed")),
             new SideRail.RailItem("tabs", "", Loc.T("layout.tabs"), () => ChooseLayout("tabs")),
             new SideRail.RailItem("theme", "", Loc.T("menu.theme") + " (Ctrl+T)", CycleTheme),
+            new SideRail.RailItem("settings", "\uE713", Loc.T("menu.settings") + " (Ctrl+,)", ShowSettings),
             new SideRail.RailItem("help", "", Loc.T("menu.about") + " (F1)", ShowGuide)
         });
         _rail.Checked = Layout;
@@ -224,6 +225,7 @@ public sealed class MainWindow : Form
             case Keys.Control | Keys.Home: GoToday(); return true;
             case Keys.Control | Keys.L: CycleLayout(); return true;
             case Keys.F1: ShowGuide(); return true;
+            case Keys.Control | Keys.Oemcomma: ShowSettings(); return true;
             case Keys.Control | Keys.F: _searchBar.Focus(); return true;
             default: return false;
         }
@@ -273,6 +275,7 @@ public sealed class MainWindow : Form
             languages.DropDownItems.Add(item);
         }
         view.DropDownItems.Add(languages);
+        view.DropDownItems.Add(new ToolStripMenuItem(Loc.T("menu.settings"), null, (_, _) => ShowSettings()) { ShortcutKeyDisplayString = "Ctrl+," });
         view.DropDownItems.Add(new ToolStripMenuItem(Loc.T("menu.hidemenu"), null, (_, _) => ToggleMenu()) { ShortcutKeyDisplayString = "Ctrl+M" });
 
         var help = new ToolStripMenuItem(Loc.T("menu.help"));
@@ -286,6 +289,18 @@ public sealed class MainWindow : Form
     }
 
     private void ShowGuide() => HelpDialog.ShowFor(this, 0);
+
+    /// <summary>Opens the settings window (Ctrl+, or the gear of the rail).</summary>
+    public void ShowSettings() => SettingsDialog.ShowFor(this);
+
+    /// <summary>Puts the look back to its defaults: system theme, the cards layout, automatic language, no menu bar. The country is kept.</summary>
+    public void ResetLook()
+    {
+        ChooseTheme("system");
+        ChooseLayout("cards");
+        ChooseLanguage("auto");
+        if (MenuVisible) ToggleMenu();
+    }
 
     private void ShowChangelog() => HelpDialog.ShowFor(this, 1);
     private void ShowLicense() => HelpDialog.ShowFor(this, 2);

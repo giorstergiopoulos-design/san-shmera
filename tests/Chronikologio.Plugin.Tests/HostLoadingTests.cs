@@ -65,7 +65,9 @@ public class HostLoadingTests
             var feed = PluginFeeds.Find("san-simera");
             Assert.NotNull(feed);
             Assert.Equal("Σαν σήμερα", feed!.TitleEl);
+            // the lines are made on a background thread: wait for the first snapshot (the feed is empty until then)
             var items = feed.GetItems();
+            for (var waited = 0; items.Count == 0 && waited < 400; waited++) { Thread.Sleep(50); items = feed.GetItems(); }
             Assert.NotEmpty(items);
             Assert.All(items, i => Assert.False(string.IsNullOrWhiteSpace(i.Text)));
 

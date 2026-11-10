@@ -79,21 +79,27 @@ public sealed class CalendarGrid : Control
         var today = DateOnly.FromDateTime(DateTime.Today);
         for (var d = 1; d <= days; d++)
         {
-            var r = Cell(LeadingBlanks + d - 1, headH);
+            var cell = Cell(LeadingBlanks + d - 1, headH);
+            // The number, its circle and its dot form one group, centred in the cell: in a tall cell (the small calendar of the layouts) they stay together
+            // instead of the circle sitting at the top of the cell, the number in the middle and the dot at the bottom.
+            var eh = Math.Min(cell.Height, Math.Max(cell.Width * 1.35f, Font.Height * 2.4f));
+            var r = new RectangleF(cell.X, cell.Y + (cell.Height - eh) / 2, cell.Width, eh);
+            var tr = new RectangleF(r.X, r.Y, r.Width, r.Height - 6f);   // where the number is, above the dot
             var date = new DateOnly(_month.Year, _month.Month, d);
-            var inner = RectangleF.Inflate(r, -2, -2);
             var selected = date == _selected;
-            if (selected) g.FillEllipse(accent, inner.X + (inner.Width - Math.Min(inner.Width, inner.Height)) / 2, inner.Y, Math.Min(inner.Width, inner.Height), Math.Min(inner.Width, inner.Height));
+            var dia = Math.Max(12f, Math.Min(r.Width - 8f, tr.Height - 4f));
+            var ring = new RectangleF(tr.X + (tr.Width - dia) / 2, tr.Y + (tr.Height - dia) / 2, dia, dia);
+            if (selected) g.FillEllipse(accent, ring);
             else if (date == today)
             {
                 using var pen = new Pen(Accent, 1.5f);
-                g.DrawEllipse(pen, inner.X + (inner.Width - Math.Min(inner.Width, inner.Height)) / 2, inner.Y, Math.Min(inner.Width, inner.Height), Math.Min(inner.Width, inner.Height));
+                g.DrawEllipse(pen, ring);
             }
             var major = IsMajor(date);
             using var bold = major ? new Font(Font, FontStyle.Bold) : null;
             var off = IsDayOff(date);
             using var red = new SolidBrush(Color.FromArgb(226, 75, 74));
-            g.DrawString(d.ToString(CultureInfo.InvariantCulture), bold ?? Font, selected ? onAccent : off ? red : major ? accent : fore, r, sf);
+            g.DrawString(d.ToString(CultureInfo.InvariantCulture), bold ?? Font, selected ? onAccent : off ? red : major ? accent : fore, tr, sf);
             if (HasData(date) && !selected)
             {
                 // A dot for an ordinary day, a longer bar for a great feast.

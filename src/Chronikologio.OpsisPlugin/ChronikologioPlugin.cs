@@ -11,7 +11,7 @@ public sealed class ChronikologioPlugin : IOpsisNewsCrawlerPlugin, IPluginWidget
 {
     public const string FeedKey = "san-simera";
 
-    private DayStore? _store;
+    private DailySnapshotService? _service;
     private string _language = "el";
 
     public string Id => "chronikologio";
@@ -21,25 +21,36 @@ public sealed class ChronikologioPlugin : IOpsisNewsCrawlerPlugin, IPluginWidget
     public event Action<string>? NavigationRequested { add { } remove { } }
 
     // The calendar (Greece or Cyprus) is the one chosen in the stand-alone app's View menu; it is stored in the same settings file.
-    private DayStore Store => _store ??= DayStore.Load(
+    // The service reads the data and makes the lines of the day on a background thread, so the bars never wait for the files.
+    private DailySnapshotService Service => _service ??= new DailySnapshotService(
         Path.Combine(Path.GetDirectoryName(typeof(ChronikologioPlugin).Assembly.Location) ?? AppContext.BaseDirectory, "data"),
         UiSettings.Load().Region);
 
     public void Start()
     {
+        var service = Service;
         PluginFeeds.Register(new PluginFeed(FeedKey, "Σαν σήμερα", "On this day", BuildFeed));
+        // a new snapshot (midnight, another country, another language): register the feed again, which tells the bars to ask for the lines again
+        service.Changed += () => PluginFeeds.Register(new PluginFeed(FeedKey, "Σαν σήμερα", "On this day", BuildFeed));
+        service.Start();
     }
 
-    public void Stop() => PluginFeeds.Unregister(FeedKey);
+    public void Stop()
+    {
+        PluginFeeds.Unregister(FeedKey);
+        _service?.Dispose();
+        _service = null;
+    }
+
     public void Pause() { }
     public void Resume() { }
-    public void Refresh() => _store = null;
+    public void Refresh() => _service?.Refresh();
     public void SetMode(string mode) { }
     public void SetPosition(string position) { }
     public void SetLanguage(string code)
     {
         _language = code;
-        Loc.Set(code);   // the interface language follows Opsis when the app has that language (Greek today); otherwise it keeps its own
+        if (Loc.Set(code)) _service?.LanguageChanged();   // the interface language follows Opsis when the app has that language; otherwise it keeps its own
     }
 
     public void SetTheme(bool dark, int background, int surface, int border, int text, int textMuted, int accent, double opacity)
@@ -69,11 +80,18 @@ public sealed class ChronikologioPlugin : IOpsisNewsCrawlerPlugin, IPluginWidget
 
     private Control CreateCalendar()
     {
-        var panel = new CalendarPanel(Store);
-        panel.StoreChanged += store => _store = store;   // the bar feed follows the country chosen with the flag
+        var panel = new CalendarPanel(Service.Store);
+        panel.StoreChanged += store => Service.SetRegion(store.Region);   // the bar feed follows the country chosen with the flag
         return panel;
     }
 
-    private IReadOnlyList<PluginFeedItem> BuildFeed() =>
-        SanSimeraFeed.Build(Store, DateOnly.FromDateTime(DateTime.Today)).Select(i => new PluginFeedItem(i.Text)).ToList();
+    // Called by the bars on the UI thread: only reads the ready snapshot (empty for the first moments after Start).
+    private IReadOnlyList<PluginFeedItem> BuildFeed()
+    {
+        var service = _service;
+        if (service is null) return Array.Empty<PluginFeedItem>();
+        service.CheckDate();
+        var snapshot = service.Current;
+        return snapshot is null ? Array.Empty<PluginFeedItem>() : snapshot.Items.Select(i => new PluginFeedItem(i.Text)).ToList();
+    }
 }

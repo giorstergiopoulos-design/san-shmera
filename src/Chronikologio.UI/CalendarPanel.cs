@@ -206,8 +206,7 @@ public sealed class CalendarPanel : UserControl
             if (path is null) continue;
             try
             {
-                using var stream = File.OpenRead(path);
-                _thumb.Image = Image.FromStream(stream, useEmbeddedColorManagement: false, validateImageData: true);
+                _thumb.Image = ImageLoader.Load(path);
             }
             catch (Exception ex) when (ex is ArgumentException or OutOfMemoryException or IOException)
             {
