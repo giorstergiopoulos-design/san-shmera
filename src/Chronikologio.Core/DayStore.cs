@@ -223,6 +223,8 @@ public sealed class DayStore
         }
     }
 
+    private static bool ContainsGreek(string s) => s.Any(ch => ch is >= (char)0x370 and <= (char)0x3FF or >= (char)0x1F00 and <= (char)0x1FFF);
+
     /// <summary>The day with the English texts of its entries, where the database has them (the others stay in Greek).</summary>
     private DayView InEnglish(DayView v)
     {
@@ -239,7 +241,7 @@ public sealed class DayStore
             var title = T("saint", null, c.Title, out var text);
             var life = _enLives.FirstOrDefault(l => l.Month == v.Month && l.Day == v.Day && TextNorm.StartsWithWord(c.Title, l.Prefix)).Life;
             var summary = text.Length > 0 ? text : c.Summary.StartsWith("Η μνήμη αναφέρεται στον Μέγα Συναξαριστή", StringComparison.Ordinal) ? "The commemoration is mentioned in the Megas Synaxaristis for this day. Its life has not been written yet." : c.Summary;
-            return c with { Title = title, Summary = summary, Details = life ?? c.Details };
+            return c with { Title = title, Summary = summary, Details = life ?? (c.Details is not null && ContainsGreek(c.Details) ? null : c.Details) };
         }).ToList();
         var events = v.Events.Select(e => { var title = T("event", e.Year, e.Title, out var text); return text.Length > 0 || title != e.Title ? e with { Title = title, Summary = text.Length > 0 ? text : e.Summary } : e; }).ToList();
         List<Person> People(IReadOnlyList<Person> list, string kind) => list.Select(p => { var name = T(kind, p.Year, p.Name, out var text); return text.Length > 0 || name != p.Name ? p with { Name = name, Description = text.Length > 0 ? text : p.Description } : p; }).ToList();

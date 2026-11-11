@@ -147,6 +147,7 @@ internal static class LocalizationEn
             "• The Megas Synaxaristis (https://www.synaxarion.gr), for the memories of the saints of each day and their dates; the lives are written in our own words.\n" +
             "• The Greek Wikipedia (https://el.wikipedia.org), for events, births and deaths; the photographs of people and events come from Wikimedia Commons with a free licence, and each shows its author, licence and link.\n" +
             "• The Historical Calendar of greekrewind.gr (https://www.greekrewind.gr), as an aid to find missing Greek events; its texts are not copied, ours are written in our own words.\n" +
+            "• The Synaxaristes of the twelve months by Nikodemos the Hagiorite (19th-century edition, public domain, from the Internet Archive), from which the lives of saints are written in our own words.\n" +
             "• The official flags of Greece and Cyprus, from Wikimedia Commons.\n\n" +
             "WITH OPSIS\n" +
             "As a plugin of Opsis, the calendar replaces the built-in one and the “On this day” feed can appear in the bars of the News Crawler.",
