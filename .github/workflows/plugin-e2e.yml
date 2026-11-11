@@ -59,14 +59,43 @@ jobs:
           if (-not $txt.Contains('PluginFeeds')) { throw 'the installed Opsis has the OLD contract (no PluginFeeds)' }
           "OPSIS_DIR=$dir" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
-      - name: Install the plugin with its installer (silent)
+      # UPGRADE TEST: first the previous PUBLISHED version (v0.8.0, checked with its published SHA-256), then the installer built here over it, as the update of the app does
+      - name: Install the previous published version (v0.8.0) silently
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download v0.8.0 -R giorstergiopoulos-design/san-shmera -p 'ChronikologioSetup.exe*' -D old-setup --clobber
+          $want = ((Get-Content old-setup\ChronikologioSetup.exe.sha256 -Raw).Trim() -split '[\s*]+')[0].ToLowerInvariant()
+          $have = (Get-FileHash old-setup\ChronikologioSetup.exe -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($want -ne $have) { throw "the published v0.8.0 installer does not match its SHA-256 ($have <> $want)" }
+          $p = Start-Process old-setup\ChronikologioSetup.exe -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/LOG=old-install.log' -Wait -PassThru
+          if ($p.ExitCode -ne 0) { Get-Content old-install.log -Tail 40; throw "old setup exit code $($p.ExitCode)" }
+          $u = Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall','HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall' -ErrorAction SilentlyContinue | ForEach-Object { Get-ItemProperty $_.PSPath } | Where-Object { $_.PSChildName -like '*B7C4E2A1-5D3F-4E8A-9C61-2F0A8D7E4B93*' } | Select-Object -First 1
+          if (-not $u) { throw 'the old version left no uninstall entry' }
+          "installed before the upgrade: $($u.DisplayVersion)"
+          if ($u.DisplayVersion -ne '0.8.0') { throw "expected 0.8.0 before the upgrade, found $($u.DisplayVersion)" }
+          $dst = Join-Path $env:OPSIS_DIR 'plugins\Chronikologio'
+          if (-not (Test-Path (Join-Path $dst 'Chronikologio.OpsisPlugin.dll'))) { throw 'the old plugin was not installed' }
+          "OLD_PLUGIN_TIME=$((Get-Item (Join-Path $dst 'Chronikologio.OpsisPlugin.dll')).LastWriteTimeUtc.Ticks)" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+      - name: Upgrade to the installer built here (silent, over the old version)
         shell: pwsh
         run: |
           if (-not (Test-Path Output\ChronikologioSetup.exe)) { throw 'ChronikologioSetup.exe was not built' }
+          $new = ([xml](Get-Content src\Chronikologio.UI\Chronikologio.UI.csproj)).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1
+          "new version: $new"
           $p = Start-Process Output\ChronikologioSetup.exe -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/LOG=plugin-install.log' -Wait -PassThru
           "setup exit code: $($p.ExitCode)"
+          if ($p.ExitCode -ne 0) { Get-Content plugin-install.log -Tail 60; throw "the upgrade setup exit code is $($p.ExitCode)" }
+          $u = Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall','HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall' -ErrorAction SilentlyContinue | ForEach-Object { Get-ItemProperty $_.PSPath } | Where-Object { $_.PSChildName -like '*B7C4E2A1-5D3F-4E8A-9C61-2F0A8D7E4B93*' } | Select-Object -First 1
+          if (-not $u -or $u.DisplayVersion -ne $new) { throw "after the upgrade the registry says '$($u.DisplayVersion)', expected $new" }
           $dst = Join-Path $env:OPSIS_DIR 'plugins\Chronikologio'
-          if (-not (Test-Path (Join-Path $dst 'Chronikologio.OpsisPlugin.dll'))) { Get-Content plugin-install.log -Tail 40; throw "the plugin was not installed into $dst" }
+          $dll = Join-Path $dst 'Chronikologio.OpsisPlugin.dll'
+          if (-not (Test-Path $dll)) { Get-Content plugin-install.log -Tail 40; throw "the plugin was not installed into $dst" }
+          if ((Get-Item $dll).LastWriteTimeUtc.Ticks -eq [long]$env:OLD_PLUGIN_TIME) { throw 'the plugin file was not replaced by the upgrade' }
+          if ((Get-Item $dll).VersionInfo.FileVersion -notlike "$new*") { throw "the plugin file version is $((Get-Item $dll).VersionInfo.FileVersion), expected $new" }
+          if (Get-ChildItem $dst -Filter '*.part' -ErrorAction SilentlyContinue) { throw 'half-written files are left in the plugin folder' }
           Get-ChildItem $dst | Select-Object -First 20 | ForEach-Object { $_.Name }
 
       - name: Start the real Opsis host (isolated AppData) and read plugins.log
