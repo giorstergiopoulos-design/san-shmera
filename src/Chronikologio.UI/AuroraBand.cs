@@ -7,15 +7,18 @@ namespace Chronikologio.UI;
 /// <summary>One clock for every living background of the window (about 12 pictures a second); it runs only while something listens.</summary>
 public static class WaveClock
 {
-    private static readonly System.Windows.Forms.Timer Timer = new() { Interval = 80 };
+    private static readonly System.Windows.Forms.Timer Timer = new() { Interval = 33 };   // about 30 pictures a second: the lines move smoothly
     private static int _listeners;
     private static event Action? TickEvent;
 
-    public static double Time { get; private set; }
+    private static readonly System.Diagnostics.Stopwatch Clock = System.Diagnostics.Stopwatch.StartNew();
+
+    /// <summary>The time of the waves in "wave seconds": it follows the real clock, so the speed does not depend on how fast the pictures are drawn.</summary>
+    public static double Time => Clock.Elapsed.TotalSeconds * 0.4;
 
     static WaveClock()
     {
-        Timer.Tick += (_, _) => { Time += 0.03; TickEvent?.Invoke(); };
+        Timer.Tick += (_, _) => TickEvent?.Invoke();
     }
 
     public static void Subscribe(Action handler)
@@ -56,7 +59,7 @@ public static class Waves
         foreach (var (length, amp, speed, at, alpha, accent) in lines)
         {
             var points = new List<PointF>();
-            var step = Math.Max(6, area.Width / 120);
+            var step = Math.Max(4, area.Width / 240);
             for (var x = 0; x <= area.Width; x += step)
             {
                 var phase = x / (area.Width * length) * Math.PI * 2 + time * speed * 2.2;
@@ -64,7 +67,7 @@ public static class Waves
                 points.Add(new PointF(area.X + x, (float)y));
             }
             using var pen = new Pen(Color.FromArgb(alpha, accent ? palette.Accent : color), 1.2f);
-            g.DrawCurve(pen, points.ToArray(), 0.4f);
+            g.DrawCurve(pen, points.ToArray(), 0.5f);
         }
         g.SmoothingMode = old;
     }

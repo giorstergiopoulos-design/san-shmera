@@ -91,6 +91,7 @@ public sealed class EventTile : Panel
         _creditPath = photoPath ?? "";
         _year.Text = year;
         _title.Text = title;
+        _fullText = text;
         _text.Text = Cut(text, 112);
         _source.Text = source;
         _title.Height = TextRenderer.MeasureText(title, _title.Font, new Size(TileWidth - 20, int.MaxValue), TextFormatFlags.WordBreak | TextFormatFlags.NoPadding).Height + 6;
@@ -111,6 +112,21 @@ public sealed class EventTile : Panel
     }
 
     public bool HasPhoto => _image is not null;
+
+    private string _fullText = "";
+
+    /// <summary>Makes the card as wide as given (the cards share the whole width of the window): a wider card has a taller photograph and shows more of the text.</summary>
+    public void FitTo(int width)
+    {
+        Width = width;
+        var photoH = _image is null ? 0 : Math.Clamp(width / 2, 110, 230);
+        if (_image is not null) _photo.Height = photoH;
+        _text.Text = Cut(_fullText, (int)(112 * width / 240.0));
+        var inner = Math.Max(60, width - 20);
+        _title.Height = TextRenderer.MeasureText(_title.Text, _title.Font, new Size(inner, int.MaxValue), TextFormatFlags.WordBreak | TextFormatFlags.NoPadding).Height + 6;
+        var textH = TextRenderer.MeasureText(_text.Text, _text.Font, new Size(inner, int.MaxValue), TextFormatFlags.WordBreak | TextFormatFlags.NoPadding).Height + 8;
+        Height = photoH + 20 + _title.Height + Math.Max(40, textH) + 20 + 22;
+    }
 
     /// <summary>Raised when the card is clicked anywhere (it opens the whole text).</summary>
     public event Action? Opened;
@@ -303,6 +319,7 @@ public sealed class DayOverviewLayout : DayLayout
         _timeline.Width = w;
         _cards.MaximumSize = new Size(w, 0);
         _cards.Width = w;
+        FitTiles(w);
         _heroText.Width = _hero.Width - _heroPhoto.Width - 40;
         FitHero();
     }
@@ -359,6 +376,16 @@ public sealed class DayOverviewLayout : DayLayout
             var tile = _cards.Controls[mark.Index];
             _stack.ScrollControlIntoView(tile);
         }
+    }
+
+    // the cards share the whole width: as many columns as fit (at least 240 px each), the cards a little wider to fill the row
+    private void FitTiles(int w)
+    {
+        var tiles = _cards.Controls.OfType<EventTile>().ToList();
+        if (tiles.Count == 0) return;
+        var columns = Math.Min(tiles.Count, Math.Clamp((w + 12) / 262, 1, 8));
+        var width = Math.Min(470, (w - (columns - 1) * 12) / columns);
+        foreach (var tile in tiles) tile.FitTo(Math.Max(220, width));
     }
 
     private void ShowHero(DayView day)
@@ -442,6 +469,7 @@ public sealed class DayOverviewLayout : DayLayout
             if (people.Count == 0) _cards.Controls.Add(new Label { Text = Loc.T("short.noentries"), AutoSize = true, Tag = "muted", Padding = new Padding(2, 8, 0, 0) });
             foreach (var person in people) { var (portrait, portraitInfo, portraitPath) = LoadFirst(person.Images); var tile = new EventTile(person.YearText, person.Name, person.Description, portraitInfo is null ? "" : Loc.T("event.source") + ": commons.wikimedia.org", portrait, portraitInfo, portraitPath); var who = person; tile.Opened += () => TextDialog.Show(FindForm(), who.Name, who.YearText + " — " + who.Name, who.Description); _cards.Controls.Add(tile); }
         }
+        FitTiles(Math.Max(300, _stack.ClientSize.Width - _stack.Padding.Horizontal - SystemInformation.VerticalScrollBarWidth));
         Paint(_cards, ChronikologioTheme.Palette, false);   // only the new cards: RestyleAll would show the day again
     }
 
