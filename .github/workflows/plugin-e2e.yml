@@ -112,7 +112,7 @@ jobs:
           $log = Get-ChildItem $ap -Recurse -Filter plugins.log -ErrorAction SilentlyContinue | Select-Object -First 1
           if ($log) { Get-Content $log.FullName -Tail 40 } else { 'no plugins.log found in the isolated AppData' }
           if ($log -and (Select-String -Path $log.FullName -Pattern 'Failed to load|ReflectionTypeLoadException|Could not load type' -Quiet)) { throw 'plugins.log shows a load error' }
-          if ($log -and -not (Select-String -Path $log.FullName -Pattern 'Chronikologio' -Quiet)) { throw 'plugins.log never mentions Chronikologio (the plugin was not even tried)' }
+          if ($log -and -not (Select-String -Path $log.FullName -Pattern 'Chronikologio|Χρονικολόγιο' -Quiet)) { throw 'plugins.log never mentions Chronikologio (the plugin was not even tried)' }
 
       - name: Uninstall the plugin and check that nothing is left
         shell: pwsh
