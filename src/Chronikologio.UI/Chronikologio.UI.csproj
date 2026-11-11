@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>0.7.2</Version>
+    <Version>0.7.3</Version>
     <NoWarn>$(NoWarn);WFO1000</NoWarn>
   </PropertyGroup>
   <ItemGroup><ProjectReference Include="../Chronikologio.Core/Chronikologio.Core.csproj" /></ItemGroup>

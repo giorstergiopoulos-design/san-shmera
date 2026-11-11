@@ -383,8 +383,8 @@ public sealed class DayOverviewLayout : DayLayout
     {
         var tiles = _cards.Controls.OfType<EventTile>().ToList();
         if (tiles.Count == 0) return;
-        var columns = Math.Min(tiles.Count, Math.Clamp((w + 12) / 262, 1, 8));
-        var width = Math.Min(470, (w - (columns - 1) * 12) / columns);
+        var columns = Math.Min(tiles.Count, Math.Clamp(w / 262, 1, 8));
+        var width = Math.Min(560, (w - columns * 12 - 2) / columns);   // every card has 12 px of margin at its right
         foreach (var tile in tiles) tile.FitTo(Math.Max(220, width));
     }
 

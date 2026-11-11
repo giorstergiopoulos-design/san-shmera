@@ -47,27 +47,21 @@ public static class Waves
         if (area.Width < 20 || area.Height < 8) return;
         var old = g.SmoothingMode;
         g.SmoothingMode = SmoothingMode.AntiAlias;
-        // line: wavelength (as a part of the width), amplitude (as a part of the height), speed, where it sits in the band, opacity
-        var lines = new (double length, double amp, double speed, double at, int alpha, bool accent)[]
-        {
-            (0.9, 0.16, 0.55, 0.42, 120, true),
-            (0.6, 0.12, -0.8, 0.52, 90, false),
-            (1.3, 0.22, 0.35, 0.48, 70, true),
-            (0.45, 0.08, 1.1, 0.58, 50, false)
-        };
+        // the same recipe as the header of Opsis: three thin low-opacity sine lines, a point every 16 px, joined by straight segments
         var color = palette.IsDark ? Color.FromArgb(150, 190, 230) : Color.FromArgb(90, 150, 200);
-        foreach (var (length, amp, speed, at, alpha, accent) in lines)
+        var colors = new[] { palette.Accent, color, palette.Accent };
+        var t = time * 2.5;
+        for (var i = 0; i < 3; i++)
         {
+            var phase = t * (0.5 + i * 0.15) + i * 1.7;
+            var amp = 6 + i * 3;
+            var baseline = area.Height * (0.35 + i * 0.28);
             var points = new List<PointF>();
-            var step = Math.Max(4, area.Width / 240);
-            for (var x = 0; x <= area.Width; x += step)
-            {
-                var phase = x / (area.Width * length) * Math.PI * 2 + time * speed * 2.2;
-                var y = area.Y + area.Height * at + Math.Sin(phase) * area.Height * amp + Math.Sin(phase * 0.5 + time * 0.4) * area.Height * amp * 0.5;
-                points.Add(new PointF(area.X + x, (float)y));
-            }
-            using var pen = new Pen(Color.FromArgb(alpha, accent ? palette.Accent : color), 1.2f);
-            g.DrawCurve(pen, points.ToArray(), 0.5f);
+            for (var x = 0; x <= area.Width; x += 16)
+                points.Add(new PointF(area.X + x, (float)(area.Y + baseline + Math.Sin(phase + x * 0.012) * amp)));
+            if (points.Count < 2) continue;
+            using var pen = new Pen(Color.FromArgb(90 - i * 15, colors[i]), 1.6f) { LineJoin = LineJoin.Round };
+            g.DrawLines(pen, points.ToArray());
         }
         g.SmoothingMode = old;
     }

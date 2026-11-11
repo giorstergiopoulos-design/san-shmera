@@ -216,17 +216,6 @@ public sealed class DayHeader : Panel
 
     private readonly Action _tick;
 
-    // the whole header (the waves and the controls on them) is composed in one buffer and shown at once: nothing flickers while the lines move
-    protected override CreateParams CreateParams
-    {
-        get
-        {
-            var cp = base.CreateParams;
-            cp.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
-            return cp;
-        }
-    }
-
     protected override void OnPaintBackground(PaintEventArgs e)
     {
         var p = ChronikologioTheme.Palette;
