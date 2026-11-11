@@ -47,7 +47,7 @@ ShowLanguageDialog=auto
 LanguageDetectionMethod=uilanguage
 
 [Languages]
-Name: "greek"; MessagesFile: "compiler:Languages\Greek.isl"; LicenseFile: "license-el.txt"; InfoBeforeFile: "about-el.txt"
+Name: "greek"; MessagesFile: "Greek.isl"; LicenseFile: "license-el.txt"; InfoBeforeFile: "about-el.txt"
 Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "license-en.txt"; InfoBeforeFile: "about-en.txt"
 
 [Types]
