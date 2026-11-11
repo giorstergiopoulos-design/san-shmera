@@ -29,6 +29,9 @@ public sealed class PhotoBox : PictureBox
     /// <summary>True: the image fills the whole box and the edges that do not fit are cropped (the top of a card); false: the whole image is shown.</summary>
     public bool Cover { get; set; }
 
+    /// <summary>With <see cref="Cover"/>: how far down the cropped part starts (0 = the top of the picture, 0.5 = the middle). Portraits keep the top, where the face is.</summary>
+    public double CoverFocus { get; set; } = 0.3;
+
     protected override void OnPaint(PaintEventArgs e)
     {
         var g = e.Graphics;
@@ -41,7 +44,7 @@ public sealed class PhotoBox : PictureBox
             var box = new Rectangle(0, 0, Width, Height);
             var scale = Math.Max(box.Width / (double)Image.Width, box.Height / (double)Image.Height);
             var sw = (int)Math.Round(box.Width / scale); var sh = (int)Math.Round(box.Height / scale);
-            var src = new Rectangle((Image.Width - sw) / 2, Math.Max(0, (int)((Image.Height - sh) * 0.3)), sw, sh);   // a little above the middle: faces and tops of buildings stay in
+            var src = new Rectangle((Image.Width - sw) / 2, Math.Max(0, (int)((Image.Height - sh) * CoverFocus)), sw, sh);   // a little above the middle: faces and tops of buildings stay in
             g.DrawImage(Image, box, src, GraphicsUnit.Pixel);
             return;
         }

@@ -46,6 +46,7 @@ public class ImageDisplayTests
         var stores = new[] { DayStore.Load(DataRoot(), "gr"), DayStore.Load(DataRoot(), "cy") };
         var used = stores.SelectMany(s => s.AllCommemorations).SelectMany(c => c.Images ?? Array.Empty<ImageRef>())
             .Concat(stores.SelectMany(s => s.AllEvents).SelectMany(e => e.Images ?? Array.Empty<ImageRef>()))
+            .Concat(stores.SelectMany(s => Enumerable.Range(0, 366).SelectMany(i => { var d = new DateOnly(2024, 1, 1).AddDays(i); var v = s.GetDay(d.Month, d.Day); return v.People.Concat(v.DeathList); })).SelectMany(p => p.Images ?? Array.Empty<ImageRef>()))
             .Select(i => i.File.Replace('/', Path.DirectorySeparatorChar)).ToHashSet(StringComparer.OrdinalIgnoreCase);
         var root = Path.Combine(DataRoot(), "images");
         var onDisk = Directory.GetFiles(root, "*.*", SearchOption.AllDirectories)

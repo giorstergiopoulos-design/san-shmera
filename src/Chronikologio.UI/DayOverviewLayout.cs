@@ -87,6 +87,7 @@ public sealed class EventTile : Panel
         Margin = new Padding(0, 0, 12, 12);
         _info = info;
         _image = image;
+        _photo.CoverFocus = info?.Kind == "portrait" ? 0.06 : 0.3;   // a portrait keeps its top, where the face is
         _creditPath = photoPath ?? "";
         _year.Text = year;
         _title.Text = title;
@@ -454,7 +455,7 @@ public sealed class DayOverviewLayout : DayLayout
         {
             var people = _filter == 2 ? _day.People : _day.DeathList;
             if (people.Count == 0) _cards.Controls.Add(new Label { Text = Loc.T("short.noentries"), AutoSize = true, Tag = "muted", Padding = new Padding(2, 8, 0, 0) });
-            foreach (var person in people) { var tile = new EventTile(person.YearText, person.Name, person.Description, "", null, null, null); var who = person; tile.Opened += () => TextDialog.Show(FindForm(), who.Name, who.YearText + " — " + who.Name, who.Description); _cards.Controls.Add(tile); }
+            foreach (var person in people) { var (portrait, portraitInfo, portraitPath) = LoadFirst(person.Images); var tile = new EventTile(person.YearText, person.Name, person.Description, portraitInfo is null ? "" : Loc.T("event.source") + ": commons.wikimedia.org", portrait, portraitInfo, portraitPath); var who = person; tile.Opened += () => TextDialog.Show(FindForm(), who.Name, who.YearText + " — " + who.Name, who.Description); _cards.Controls.Add(tile); }
         }
         Paint(_cards, ChronikologioTheme.Palette, false);   // only the new cards: RestyleAll would show the day again
     }
@@ -467,6 +468,18 @@ public sealed class DayOverviewLayout : DayLayout
         sb.Append("\n\n").Append(Loc.T("details.sources").Trim()).Append(": ");
         sb.Append(string.Join("  ·  ", e.Sources.Select(s => s.Url ?? s.Citation)));
         TextDialog.Show(FindForm(), e.Title, (e.Year is { } y ? Year(y) + " — " : "") + e.Title, sb.ToString().Replace("\n", Environment.NewLine));
+    }
+
+    private (Image? Image, ImageRef? Info, string? Path) LoadFirst(ImageRef[]? images)
+    {
+        foreach (var candidate in images ?? Array.Empty<ImageRef>())
+        {
+            var path = Store.ImagePath(candidate);
+            if (path is null) continue;
+            try { return (ImageLoader.Load(path), candidate, path); }
+            catch (Exception ex) when (ex is ArgumentException or OutOfMemoryException or IOException) { }
+        }
+        return (null, null, null);
     }
 
     private EventTile TileFor(HistoricalEvent e)

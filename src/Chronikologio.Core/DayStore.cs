@@ -74,6 +74,7 @@ public sealed class DayStore
                     else if (name.StartsWith("verification", StringComparison.Ordinal)) store.AddChecks(file, errors);
                     else if (name.StartsWith("eventimages", StringComparison.Ordinal)) store.AddEventImages(file, errors);
                     else if (name.StartsWith("saintimages", StringComparison.Ordinal)) store.AddSaintImages(file, errors);
+                    else if (name.StartsWith("personimages", StringComparison.Ordinal)) store.AddPersonImages(file, errors);
                     else if (name.StartsWith("deaths", StringComparison.Ordinal)) store.AddBirths(file, errors, store._deaths, "deaths");
                     else store.AddBirths(file, errors, store._births, "births");
                 }
@@ -86,6 +87,7 @@ public sealed class DayStore
         store.ApplyChecks();
         store.ApplyEventImages();
         store.ApplySaintImages();
+        store.ApplyPersonImages();
         store.Errors = errors;
         return store;
     }
@@ -274,6 +276,40 @@ public sealed class DayStore
                 continue;
             }
             _saintImages.Add((month, day, f[1].Trim(), new ImageRef(f[2].Trim(), f[3].Trim(), f[4].Trim(), f[5].Trim(), f[6].Trim(), "icon")));
+        }
+    }
+
+    private readonly List<(int Month, int Day, bool Death, int Year, string Name, ImageRef Image)> _personImages = new();
+
+    /// <summary>Reads the portraits (personimages*.tsv): "MM-DD|b or d|year|name|file|caption|creator|license|sourceUrl".</summary>
+    private void AddPersonImages(string file, List<string> errors)
+    {
+        var number = 0;
+        foreach (var line in File.ReadLines(file))
+        {
+            number++;
+            if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#')) continue;
+            var f = line.Split('|');
+            if (f.Length != 9 || f[0].Length != 5 || f[0][2] != '-' || !int.TryParse(f[0][..2], out var month) || !int.TryParse(f[0][3..], out var day)
+                || f[1] is not ("b" or "d") || !int.TryParse(f[2], out var year)
+                || string.IsNullOrWhiteSpace(f[4]) || string.IsNullOrWhiteSpace(f[6]) || string.IsNullOrWhiteSpace(f[7]) || string.IsNullOrWhiteSpace(f[8]))
+            {
+                errors.Add($"{file}:{number}: bad portrait line");
+                continue;
+            }
+            _personImages.Add((month, day, f[1] == "d", year, f[3].Trim(), new ImageRef(f[4].Trim(), f[5].Trim(), f[6].Trim(), f[7].Trim(), f[8].Trim(), "portrait")));
+        }
+    }
+
+    private void ApplyPersonImages()
+    {
+        foreach (var (month, day, death, year, name, image) in _personImages)
+        {
+            var map = death ? _deaths : _births;
+            if (!map.TryGetValue((month, day), out var list)) continue;
+            for (var i = 0; i < list.Count; i++)
+                if (list[i].Year == year && TextNorm.Fold(list[i].Name) == TextNorm.Fold(name) && list[i].Images is null)
+                    list[i] = list[i] with { Images = new[] { image } };
         }
     }
 
