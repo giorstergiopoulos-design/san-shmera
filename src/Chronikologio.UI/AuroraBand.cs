@@ -1,84 +1,103 @@
 using System.Drawing.Drawing2D;
+
 using Chronikologio.Core;
 
 namespace Chronikologio.UI;
 
+/// <summary>One clock for every living background of the window (about 12 pictures a second); it runs only while something listens.</summary>
+public static class WaveClock
+{
+    private static readonly System.Windows.Forms.Timer Timer = new() { Interval = 80 };
+    private static int _listeners;
+    private static event Action? TickEvent;
+
+    public static double Time { get; private set; }
+
+    static WaveClock()
+    {
+        Timer.Tick += (_, _) => { Time += 0.03; TickEvent?.Invoke(); };
+    }
+
+    public static void Subscribe(Action handler)
+    {
+        TickEvent += handler;
+        if (++_listeners == 1) Timer.Start();
+    }
+
+    public static void Unsubscribe(Action handler)
+    {
+        TickEvent -= handler;
+        if (--_listeners <= 0) { _listeners = 0; Timer.Stop(); }
+    }
+
+    /// <summary>True when a control should draw the next frame: it is shown and its window is not minimised.</summary>
+    public static bool ShouldDraw(Control c) => c.IsHandleCreated && c.Visible && c.FindForm() is { WindowState: not FormWindowState.Minimized };
+}
+
 /// <summary>
-/// A band with a slowly moving soft background in the colours of the theme (the same kind of living background as in Opsis): a few translucent light blobs drift
-/// over the surface. It is cheap (about 12 pictures a second) and stops completely when the band is not visible or the window is minimised.
-/// Controls placed on it with a transparent background are drawn over the movement.
+/// The living background of Opsis: a few thin, translucent lines that flow slowly across the band like waves. Drawn behind the title of every screen and in the bands.
 /// </summary>
+public static class Waves
+{
+    public static void Draw(Graphics g, Rectangle area, double time, Opsis.UI.OpsisPalette palette)
+    {
+        if (area.Width < 20 || area.Height < 8) return;
+        var old = g.SmoothingMode;
+        g.SmoothingMode = SmoothingMode.AntiAlias;
+        // line: wavelength (as a part of the width), amplitude (as a part of the height), speed, where it sits in the band, opacity
+        var lines = new (double length, double amp, double speed, double at, int alpha, bool accent)[]
+        {
+            (0.9, 0.16, 0.55, 0.42, 120, true),
+            (0.6, 0.12, -0.8, 0.52, 90, false),
+            (1.3, 0.22, 0.35, 0.48, 70, true),
+            (0.45, 0.08, 1.1, 0.58, 50, false)
+        };
+        var color = palette.IsDark ? Color.FromArgb(150, 190, 230) : Color.FromArgb(90, 150, 200);
+        foreach (var (length, amp, speed, at, alpha, accent) in lines)
+        {
+            var points = new List<PointF>();
+            var step = Math.Max(6, area.Width / 120);
+            for (var x = 0; x <= area.Width; x += step)
+            {
+                var phase = x / (area.Width * length) * Math.PI * 2 + time * speed * 2.2;
+                var y = area.Y + area.Height * at + Math.Sin(phase) * area.Height * amp + Math.Sin(phase * 0.5 + time * 0.4) * area.Height * amp * 0.5;
+                points.Add(new PointF(area.X + x, (float)y));
+            }
+            using var pen = new Pen(Color.FromArgb(alpha, accent ? palette.Accent : color), 1.2f);
+            g.DrawCurve(pen, points.ToArray(), 0.4f);
+        }
+        g.SmoothingMode = old;
+    }
+}
+
+/// <summary>A band with the waves behind it (used for the description of the categories). Controls on it with a transparent background are drawn over the movement.</summary>
 public sealed class AuroraBand : Control
 {
-    private readonly System.Windows.Forms.Timer _timer = new() { Interval = 80 };
-    private double _t;
+    private readonly Action _tick;
 
     public AuroraBand()
     {
         SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
-        _timer.Tick += (_, _) =>
-        {
-            if (!Visible || !IsHandleCreated || FindForm() is not { WindowState: not FormWindowState.Minimized } || !Parent!.Visible) return;
-            _t += 0.035;
-            Invalidate();
-        };
-        _timer.Start();
+        _tick = () => { if (Animated && WaveClock.ShouldDraw(this) && Parent is { Visible: true }) Invalidate(); };
+        WaveClock.Subscribe(_tick);
     }
 
     /// <summary>Turns the movement off (the background then stays still).</summary>
-    public bool Animated
-    {
-        get => _timer.Enabled;
-        set => _timer.Enabled = value;
-    }
+    public bool Animated { get; set; } = true;
 
     protected override void OnPaint(PaintEventArgs e)
     {
         var p = ChronikologioTheme.Palette;
         var g = e.Graphics;
-        g.SmoothingMode = SmoothingMode.AntiAlias;
         g.Clear(p.Surface);
-        if (Width < 20 || Height < 10) return;
-        var clip = g.Clip;
-        using var round = Rounded(new RectangleF(0, 0, Width - 1, Height - 1), 10f);
-        g.SetClip(round, CombineMode.Intersect);
-        // three blobs that drift in slow circles: accent, a lighter accent and the text colour (almost invisible)
-        var blobs = new (double phase, double speed, Color color, float size)[]
-        {
-            (0.0, 1.0, Color.FromArgb(p.IsDark ? 70 : 60, p.Accent), 0.9f),
-            (2.1, 0.7, Color.FromArgb(p.IsDark ? 45 : 40, ControlPaint.Light(p.Accent, 0.5f)), 0.7f),
-            (4.2, 0.5, Color.FromArgb(p.IsDark ? 28 : 24, p.Text), 0.6f)
-        };
-        foreach (var (phase, speed, color, size) in blobs)
-        {
-            var cx = (float)(Width * (0.5 + 0.42 * Math.Sin(_t * speed + phase)));
-            var cy = (float)(Height * (0.5 + 0.3 * Math.Cos(_t * speed * 0.8 + phase * 1.3)));
-            var d = Math.Max(Width, Height * 3) * size * 0.45f;
-            using var path = new GraphicsPath();
-            path.AddEllipse(cx - d / 2, cy - d / 2, d, d);
-            using var brush = new PathGradientBrush(path) { CenterColor = color, SurroundColors = new[] { Color.FromArgb(0, color) } };
-            g.FillPath(brush, path);
-        }
-        g.Clip = clip;
+        Waves.Draw(g, new Rectangle(0, 0, Width, Height), WaveClock.Time, p);
         using var pen = new Pen(Color.FromArgb(60, p.Text), 1f);
-        g.DrawPath(pen, round);
-    }
-
-    private static GraphicsPath Rounded(RectangleF r, float radius)
-    {
-        var d = radius * 2;
-        var path = new GraphicsPath();
-        path.AddArc(r.X, r.Y, d, d, 180, 90);
-        path.AddArc(r.Right - d, r.Y, d, d, 270, 90);
-        path.AddArc(r.Right - d, r.Bottom - d, d, d, 0, 90);
-        path.AddArc(r.X, r.Bottom - d, d, d, 90, 90);
-        path.CloseFigure();
-        return path;
+        g.DrawRectangle(pen, 0, 0, Width - 1, Height - 1);
     }
 
     protected override void Dispose(bool disposing)
     {
-        if (disposing) { _timer.Stop(); _timer.Dispose(); }
+        if (disposing) WaveClock.Unsubscribe(_tick);
         base.Dispose(disposing);
     }
 }

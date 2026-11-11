@@ -13,13 +13,12 @@ public sealed class SearchBar : Panel
 
     private sealed class Magnifier : Control
     {
-        public Magnifier() { SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true); Size = new Size(36, 38); }
+        public Magnifier() { SetStyle(ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor, true); Size = new Size(36, 38); }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            g.Clear(BackColor);
             using var pen = new Pen(ChronikologioTheme.Palette.TextMuted, 2f) { StartCap = System.Drawing.Drawing2D.LineCap.Round, EndCap = System.Drawing.Drawing2D.LineCap.Round };
             var cx = Width / 2f - 2; var cy = Height / 2f - 2;
             g.DrawEllipse(pen, cx - 6, cy - 6, 12, 12);
@@ -106,8 +105,8 @@ public sealed class SearchBar : Panel
     public void Restyle()
     {
         var p = ChronikologioTheme.Palette;
-        BackColor = p.Background;
-        _icon.BackColor = p.Background;
+        BackColor = Color.Transparent;   // the waves of the header show through
+        _icon.BackColor = Color.Transparent;
         _icon.Invalidate();
         _box.BackColor = p.Surface;
         _box.ForeColor = p.Text;

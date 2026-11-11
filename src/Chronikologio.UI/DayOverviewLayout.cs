@@ -224,11 +224,9 @@ public sealed class DayOverviewLayout : DayLayout
     private readonly FlowLayoutPanel _names = new() { Dock = DockStyle.Top, Height = 34, WrapContents = true, Padding = new Padding(0, 4, 0, 0) };
     private readonly Label _others = new() { Dock = DockStyle.Bottom, Height = 22, Tag = "muted", AutoEllipsis = true };
     private readonly LinkLabel _read = new() { Dock = DockStyle.Bottom, Height = 24, LinkBehavior = LinkBehavior.HoverUnderline };
-    private readonly FlowLayoutPanel _days = new() { Height = 38, WrapContents = false, AutoSize = false, Margin = new Padding(0, 0, 0, 8) };
-    private readonly Chip[] _dayChips = Enumerable.Range(0, 7).Select(_ => new Chip(true) { Margin = new Padding(0, 0, 8, 0) }).ToArray();
-    private readonly AuroraBand _band = new() { Height = 92, Margin = new Padding(0, 0, 0, 8) };
-    private readonly Label _bandText = new() { Left = 14, Top = 8, Height = 22, AutoSize = false, BackColor = Color.Transparent, Font = new Font("Segoe UI", 10.5f, FontStyle.Bold) };
-    private readonly FlowLayoutPanel _filters = new() { Left = 10, Top = 40, Height = 40, WrapContents = false, AutoSize = false, BackColor = Color.Transparent };
+    private readonly Panel _band = new() { Tag = "card", Height = 92, Margin = new Padding(0, 0, 0, 8) };   // the filters: no moving background here, the waves live only in the header
+    private readonly Label _bandText = new() { Left = 14, Top = 8, Height = 22, AutoSize = false, Font = new Font("Segoe UI", 10.5f, FontStyle.Bold) };
+    private readonly FlowLayoutPanel _filters = new() { Left = 10, Top = 40, Height = 40, WrapContents = false, AutoSize = false };
     private readonly YearTimeline _timeline = new() { Margin = new Padding(0, 0, 0, 10) };
     private readonly FlowLayoutPanel _cards = new() { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, WrapContents = true, Margin = new Padding(0) };
     private readonly Chip[] _chips = { new(true), new(true), new(true), new(true) };
@@ -258,19 +256,12 @@ public sealed class DayOverviewLayout : DayLayout
         foreach (var chip in _chips) _filters.Controls.Add(chip);
         _band.Controls.Add(_bandText);
         _band.Controls.Add(_filters);
-        for (var i = 0; i < _dayChips.Length; i++)
-        {
-            var offset = i - 3;
-            _days.Controls.Add(_dayChips[i]);
-            _dayChips[i].Click += (_, _) => ChangeDate(SelectedDate.AddDays(offset));
-        }
         _timeline.MarkClicked += OnMarkClicked;
         for (var i = 0; i < _chips.Length; i++)
         {
             var index = i;
             _chips[i].Click += (_, _) => { _filter = index; ShowCards(); };
         }
-        _stack.Controls.Add(_days);
         _stack.Controls.Add(_hero);
         _stack.Controls.Add(_band);
         _stack.Controls.Add(_timeline);
@@ -306,7 +297,6 @@ public sealed class DayOverviewLayout : DayLayout
     {
         var w = Math.Max(300, _stack.ClientSize.Width - _stack.Padding.Horizontal - SystemInformation.VerticalScrollBarWidth);
         _hero.Width = w;
-        _days.Width = w;
         _band.Width = w;
         _bandText.Width = w - 28;
         _filters.Width = w - 20;
@@ -339,12 +329,7 @@ public sealed class DayOverviewLayout : DayLayout
     // the strip of days, the line of years and the text of the band follow the day and the chosen filter
     private void ShowStrips()
     {
-        for (var i = 0; i < _dayChips.Length; i++)
-        {
-            var d = SelectedDate.AddDays(i - 3);
-            _dayChips[i].Text = d.ToString("ddd d", Loc.Culture);
-            _dayChips[i].Selected = i == 3;
-        }
+
         if (_day is null) return;
         var region = Store.Region;
         var marks = new List<YearTimeline.Mark>();

@@ -129,11 +129,10 @@ public sealed class MiniCalendar : UserControl
 /// <summary>A label that always stays on one line and ends with "…" when it does not fit (a plain Label wraps a long text onto a second line).</summary>
 internal sealed class EllipsisLabel : Label
 {
-    public EllipsisLabel() { SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true); AutoEllipsis = true; }
+    public EllipsisLabel() { SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor, true); AutoEllipsis = true; }
 
     protected override void OnPaint(PaintEventArgs e)
     {
-        e.Graphics.Clear(BackColor);
         TextRenderer.DrawText(e.Graphics, Text, Font, ClientRectangle, ForeColor,
             TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.NoPrefix);
     }
@@ -158,6 +157,9 @@ public sealed class DayHeader : Panel
 
     public DayHeader()
     {
+        SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw, true);
+        _tick = () => { if (WaveClock.ShouldDraw(this)) Invalidate(); };
+        WaveClock.Subscribe(_tick);
         Dock = DockStyle.Top;
         Height = 70;
         Padding = new Padding(4, 4, 4, 2);
@@ -204,10 +206,29 @@ public sealed class DayHeader : Panel
     {
         var p = ChronikologioTheme.Palette;
         BackColor = p.Background;
-        foreach (var c in new Control[] { _date, _flag }) { c.BackColor = p.Background; c.ForeColor = p.Text; }
-        _fast.BackColor = p.Background; _fast.ForeColor = p.TextMuted;
-        _old.BackColor = p.Background; _old.ForeColor = p.TextMuted;
-        foreach (var c in new[] { _prev, _next }) { c.BackColor = p.Background; c.ForeColor = p.TextMuted; }
+        // the labels are transparent: the waves of the header show through
+        foreach (var c in new Control[] { _date, _flag }) { c.BackColor = Color.Transparent; c.ForeColor = p.Text; }
+        _fast.BackColor = Color.Transparent; _fast.ForeColor = p.TextMuted;
+        _old.BackColor = Color.Transparent; _old.ForeColor = p.TextMuted;
+        foreach (var c in new[] { _prev, _next }) { c.BackColor = Color.Transparent; c.ForeColor = p.TextMuted; }
+        Invalidate();
+    }
+
+    private readonly Action _tick;
+
+    protected override void OnPaintBackground(PaintEventArgs e)
+    {
+        var p = ChronikologioTheme.Palette;
+        e.Graphics.Clear(p.Background);
+        Waves.Draw(e.Graphics, new Rectangle(0, 0, Width, Height), WaveClock.Time, p);
+        using var line = new Pen(Color.FromArgb(70, p.Text), 1f);
+        e.Graphics.DrawLine(line, 0, Height - 1, Width, Height - 1);
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing) WaveClock.Unsubscribe(_tick);
+        base.Dispose(disposing);
     }
 }
 
@@ -329,7 +350,6 @@ public abstract class DayLayout : UserControl
             case DayHeader or CalendarPanel: return;
             case MiniCalendar mini: mini.Restyle(); return;
             case Chip chip: chip.Restyle(); return;
-            case AuroraBand band: foreach (Control child in band.Controls) { child.ForeColor = p.Text; } band.Invalidate(); return;
             case YearTimeline line: line.Invalidate(); return;
             case FlatButton: return;
             case PictureBox: c.BackColor = card ? p.Surface : p.Background; return;

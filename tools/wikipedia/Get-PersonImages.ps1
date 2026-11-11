@@ -50,6 +50,9 @@ Write-Host "people with an article: $($people.Count)"
 $done = @{}; $lines = New-Object Collections.Generic.List[string]
 if (Test-Path $outFile) { foreach ($l in Get-Content $outFile -Encoding UTF8) { $lines.Add($l); if ($l -match '^(\d\d-\d\d)\|([bd])\|(-?\d+)\|([^|]+)\|') { $done["$($Matches[2])|$($Matches[1])|$($Matches[3])|$(Fold $Matches[4])"] = 1 } } }
 if ($lines.Count -eq 0) { $lines.Add('# MM-DD|b (birth) or d (death)|year|name|file|caption|creator|license|sourceUrl   (portraits from Wikimedia Commons, free licences only; made by tools\wikipedia\Get-PersonImages.ps1)') }
+# pictures downloaded by a run that was stopped before it wrote the list are not used by anything: removed (the person gets another try below)
+$listed = @{}; foreach ($l in $lines) { $q = $l -split '\|'; if ($q.Count -ge 5) { $listed[($q[4] -replace '.*/', '')] = 1 } }
+foreach ($orphan in Get-ChildItem $imgDir -File) { if (-not $listed.ContainsKey($orphan.Name)) { Remove-Item $orphan.FullName -Force } }
 $seen = @{}   # the same file for two people (a double portrait) is used once
 $todo = @($people | Where-Object { -not $done.ContainsKey("$($_.Kind)|$($_.Day)|$($_.Year)|$(Fold $_.Name)") })
 Write-Host "to do: $($todo.Count)"
