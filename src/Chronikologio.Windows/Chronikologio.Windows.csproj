@@ -5,7 +5,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>0.7.3</Version>
+    <Version>0.8.0</Version>
     <AssemblyName>Chronikologio</AssemblyName>
     <ApplicationIcon>chronikologio.ico</ApplicationIcon>
   </PropertyGroup>

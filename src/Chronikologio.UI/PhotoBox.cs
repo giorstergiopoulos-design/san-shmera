@@ -29,6 +29,9 @@ public sealed class PhotoBox : PictureBox
     /// <summary>True: the image fills the whole box and the edges that do not fit are cropped (the top of a card); false: the whole image is shown.</summary>
     public bool Cover { get; set; }
 
+    /// <summary>True: the whole image is shown scaled to the box and centred, nothing is cropped (portraits of the people cards).</summary>
+    public bool Contain { get; set; }
+
     /// <summary>With <see cref="Cover"/>: how far down the cropped part starts (0 = the top of the picture, 0.5 = the middle). Portraits keep the top, where the face is.</summary>
     public double CoverFocus { get; set; } = 0.3;
 
@@ -37,6 +40,16 @@ public sealed class PhotoBox : PictureBox
         var g = e.Graphics;
         g.Clear(BackColor);
         if (Image is null) return;
+        if (Contain)
+        {
+            // the whole picture, scaled to fit the box and centred (it may grow to fill the box)
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            var fit = Math.Min(Width / (double)Image.Width, Height / (double)Image.Height);
+            var w = Math.Max(1, (int)Math.Round(Image.Width * fit)); var h = Math.Max(1, (int)Math.Round(Image.Height * fit));
+            g.DrawImage(Image, new Rectangle((Width - w) / 2, (Height - h) / 2, w, h));
+            return;
+        }
         if (Cover)
         {
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;

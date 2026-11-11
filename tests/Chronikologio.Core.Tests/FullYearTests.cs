@@ -58,8 +58,8 @@ public class FullYearTests
     [Fact]
     public void TheEventsFileGivesAnEventToItsDays()
     {
-        var marathon = Store.GetDay(9, 12).Events;
-        Assert.Contains(marathon, e => e.Year == -490 && e.IsGreek);
+        var marathon = Store.GetDay(10, 28).Events;   // the Oxi day (the date of Marathon is only traditional and is no longer listed)
+        Assert.Contains(marathon, e => e.Year == 1940 && e.IsGreek);
         Assert.True(marathon[0].IsGreek);
     }
 }

@@ -1,4 +1,4 @@
-# Χρονικολόγιο — Timeline Calendar
+﻿# Χρονικολόγιο — Timeline Calendar
 
 <p align="center">
   <strong>Ποιος γιορτάζει σήμερα και τι έγινε «σαν σήμερα» — για την Ελλάδα και την Κύπρο.</strong><br/>
@@ -8,7 +8,7 @@
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2011-0078D6?logo=windows&logoColor=white" />
   <img alt=".NET" src="https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white" />
-  <img alt="Version" src="https://img.shields.io/badge/version-0.7.3-00B4D8" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.8.0-00B4D8" />
   <img alt="License" src="https://img.shields.io/badge/license-MIT-green" />
 </p>
 

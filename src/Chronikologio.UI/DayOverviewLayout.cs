@@ -88,6 +88,7 @@ public sealed class EventTile : Panel
         _info = info;
         _image = image;
         _photo.CoverFocus = info?.Kind == "portrait" ? 0.06 : 0.3;   // a portrait keeps its top, where the face is
+        if (info?.Kind == "portrait") { _photo.Cover = false; _photo.Contain = true; }   // and is not cropped at all
         _creditPath = photoPath ?? "";
         _year.Text = year;
         _title.Text = title;
@@ -120,6 +121,8 @@ public sealed class EventTile : Panel
     {
         Width = width;
         var photoH = _image is null ? 0 : Math.Clamp(width / 2, 110, 230);
+        // a portrait is shown whole (never cropped): the box is as tall as the picture needs, up to 320 px, and the picture is scaled to fit it
+        if (_image is not null && _info?.Kind == "portrait") photoH = Math.Clamp((int)(width * _image.Height / (double)_image.Width), 110, 320);
         if (_image is not null) _photo.Height = photoH;
         _text.Text = Cut(_fullText, (int)(112 * width / 240.0));
         var inner = Math.Max(60, width - 20);

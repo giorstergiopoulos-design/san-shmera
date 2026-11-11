@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace Chronikologio.Core;
 
@@ -68,7 +68,8 @@ public sealed class DayStore
                     if (name.Equals(EntryIds.RegistryFile, StringComparison.Ordinal)) continue;   // read by ApplyIds
                     // the saints of the Megas Synaxaristis of the Church of Greece belong to the Greek calendar only
                     if (name.StartsWith("saints-syn", StringComparison.Ordinal) && region != "gr") continue;
-                    if (name.StartsWith("lives", StringComparison.Ordinal)) store.AddLives(file, errors);
+                    if (name.StartsWith("en-", StringComparison.Ordinal)) store.AddEnglish(file, errors);
+                    else if (name.StartsWith("lives", StringComparison.Ordinal)) store.AddLives(file, errors);
                     else if (name.StartsWith("saints", StringComparison.Ordinal)) store.AddSaints(file, errors);
                     else if (name.StartsWith("events", StringComparison.Ordinal)) store.AddEvents(file, errors);
                     else if (name.StartsWith("verification", StringComparison.Ordinal)) store.AddChecks(file, errors);
@@ -195,6 +196,54 @@ public sealed class DayStore
                     break;
                 }
         }
+    }
+
+    // English texts of the entries (data/i18n/en-*.tsv): "kind|MM-DD|year|Greek title or name|English title or name|English text"; kind = event, saint, birth, death or life
+    // (for a life the third field after the date is empty and the Greek title is the beginning of the title of the commemoration; paragraphs are separated by " // ")
+    private readonly Dictionary<string, (string Title, string Text)> _en = new(StringComparer.Ordinal);
+    private readonly List<(int Month, int Day, string Prefix, string Life)> _enLives = new();
+
+    private void AddEnglish(string file, List<string> errors)
+    {
+        var number = 0;
+        foreach (var line in File.ReadLines(file))
+        {
+            number++;
+            if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#')) continue;
+            var f = line.Split('|');
+            if (f.Length != 6 || f[1].Length != 5 || f[1][2] != '-' || !int.TryParse(f[1][..2], out var month) || !int.TryParse(f[1][3..], out var day)
+                || month is < 1 or > 12 || day < 1 || day > DateTime.DaysInMonth(2024, month) || (f[2].Length > 0 && !int.TryParse(f[2], out _)))
+            {
+                errors.Add($"{file}:{number}: bad English line");
+                continue;
+            }
+            if (f[0] == "life") { _enLives.Add((month, day, f[3].Trim(), f[5].Trim().Replace(" // ", "\n\n"))); continue; }
+            int? year = f[2].Length > 0 ? int.Parse(f[2], System.Globalization.CultureInfo.InvariantCulture) : null;
+            _en[EntryIds.Key(f[0], month, day, year, f[3].Trim())] = (f[4].Trim(), f[5].Trim());
+        }
+    }
+
+    /// <summary>The day with the English texts of its entries, where the database has them (the others stay in Greek).</summary>
+    private DayView InEnglish(DayView v)
+    {
+        if (_en.Count == 0 && _enLives.Count == 0) return v;
+        string T(string kind, int? year, string title, out string text)
+        {
+            text = "";
+            if (!_en.TryGetValue(EntryIds.Key(kind, v.Month, v.Day, year, title), out var e)) return title;
+            text = e.Text;
+            return e.Title.Length > 0 ? e.Title : title;
+        }
+        var commemorations = v.Commemorations.Select(c =>
+        {
+            var title = T("saint", null, c.Title, out var text);
+            var life = _enLives.FirstOrDefault(l => l.Month == v.Month && l.Day == v.Day && TextNorm.StartsWithWord(c.Title, l.Prefix)).Life;
+            var summary = text.Length > 0 ? text : c.Summary.StartsWith("Η μνήμη αναφέρεται στον Μέγα Συναξαριστή", StringComparison.Ordinal) ? "The commemoration is mentioned in the Megas Synaxaristis for this day. Its life has not been written yet." : c.Summary;
+            return c with { Title = title, Summary = summary, Details = life ?? c.Details };
+        }).ToList();
+        var events = v.Events.Select(e => { var title = T("event", e.Year, e.Title, out var text); return text.Length > 0 || title != e.Title ? e with { Title = title, Summary = text.Length > 0 ? text : e.Summary } : e; }).ToList();
+        List<Person> People(IReadOnlyList<Person> list, string kind) => list.Select(p => { var name = T(kind, p.Year, p.Name, out var text); return text.Length > 0 || name != p.Name ? p with { Name = name, Description = text.Length > 0 ? text : p.Description } : p; }).ToList();
+        return v with { Commemorations = commemorations, Events = events, Births = People(v.People, "birth"), Deaths = People(v.DeathList, "death") };
     }
 
     private readonly List<(int Month, int Day, string Title, string Life)> _lives = new();
@@ -461,7 +510,10 @@ public sealed class DayStore
         }
     }
 
-    public DayView GetDay(int month, int day)
+    public DayView GetDay(int month, int day) => GetDayIn(month, day, Loc.Language);
+
+    /// <summary>The day in a language: "en" gives the English texts of the entries where the database has them, any other language the Greek originals.</summary>
+    public DayView GetDayIn(int month, int day, string language)
     {
         var births = _births.TryGetValue((month, day), out var b)
             ? b.OrderBy(p => Rank(p.Region, p.IsGreek)).ThenBy(p => p.Year < 0 ? int.MinValue + (-p.Year) : p.Year).ToList()
@@ -469,9 +521,10 @@ public sealed class DayStore
         var deaths = _deaths.TryGetValue((month, day), out var d)
             ? d.OrderBy(p => Rank(p.Region, p.IsGreek)).ThenBy(p => p.Year < 0 ? int.MinValue + (-p.Year) : p.Year).ToList()
             : new List<Person>();
-        return _days.TryGetValue((month, day), out var s)
+        var view = _days.TryGetValue((month, day), out var s)
             ? new DayView(month, day, s.C, s.E.OrderBy(e => Rank(e.Region, e.IsGreek)).ThenBy(e => e.Year ?? int.MaxValue).ToList(), null, births, null, deaths)
             : new DayView(month, day, Array.Empty<Commemoration>(), Array.Empty<HistoricalEvent>(), null, births, null, deaths);
+        return language == "en" ? InEnglish(view) : view;
     }
 
     /// <summary>Gives every entry its stable identifier: the one of the registry file, or the one made from its content when it is not registered yet.</summary>
