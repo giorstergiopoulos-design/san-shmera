@@ -12,6 +12,7 @@ internal static class Program
         // the icon of the executable (chronikologio.ico) for the title bar and the taskbar
         try { if (Environment.ProcessPath is { } exe) window.Icon = Icon.ExtractAssociatedIcon(exe); }
         catch (Exception ex) when (ex is ArgumentException or IOException or UnauthorizedAccessException) { }
+        window.EnableUpdates();   // only the stand-alone app: inside Opsis the plugin is updated by Opsis
         Application.Run(window);
     }
 }

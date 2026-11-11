@@ -9,6 +9,9 @@ public sealed class UiSettings
     public string Theme { get; set; } = "system";
     public bool MenuShown { get; set; }
 
+    /// <summary>The stand-alone app looks for a newer version in the official releases (at most once a day). The Opsis plugin never does: Opsis updates its plugins.</summary>
+    public bool CheckForUpdates { get; set; } = true;
+
     /// <summary>The way a day is shown: "day" (the default), "cards", "feed" or "tabs".</summary>
     public string Layout { get; set; } = "day";
 

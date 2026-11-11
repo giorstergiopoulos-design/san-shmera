@@ -6,7 +6,9 @@
 - **No injection, no changes to Windows**: the app reads its own data files and writes only its settings and `plugin.log` in `%AppData%\Chronikologio`.
 
 ## Network
-- The app itself makes **no network calls**. Data and images are installed with it.
+- The stand-alone app asks GitHub once a day (`api.github.com/repos/giorstergiopoulos-design/san-shmera/releases/latest`, ETag, 15 s timeout, no personal data) whether a newer version exists; it can be turned off in the Help menu. The Opsis plugin makes **no** network calls: inside Opsis the update button of Opsis does the updating.
+- An update is downloaded only from the official releases of the repository (HTTPS, GitHub hosts only), saved to `%LocalAppData%\Chronikologio\update`, and **runs only if its SHA-256 equals the one published in the `.sha256` file of the release** (and its digital signature, if it has one, is valid). Otherwise it is deleted and nothing runs. The installer is started by the shell, with no hidden PowerShell. The result is written to `last-update.log` in that folder.
+- Data and images are installed with the app.
 - The tools in `tools/` (used only by the maintainer to prepare data) use an honest client name, respect robots.txt and wait between requests. They are not part of the installed app.
 
 ## Data

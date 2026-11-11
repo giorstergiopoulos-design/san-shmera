@@ -283,8 +283,48 @@ public sealed class MainWindow : Form
         help.DropDownItems.Add(new ToolStripSeparator());
         help.DropDownItems.Add(new ToolStripMenuItem(Loc.T("menu.changelog"), null, (_, _) => ShowChangelog()));
         help.DropDownItems.Add(new ToolStripMenuItem(Loc.T("menu.license"), null, (_, _) => ShowLicense()));
+        if (_updates is not null)
+        {
+            help.DropDownItems.Add(new ToolStripSeparator());
+            help.DropDownItems.Add(new ToolStripMenuItem(Loc.T("upd.menu.check"), null, async (_, _) => await CheckForUpdatesAsync(true)));
+            help.DropDownItems.Add(new ToolStripMenuItem(Loc.T("upd.menu.auto"), null, (_, _) => { _settings.CheckForUpdates = !_settings.CheckForUpdates; _settings.Save(_settingsPath); BuildMenu(); }) { Checked = _settings.CheckForUpdates });
+        }
 
         _menu.Items.AddRange(new ToolStripItem[] { file, view, help });
+    }
+
+    private UpdateChecker? _updates;
+    private System.Windows.Forms.Timer? _updateTimer;
+    private bool _offering;
+
+    /// <summary>Turns on the update of the stand-alone app (the plugin inside Opsis never calls this): a check 30 seconds after the start and then every 24 hours, and the Help menu items. Never blocks the window.</summary>
+    public void EnableUpdates(UpdateChecker? checker = null)
+    {
+        _updates = checker ?? new UpdateChecker();
+        BuildMenu();
+        _updateTimer = new System.Windows.Forms.Timer { Interval = 30_000 };
+        _updateTimer.Tick += async (_, _) => { _updateTimer.Interval = (int)TimeSpan.FromHours(24).TotalMilliseconds; if (_settings.CheckForUpdates) await CheckForUpdatesAsync(false); };
+        _updateTimer.Start();
+        Disposed += (_, _) => _updateTimer?.Dispose();
+    }
+
+    /// <summary>Looks for a newer version and, when there is one, offers it (Install / Later / Skip this version). <paramref name="manual"/>: the user asked, so every answer is shown.</summary>
+    public async Task CheckForUpdatesAsync(bool manual)
+    {
+        if (_updates is null || _offering) return;
+        _offering = true;
+        try
+        {
+            var result = await _updates.CheckAsync(UpdateChecker.Current, manual);
+            if (result.Outcome == UpdateOutcome.Available && result.Update is { } info)
+            {
+                var choice = UpdateUi.Offer(this, info);
+                if (choice == UpdateChoice.Skip) _updates.Skip(info.Tag);
+                else if (choice == UpdateChoice.Install && await UpdateUi.DownloadAndStartAsync(this, info)) Close();   // the installer is running: the app closes so its files can be replaced
+            }
+            else if (manual) UpdateUi.ShowManualResult(this, result);
+        }
+        finally { _offering = false; }
     }
 
     private void ShowGuide() => HelpDialog.ShowFor(this, 0);

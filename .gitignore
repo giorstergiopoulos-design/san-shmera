@@ -7,3 +7,4 @@ Output/
 *.log
 scratch-*.log
 *.pdb
+release/

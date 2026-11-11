@@ -81,7 +81,9 @@ public sealed class ChronikologioPlugin : IOpsisNewsCrawlerPlugin, IPluginWidget
         new[]
         {
             new PluginAboutSection("Δεδομένα", "Data",
-                "Οι εγγραφές έχουν γραφτεί από την αρχή και δείχνουν ποια κατάσταση επαλήθευσης έχουν. Στο τέλος κάθε κειμένου αναφέρονται οι πηγές.")
+                "Οι εγγραφές έχουν γραφτεί από την αρχή και δείχνουν ποια κατάσταση επαλήθευσης έχουν. Στο τέλος κάθε κειμένου αναφέρονται οι πηγές."),
+            new PluginAboutSection("Ενημερώσεις", "Updates",
+                "Ως plugin, το Χρονικολόγιο ενημερώνεται μόνο από το κουμπί ενημέρωσης του Opsis, όχι από δικό του έλεγχο. Οι εκδόσεις βρίσκονται στο github.com/giorstergiopoulos-design/san-shmera (releases) με αρχείο SHA-256· ο εγκαταστάτης Setup ενημερώνει εφαρμογή και plugin μαζί, και ο Opsis μπορεί να ζητήσει νέα έγκριση για το ενημερωμένο plugin.")
         });
 
     private Control CreateCalendar()

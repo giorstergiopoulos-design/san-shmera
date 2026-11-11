@@ -4,7 +4,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>0.8.0</Version>
+    <Version>0.9.0</Version>
     <NoWarn>$(NoWarn);WFO1000</NoWarn>
   </PropertyGroup>
   <ItemGroup><ProjectReference Include="../Chronikologio.Core/Chronikologio.Core.csproj" /></ItemGroup>
